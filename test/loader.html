@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="../javascripts/custom/loader.js"></script>
+  </head>
+  <body>
+    <img src="../assets/shared/loader.gif">
+    <audio controls><source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm"></audio>
+    <video controls><source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm"></video>
+    <script>
+      util.loader.ensureLoaded(document.querySelector('img'), function (loaded) {
+        console.log('1', loaded);
+      });
+      util.loader.ensureLoaded(document.querySelector('audio'), function (loaded) {
+        console.log('2', loaded);
+      });
+      util.loader.ensureLoaded(document.querySelector('video'), function (loaded) {
+        console.log('3', loaded);
+      });
+
+      util.loader.ensureLoaded([
+          document.querySelector('img'), 
+          document.querySelector('audio'),
+          document.querySelector('video')],
+        function (loaded) {
+          console.log('4', loaded);
+        });
+    </script>
+  </body>
+</html>
