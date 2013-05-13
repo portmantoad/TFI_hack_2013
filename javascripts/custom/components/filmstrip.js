@@ -46,36 +46,20 @@ function stopFilmstrip() {
 }
 
 
-function extractFilmStrip(){
+function filmStripWrap(){
 
-            $( "video" ).each(function(){
+            $( ".filmstrip" ).each(function(){
             var $this = $(this),
-            filmStrip = $this.children(".filmstrip").insertAfter($this),
-            frameCount = filmStrip.data('framecount'),
+            frameCount = $this.data('framecount'),
             frameWrap = $('<div class="framewrap" />');
 
-            if ($this.hasClass("no-swap") === false) {
-            
-                if ($this.hasClass("stretch")) { frameWrap.addClass("stretch"); };
-
-                if ($this.hasClass("blend")) {
-                  frameWrap.addClass("stretch");
-                  if ($this.hasClass("screen")) { filmStrip.addClass("blend screen"); };
-                  if ($this.hasClass("multiply")) { filmStrip.addClass("blend multiply"); };
-                };
-
-                filmStrip.imagesLoaded(function(){
-                  filmStrip = $(this);
-                  frameWidth = filmStrip.width();
-                  frameHeight = filmStrip.height()/frameCount;
-                  filmStrip.wrap( frameWrap.width(frameWidth).height(frameHeight));
-                  filmStrip.parent().next('.c').insertAfter($(this));
+                $this.imagesLoaded(function(){
+                  frameWidth = $this.width();
+                  frameHeight = $this.height()/frameCount;
+                  $this.wrap( frameWrap.width(frameWidth).height(frameHeight));
                   playFilmstrip();
                 });
-
-                $this.remove();
             
-            }
         });
 
 }

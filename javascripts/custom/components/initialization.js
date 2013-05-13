@@ -12,7 +12,7 @@ $(function(){
         stopFilmstrip();
 
         // if (jQuery.browser.mobile) {
-        if (true) { extractFilmStrip(); };
+        if (true) { filmStripWrap(); };
 
       filter();
       fitText();

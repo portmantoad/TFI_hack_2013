@@ -633,7 +633,7 @@ body, #modal {
 
 /* line 79, ../sass/_shared.scss */
 .texture {
-  background-image: url("../img/filmgrain-optim.png");
+  background-image: url("../assets/shared/filmgrain-optim.png");
   z-index: 1;
 }
 @media (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
