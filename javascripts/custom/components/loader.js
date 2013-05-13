@@ -4,7 +4,6 @@
 
   var __waiters = {
     IMG: function (image, onLoaded, onError) {
-      console.log('img');
       if (!image.complete) {
         image.addEventListener('load', function internalOnLoaded (e) {
           image.removeEventListener('load', internalOnLoaded, false);
