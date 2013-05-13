@@ -14,30 +14,14 @@ var pages=[];
             // pagetitles[3]="Tile";
             // pagetitles[4]="Tile";
 
+            var sceneFrameList = [
+              ["pages/1/1.html", "pages/1/2.html", "pages/1/3.html", "pages/1/7.html"]
+            ];
+
             var frames = [];
 
             function framesList(value){
-              frames.length = 0;
-
-              if (value === 0){
-
-                  frames[0]="pages/1/1.html";
-                  frames[1]="pages/1/2.html";
-                  frames[2]="pages/1/3.html";
-
-              } else if (value === 1){
-
-                  // frames[0]="pages/2/1.html";
-                  // frames[1]="pages/2/2.html";
-                  // frames[2]="pages/2/3.html";
-                  // frames[3]="pages/2/4.html";
-                  // frames[4]="pages/2/5.html";
-                  // frames[5]="pages/2/6.html";
-                  // frames[6]="pages/2/7.html";
-
-              } else {
-                  frames[0]="";
-              }
+              frames = sceneFrameList[value];
             };
 
 
