@@ -1,0 +1,26 @@
+@import "compass/css3";
+
+$small-screen: 768px;
+$medium-screen: 1280px;
+$large-screen: 1440px;
+
+$topbar-height:35px;
+$topbar-color: #cccccc;
+$topbar-link-color: #999999; 
+$topbar-font-size: 13px;
+
+
+$body-font-color:#222222;
+$link-color:#ff0000;
+$sans-font: 'Source Sans Pro', Helvetica, arial, sans-serif;
+$header-font-family: $sans-font;
+
+$primary-color: #777777; 
+
+
+
+@import "mixins";
+
+@import "type";
+@import "topbar";
+@import "shared";

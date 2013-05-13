@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Living Los Sures</title>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="stylesheets/normalize.css" />
+  <link rel="stylesheet" href="stylesheets/app.css" />
+  <script src="javascripts/vendor/custom.modernizr.js"></script>
+</head>
+<body>
+
+<div class="content">
+  <div class="pageview" name="pageview"></div>
+  <div class="texture fullScreen"></div>
+
+  <button onClick="prev();" value="Prev" class="prevbutton hidden"><span class="btn">&larr;</span></button>
+  <button onClick="next();" value="Next" class="nextbutton"><span class="btn">&rarr;</span></button>
+
+</div>
+
+<nav class="top-bar">
+
+  <h1 class="name"><a href="#" onClick="changePage(0)">Living Los Sures</a></h1>
+
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class="divider"></li>
+      <li class="has-dropdown"><a class="pagetitle" href="#">Chapters</a>
+        <ul class="dropdown" id="mainnav">
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="hide-for-small"><label class="framecounter"></label></li>
+      <li class="divider"></li>
+
+    </ul>
+
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown"><a href="#">Settings</a>
+        <ul class="dropdown">
+          <li><a class="audio" href="#">Disable Audio</a>
+        </ul>
+      </li>
+      <li class="divider"></li>    </ul>
+  </section>
+</nav>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-2.0.0.min.js"><\/script>')</script>
+  
+
+  <script src="javascripts/vendor/fastclick.js"></script>
+  <script src="javascripts/vendor/howler.min.js"></script>
+	<script src="javascripts/custom/plugins.js"></script>
+  <script src="javascripts/custom/main.js"></script>
+
+  
+  <script>
+  </script>
+</body>
+</html>

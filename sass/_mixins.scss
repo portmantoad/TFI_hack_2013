@@ -1,0 +1,52 @@
+@mixin clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020"; 
+        display: block; 
+        height: 0; 
+        overflow: hidden; 
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+
+@mixin breakpoint($point) {
+  @if $point == screen {
+    @media #{$screen} { @content; }
+  }
+  @else if $point == small {
+    @media only screen and (min-width: #{$small-screen}) { @content; }
+  }
+  @else if $point == medium {
+    @media only screen and (min-width: #{$medium-screen}) { @content; }
+  }
+  @else if $point == large {
+    @media only screen and (min-width: #{$large-screen}) { @content; }
+  }
+  @else if $point == maxSmall {
+    @media only screen and (max-width: #{$small-screen}) { @content; }
+  }
+  @else if $point == maxMedium {
+    @media only screen and (max-width: #{$medium-screen}) { @content; }
+  }
+  @else if $point == maxLarge {
+    @media only screen and (max-width: #{$large-screen}) { @content; }
+  }
+  @else if $point == landscape {
+    @media #{$landscape} { @content; }
+  }
+  @else if $point == portrait {
+    @media #{$portrait} { @content; }
+  }
+  @else if $point == hidpi {
+    @media (-o-min-device-pixel-ratio: 5/4),
+    (-webkit-min-device-pixel-ratio: 1.25),
+    (min-resolution: 120dpi) { @content; }
+  }
+  @else{
+    @media only screen and (min-width: #{$point}) { @content; }
+  }
+}
