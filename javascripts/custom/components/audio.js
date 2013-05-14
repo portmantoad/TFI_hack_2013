@@ -27,8 +27,8 @@
 
             function changeSound(){ 
 
-              $p = pageIndex + 1;
-              $f = frameIndex + 1;
+              $p = _pageIndex + 1;
+              $f = _frameIndex + 1;
 
 
                 if ($p===1 && $f===1){

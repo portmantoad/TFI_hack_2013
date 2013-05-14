@@ -1,4 +1,3 @@
-var pages=[];
 
 
 var pageinfo = [
@@ -9,180 +8,132 @@ var pageinfo = [
 
 ];
 
-/*
-function getCurrentPageTitle()  { return pageinfo[pageIndex].title; }
+function pageCount() { return pageinfo.length; }
+function getPageTitle(i)  { return pageinfo[i].title; }
 
-function getCurrentFrame() { return pageinfo[pageIndex].frames[frameIndex]; }
+function getCurrentFrame() { return pageinfo[_pageIndex].frames[_frameIndex]; }
 
-function getCurrentPageUrl() { return pageinfo[pageIndex].url; }
-
-            function framesList(value){}
-*/
+function getPageUrl(page) { return pageinfo[page].url; }
 
 
-function getCurrentPageTitle()  { 
-  console.log('getCurrentPageTitle(): ', pagetitles[pageIndex]); 
-  return pagetitles[pageIndex]; }
+function getFrames(page) {
+  return pageinfo[page].frames;
+}
 
-function getCurrentFrame() { 
-  console.log('getCurrentFrame(): ', frames[pageIndex]); 
-  return frames[frameIndex]; }
+function getFrameCount(page) {
+  return pageinfo[page].frames.length;
+};
 
-function getCurrentPageUrl() { 
-  console.log('getCurrentPageUrl(): ', pages[pageIndex]); 
-  return pages[pageIndex]; }
 
-            pages[0]="pages/1.html";
-            // pages[1]="pages/2.html";
-            // pages[2]="pages/3.html";
-            // pages[3]="pages/4.html";
-            // pages[4]="pages/5.html";
+    // page navigation code
 
-            var pagetitles=[];
+    var _pageIndex = 0,
+    _frameIndex = 0,
+    // lightboxIndex = 0,
 
-            pagetitles[0]="Introduction";
-            // pagetitles[1]="Tile";
-            // pagetitles[2]="Tile";
-            // pagetitles[3]="Tile";
-            // pagetitles[4]="Tile";
-
-            var frames = [];
-
-            function framesList(value){
-              frames.length = 0;
-
-              if (value === 0){
-                  frames[0]="pages/1/1.html";
-                  frames[1]="pages/1/2.html";
-                  frames[2]="pages/1/3.html";
-
-              } else if (value === 1){
-
-                  // frames[0]="pages/2/1.html";
-                  // frames[1]="pages/2/2.html";
-                  // frames[2]="pages/2/3.html";
-                  // frames[3]="pages/2/4.html";
-                  // frames[4]="pages/2/5.html";
-                  // frames[5]="pages/2/6.html";
-                  // frames[6]="pages/2/7.html";
-
-              } else {
-                  frames[0]="";
-              }
-            };
-
-            // page navigation code
-
-            var pageIndex = 0,
-            frameIndex = 0,
-            // lightboxIndex = 0,
-            end = pages.length - 1,
-            // frameEnd = frames.length - 1,
-            pageview = $(".pageview"),
-            pageview_width = 0,
-            frameview = $(".frameview").first(),
-            nextbutton = $(".nextbutton"),
-            prevbutton = $(".prevbutton"),
-            chapters = $(".chapters"),
-            pagecounter = $(".pagecounter"),
-            pagetitle = $(".pagetitle"),
-            framecounter = $(".framecounter"),
-            overlay = $('.overlay'),
-            body = $("body"),
-            navList = $("#mainnav"),
-            filmStripLooping = false;
+    // frameEnd = frames.length - 1,
+    pageview = $(".pageview"),
+    pageview_width = 0,
+    frameview = $(".frameview").first(),
+    nextbutton = $(".nextbutton"),
+    prevbutton = $(".prevbutton"),
+    chapters = $(".chapters"),
+    pagecounter = $(".pagecounter"),
+    pagetitle = $(".pagetitle"),
+    framecounter = $(".framecounter"),
+    overlay = $('.overlay'),
+    body = $("body"),
+    navList = $("#mainnav"),
+    filmStripLooping = false;
 
 
 
-            function hideNavNext() {nextbutton.addClass('hidden');}
-            function showNavNext() {nextbutton.removeClass('hidden');}
-            function hideNavPrev() {prevbutton.addClass('hidden');}
-            function showNavPrev() {prevbutton.removeClass('hidden');}
-            function hideNav() {nextbutton.addClass('hidden'); prevbutton.addClass('hidden');}
-            function showNav() {nextbutton.removeClass('hidden'); prevbutton.removeClass('hidden');}
+    function hideNavNext() {nextbutton.addClass('hidden');}
+    function showNavNext() {nextbutton.removeClass('hidden');}
+    function hideNavPrev() {prevbutton.addClass('hidden');}
+    function showNavPrev() {prevbutton.removeClass('hidden');}
+    function hideNav() {nextbutton.addClass('hidden'); prevbutton.addClass('hidden');}
+    function showNav() {nextbutton.removeClass('hidden'); prevbutton.removeClass('hidden');}
 
 
             // Fills the navigation with the appropriate links and dropdowns
-            $.each(pages, function(pageNumber){
-                  framesList(pageNumber);
-                  var navPage = $('<li/>').appendTo(navList);
-                  var navPageLink = $('<a/>').text(getCurrentPageTitle()).attr('onClick', 'changePage('+ pageNumber +')').appendTo(navPage);
+            //$.each(pages, function(pageNumber){
 
-                  if (frames.length > 1) {
+              for (var i=0; i<pageinfo.length; i++) {
+                  var navPage = $('<li/>').appendTo(navList);
+                  var navPageLink = $('<a/>').text(getPageTitle(i)).attr('onClick', 'changePage('+ i +')').appendTo(navPage);
+
+                  if (getFrameCount(i) > 1) {
                     navPage.addClass('has-dropdown');
                     var navPageList = $('<ul />').addClass('dropdown').appendTo(navPage);
 
-                    $.each(frames, function(frameNumber){
+                    var fr = getFrames(i);
+                    $.each(fr, function(frameNumber){
                           var navFrame = $('<li/>').appendTo(navPageList);
-                          var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ pageNumber +', ' +frameNumber +')').appendTo(navFrame);
+                          var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ i +', ' +frameNumber +')').appendTo(navFrame);
                     });
                   };  
-            });
+              };
+            //});
 
 
             function changeFrame(value) {
               frameview = $(".frameview").first();
     
-              framesList(pageIndex);
-
-              frameEnd = 0;
-              if (frames.length > 1) { frameEnd = frames.length - 1; };
-
+              var frameCount = getFrameCount(_pageIndex), frameEnd = frameCount - 1;
               
-                if (value==="next") {        frameIndex===frameEnd ? frameIndex=0 : frameIndex++;
-                } else if (value==="prev") { frameIndex===0 ? frameIndex=frameEnd : frameIndex--;
-                } else if (value==="first"){ frameIndex = 0
-                } else if (value==="last"){  frameIndex = frameEnd
-                } else {                     frameIndex = parseInt(value);
-                }
+              if (value==="next") {        _frameIndex = (_frameIndex + 1) % frameCount;
+              } else if (value==="prev") { _frameIndex = (_frameIndex + frameCount - 1) % frameCount;
+              } else if (value==="first"){ _frameIndex = 0;
+              } else if (value==="last"){  _frameIndex = frameCount - 1;
+              } else {                     _frameIndex = parseInt(value);
+              }
 
 
-                frameview.fadeOut('fast', function() { 
-                  changeSound();
-                    frameview.removeClass('loaded').load(getCurrentFrame(), function() { 
-                        frameview.show();
-                    }); 
-                });
+              frameview.fadeOut('fast', function() { 
+                changeSound();
+                  frameview.removeClass('loaded').load(getCurrentFrame(), function() { 
+                      frameview.show();
+                  }); 
+              });
 
-                framecounter.text((frameIndex+1) + "/" + (frameEnd+1));
+              framecounter.text((_frameIndex+1) + "/" + (frameCount));
 
-                if(pageIndex === end && frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
-                else if (pageIndex === 0 && frameIndex === 0)   { showNavNext(); hideNavPrev(); }
-                else                                            { showNav(); }
-
+              var end = pageCount() - 1;
+              if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
+              else if (_pageIndex === 0 && _frameIndex === 0)   { showNavNext(); hideNavPrev(); }
+              else                                            { showNav(); }
             }
 
 
             function changePage(value, frame) {
 
-                if (value==="next") {        pageIndex===end ? pageIndex=0 : pageIndex++;
-                } else if (value==="prev") { pageIndex===0 ? pageIndex=end : pageIndex--;
-                } else if (value==="first"){ pageIndex = 0
-                } else if (value==="last"){  pageIndex = end
-                } else {                     pageIndex = parseInt(value);
+                if (value==="next") {        _pageIndex===end ? _pageIndex=0 : _pageIndex++;
+                } else if (value==="prev") { _pageIndex===0 ? _pageIndex=end : _pageIndex--;
+                } else if (value==="first"){ _pageIndex = 0
+                } else if (value==="last"){  _pageIndex = end
+                } else {                     _pageIndex = parseInt(value);
                 }
 
-                framesList(pageIndex);
-                
                 pageview.fadeOut('fast', function() { 
-                    pageview.removeClass('loaded').load(getCurrentPageUrl(), function() {
+                    pageview.removeClass('loaded').load(getPageUrl(_pageIndex), function() {
                         frame ? changeFrame(frame) : changeFrame('0');
                         pageview.fadeIn();
                     }); 
                 });
 
-                pagetitle.text(getCurrentPageTitle());
+                pagetitle.text(getPageTitle(_pageIndex));
               
             }
 
         function next() { 
-            if (frameIndex !== frameEnd) { changeFrame('next'); } 
-            else if(pageIndex < end){ changePage('next'); }
+            if (_frameIndex < getFrameCount(_pageIndex)) { changeFrame('next'); } 
+            else if(_pageIndex < pageCount()-1){ changePage('next'); }
         }; 
 
         function prev() { 
-            if (frameIndex !== 0) { changeFrame('prev'); } 
-            else if(pageIndex > 0){ changePage('prev', 'last');}
+            if (_frameIndex !== 0) { changeFrame('prev'); } 
+            else if(_pageIndex > 0){ changePage('prev', 'last');}
         };
 
 
@@ -199,7 +150,7 @@ function getCurrentPageUrl() {
                 frames[a] = parseInt(frames[a], 10);
               }
 
-            if ( $.inArray((frameIndex+1), frames) > -1) { 
+            if ( $.inArray((_frameIndex+1), frames) > -1) { 
               $tempObject.removeClass('hidden');  
             };
             
