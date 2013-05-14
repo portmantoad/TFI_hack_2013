@@ -1,0 +1,273 @@
+<html>
+  <head>
+    <style>
+      html, body {
+        background: #000;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        font-family: helvetica;
+        font-size: 3em;
+      }
+
+      #floor-counter {
+        position: fixed;
+        right: 20px;
+        bottom: 2em;
+        font-size: .5em;
+      }
+
+      #stair-counter {
+        position: fixed;
+        right: 20px;
+        bottom: .1em;
+      }
+
+      video {
+        opacity: 0.4;
+        position: fixed;
+      }
+
+      video.paused {
+        opacity: 0.4;
+      }
+
+      .fadeable {
+        -webkit-transition: 1s opacity;
+           -moz-transition: 1s opacity;
+            -ms-transition: 1s opacity;
+             -o-transition: 1s opacity;
+                transition: 1s opacity;
+      }
+
+      .full-opacity {
+        opacity: 1;
+      }
+
+      #progress-button {
+        position: fixed;
+        width: 3em;
+        height: 1.5em;
+        bottom: 1em;
+        left: 1em;
+      }
+    </style>
+    <script id="floor-data" type="text/json">
+    [30.5, 45, 62, 80, 99]
+    </script>
+    <script id="step-data" type="text/json">
+    ["00:00:19;02","00:00:19;10","00:00:19;21","00:00:20;12","00:00:21;04","00:00:21;17","00:00:22;12","00:00:22;16","00:00:23;11","00:00:25;00","00:00:25;09","00:00:25;19","00:00:26;09","00:00:27;01","00:00:27;19","00:00:28;11","00:00:29;06","00:00:30;03","00:00:30;16","00:00:31;10","00:00:32;06","00:00:32;19","00:00:33;08","00:00:34;00","00:00:34;21","00:00:35;15","00:00:36;09","00:00:37;03","00:00:37;19","00:00:38;14","00:00:39;07","00:00:39;20","00:00:40;15","00:00:41;09","00:00:41;22","00:00:42;17","00:00:43;11","00:00:44;06","00:00:47;01","00:00:47;14","00:00:48;06","00:00:49;01","00:00:49;20","00:00:50;13","00:00:51;08","00:00:52;04","00:00:53;08","00:00:53;16","00:00:54;10","00:00:55;05","00:00:55;23","00:00:56;17","00:00:57;13","00:00:58;15","00:00:59;12","00:01:00;12","00:01:01;12","00:01:02;21","00:01:03;22","00:01:04;11","00:01:05;15","00:01:06;20","00:01:07;14","00:01:08;14","00:01:09;13","00:01:10;12","00:01:11;10","00:01:13;15","00:01:14;09","00:01:15;03","00:01:16;03","00:01:17;01","00:01:18;01","00:01:19;04","00:01:23;02","00:01:26;21","00:01:27;11","00:01:28;05","00:01:28;21","00:01:29;18","00:01:30;18","00:01:31;12","00:01:33;22","00:01:34;20","00:01:35;14","00:01:36;11","00:01:37;06","00:01:38;03","00:01:38;16"]
+    </script>
+    <script src="../../javascripts/vendor/popcorn.min.js"></script>
+    <script src="../../javascripts/custom/components/loader.js"></script>
+    <script>
+      (function() {
+        var stairCounterSpan, floorCounterSpan;
+        var video;
+        var popcorn;
+        var numFloors = 1;
+        var numSteps = 0;
+
+        function positionVideo () {
+          var width, height;
+          var aspectRatio = video.videoWidth / video.videoHeight;
+
+          if (window.innerWidth > window.innerHeight * aspectRatio) {
+            width = window.innerWidth;
+            height = width / aspectRatio;
+          }
+          else {
+            height = window.innerHeight;
+            width = height * aspectRatio;
+          }
+
+          video.style.width = width + 'px';
+          video.style.height = height + 'px';
+
+          video.style.top = window.innerHeight / 2 - height / 2 + 'px';
+          video.style.left = window.innerWidth / 2 - width / 2 + 'px';
+        }
+
+        function init(e) {
+          stairCounterSpan = document.querySelector('#stair-counter > span');
+          floorCounterSpan = document.querySelector('#floor-counter > span');
+          video = document.querySelector('video');
+          var stepData = JSON.parse(document.querySelector('#step-data').innerText);
+          var floorData = JSON.parse(document.querySelector('#floor-data').innerText);
+
+          Popcorn.plugin('step', {
+            start: function () {
+              ++numSteps;
+              stairCounterSpan.innerHTML = numSteps;
+            }
+          });
+
+          Popcorn.plugin('floor', {
+            start: function () {
+              ++numFloors;
+              currentFloorAudioIndex = 0;
+              floorCounterSpan.innerHTML = numFloors;
+            }
+          });
+
+          var assets = [].concat(document.querySelector('audio')).concat(document.querySelector('video'));
+
+          util.loader.ensureLoaded(assets, function(){
+            window.addEventListener('resize', positionVideo, false);
+            positionVideo();
+
+            popcorn = Popcorn(video, {
+              frameAnimation: true
+            });
+
+            stepData.forEach(function (step) {
+              // Attempt to force a float for time, wrt 24 fps.
+              popcorn.step({ start: Popcorn.util.toSeconds(step, 24) });
+            });
+
+            floorData.forEach(function (step) {
+              popcorn.floor({ start: step });
+            });
+
+            video.classList.add('full-opacity');
+
+            var currentFloorAudio = null;
+            var currentFloorAudioIndex = 0;
+            var audioOnFloors = [];
+            Array.prototype.forEach.call(document.querySelectorAll('audio'), function (element) {
+              var floorIndex = Number(element.getAttribute('data-floor'));
+              audioOnFloors[floorIndex] = audioOnFloors[floorIndex] || [];
+              audioOnFloors[floorIndex].push(element);
+            });
+
+            var playing = false;
+            var keyUpTimeout = -1;
+            function attemptToPlayVideo (e) {
+              e.preventDefault();
+              if (!playing) {
+                playing = true;
+                video.play();
+                video.classList.remove('paused');
+              }
+            }
+
+            function attemptToPauseVideo (e) {
+              e.preventDefault();
+              if (keyUpTimeout === -1) {
+                video.classList.add('paused');
+                keyUpTimeout = setTimeout(function(){
+                  playing = false;
+                  video.pause();
+                  keyUpTimeout = -1;
+
+                  if (!currentFloorAudio) {
+                    console.log(1, audioOnFloors, currentFloorAudioIndex, audioOnFloors[currentFloorAudioIndex]);
+                    currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
+                    if (currentFloorAudio) {
+                      console.log(2);
+                      currentFloorAudio.play();
+                      currentFloorAudio.addEventListener('ended', function (e) {
+                        console.log('ended');
+                        currentFloorAudio = null;
+                      }, false);
+                    }
+                  }
+                }, 1000);
+              }
+            }
+
+            window.addEventListener('keydown', attemptToPlayVideo, false);
+            window.addEventListener('keyup', attemptToPauseVideo, false);
+
+            var progressButton = document.querySelector('#progress-button');
+            
+            progressButton.addEventListener('mousedown', function (e) {
+              attemptToPlayVideo(e);
+              function onMouseUp (e) {
+                attemptToPauseVideo(e);
+                window.removeEventListener('mouseup', onMouseUp, false);
+              }
+              window.addEventListener('mouseup', onMouseUp, false);
+            }, false);
+
+          });
+        }
+
+        document.addEventListener('DOMContentLoaded', init, false);
+      }());
+    </script>
+  </head>
+  <body>
+    <audio data-floor="1" preload="auto">
+      <source src="../../assets/2/sound/2.1A.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="1" preload="auto">
+      <source src="../../assets/2/sound/2.1B.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="1" preload="auto">
+      <source src="../../assets/2/sound/2.1C.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="1" preload="auto">
+      <source src="../../assets/2/sound/2.1D.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="2" preload="auto">
+      <source src="../../assets/2/sound/2.2A.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="2" preload="auto">
+      <source src="../../assets/2/sound/2.2B.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="2" preload="auto">
+      <source src="../../assets/2/sound/2.2C.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="2" preload="auto">
+      <source src="../../assets/2/sound/2.2D.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="3" preload="auto">
+      <source src="../../assets/2/sound/2.3A.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="3" preload="auto">
+      <source src="../../assets/2/sound/2.3B.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="3" preload="auto">
+      <source src="../../assets/2/sound/2.3C.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="3" preload="auto">
+      <source src="../../assets/2/sound/2.3D.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="3" preload="auto">
+      <source src="../../assets/2/sound/2.3E.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="3" preload="auto">
+      <source src="../../assets/2/sound/2.3F.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="4" preload="auto">
+      <source src="../../assets/2/sound/2.4A.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="4" preload="auto">
+      <source src="../../assets/2/sound/2.4B.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="4" preload="auto">
+      <source src="../../assets/2/sound/2.4C.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="5" preload="auto">
+      <source src="../../assets/2/sound/2.5A.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="5" preload="auto">
+      <source src="../../assets/2/sound/2.5B.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="5" preload="auto">
+      <source src="../../assets/2/sound/2.5C.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio data-floor="5" preload="auto">
+      <source src="../../assets/2/sound/2.5D.mp3" type="audio/mp3"></source>
+    </audio>
+    <video class="fadeable paused" controls width="320" height="240" preload="auto">
+      <source src="../../assets/2/video/2.0_stairs_video-720p.mp4"></source>
+    </video>
+    <div id="floor-counter">Floor <span>1</span>/6</div>
+    <div id="stair-counter"><span>0</span>/89</div>
+    <button id="progress-button">Go</button>
+  </body>
+</html>
