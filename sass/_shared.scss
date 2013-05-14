@@ -78,7 +78,7 @@
 
         .texture{
             @extend fullScreen;
-            background-image: url('../img/filmgrain-optim.png');
+            background-image: url('../assets/shared/filmgrain-optim.png');
             @include breakpoint(hidpi) { background-size: 125px 113px; }
             z-index: 1;
         }
@@ -90,6 +90,7 @@
         .filmstrip{display: none;}
         .framewrap{ 
             overflow: hidden;
+            position: relative;
             .blend{position: absolute; display: none;}
             .filmstrip{
                 display:block;

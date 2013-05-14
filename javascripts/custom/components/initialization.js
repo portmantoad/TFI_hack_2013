@@ -9,10 +9,9 @@ $(function(){
 
     $(document).ajaxComplete(function(){
         
-        stopFilmstrip();
+        stopFilmStrip();
 
-        // if (jQuery.browser.mobile) {
-        if (true) { extractFilmStrip(); };
+        filmStripWrap(playFilmStrip);
 
       filter();
       fitText();

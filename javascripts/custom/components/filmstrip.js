@@ -1,4 +1,4 @@
-function filmstripLoop() {
+function filmStripLoop() {
   filmStrip = $(".framewrap .filmstrip");
   if (filmStrip.length !== 0) {
     filmStrip.each(function() {
@@ -32,13 +32,13 @@ function filmstripLoop() {
   };
 }
 
-function playFilmstrip() {
+function playFilmStrip() {
     if (!filmStripLooping) {
-       filmstripLoop();
+       filmStripLoop();
     }
 }
 
-function stopFilmstrip() {
+function stopFilmStrip() {
     if (filmStripLooping) {
        window.cancelAnimationFrame(filmStripLooping);
        filmStripLooping = undefined;
@@ -46,36 +46,30 @@ function stopFilmstrip() {
 }
 
 
-function extractFilmStrip(){
+function filmStripWrap(callback){
 
-            $( "video" ).each(function(){
-            var $this = $(this),
-            filmStrip = $this.children(".filmstrip").insertAfter($this),
-            frameCount = filmStrip.data('framecount'),
-            frameWrap = $('<div class="framewrap" />');
+        $( ".filmstrip" ).each(function(){
 
-            if ($this.hasClass("no-swap") === false) {
+            var $this = $(this);
+
+            if ( $this.parent().hasClass('framewrap') == false ) {
+              var frameCount = $this.data('framecount'),
+              frameWrap = $('<div class="framewrap" />');
+
+              //pass some stuff up to the wrapper element
+              if ($this.hasClass("stretch")) { frameWrap.addClass("stretch"); };
+              frameWrap.attr('style', $this.attr('style'));
+              $this.attr('style', '');
+
+                  $this.imagesLoaded(function(){
+                    frameWidth = $this.width();
+                    frameHeight = $this.height()/frameCount;
+                    $this.wrap( frameWrap.width(frameWidth).height(frameHeight));
+                    $this.parent().next('.c').insertAfter($(this));
+                    callback();
+              });
+            };
             
-                if ($this.hasClass("stretch")) { frameWrap.addClass("stretch"); };
-
-                if ($this.hasClass("blend")) {
-                  frameWrap.addClass("stretch");
-                  if ($this.hasClass("screen")) { filmStrip.addClass("blend screen"); };
-                  if ($this.hasClass("multiply")) { filmStrip.addClass("blend multiply"); };
-                };
-
-                filmStrip.imagesLoaded(function(){
-                  filmStrip = $(this);
-                  frameWidth = filmStrip.width();
-                  frameHeight = filmStrip.height()/frameCount;
-                  filmStrip.wrap( frameWrap.width(frameWidth).height(frameHeight));
-                  filmStrip.parent().next('.c').insertAfter($(this));
-                  playFilmstrip();
-                });
-
-                $this.remove();
-            
-            }
         });
 
 }
