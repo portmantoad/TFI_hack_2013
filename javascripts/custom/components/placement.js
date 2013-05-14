@@ -86,28 +86,30 @@ function focalpoint() {
           marginTop:0
         });
 
-            if (containerWidth > blockWidth) {
+            // if (containerWidth > blockWidth) {
               if (focusLeft < 0.01) { block.css('left', 0); }
               else{ block.css('left', Math.round((containerWidth - blockWidth) * focusLeft) ) } 
 
-            } else{
+            // } 
+            // else{
 
-              if (focusLeft < .5) { block.css('left', 0); }
-              else if (focusLeft > .5) { block.css('right', 0); }
-              else { block.css({left: '50%', marginLeft: Math.round(blockWidth/-2)}); }
+            //   if (focusLeft < .5) { block.css('left', 0); }
+            //   else if (focusLeft > .5) { block.css('right', 0); }
+            //   else { block.css({left: '50%', marginLeft: Math.round(blockWidth/-2)}); }
 
-            }
+            // }
             
-            if (containerHeight > blockHeight) {
+            // if (containerHeight > blockHeight) {
                 if (focusTop < 0.01) { block.css('top', 0); }
                 else{ block.css('top', Math.round((containerHeight - blockHeight) * focusTop) ) }; 
-            } else{
+            // } 
+            // else{
 
-              if (focusTop < .5) { block.css('top', 0); }
-              else if (focusTop > .5) { block.css('bottom', 0); }
-              else { block.css({top: '50%', marginTop: Math.round(blockHeight/-2)}); }
+            //   if (focusTop < .5) { block.css('top', 0); }
+            //   else if (focusTop > .5) { block.css('bottom', 0); }
+            //   else { block.css({top: '50%', marginTop: Math.round(blockHeight/-2)}); }
 
-            }
+            // }
 
   });
 
