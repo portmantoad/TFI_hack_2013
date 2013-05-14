@@ -64,12 +64,16 @@
     <script src="../../javascripts/custom/components/loader.js"></script>
     <script>
       (function() {
+        var FADE_TRANSITION_DURATION = 1000;
+
         var stairCounterSpan, floorCounterSpan;
         var video;
         var popcorn;
         var numFloors = 1;
         var numSteps = 0;
         var currentFloorAudioIndex = 0;
+        var videoVolume = [0, 0];
+        var audioVolume = [0, 0];
 
         function positionVideo () {
           var width, height;
@@ -142,6 +146,34 @@
               audioOnFloors[floorIndex].push(element);
             });
 
+            function volumeLoop () {
+              // videoVolume[0] -= (videoVolume[0] - videoVolume[1]) * .05;
+              // var newVideoVolume = Math.round(videoVolume[0] * 1000) / 1000; // quick decimal truncate
+
+              audioVolume[0] -= (audioVolume[0] - audioVolume[1]) * .1;
+              var newAudioVolume = Math.round(audioVolume[0] * 1000) / 1000; // quick decimal truncate
+
+              var changed = false;
+
+              // console.log('audio', newAudioVolume);
+
+              // if (newVideoVolume !== video.volume) {
+              //   changed = true;
+              //   video.volume = newVideoVolume;
+              // }
+
+              if (currentFloorAudio) {
+                if (newAudioVolume !== currentFloorAudio.volume) {
+                  changed = true;
+                  currentFloorAudio.volume = newAudioVolume;
+                }
+              }
+
+              if (changed) {
+                setTimeout(volumeLoop, 10);
+              }
+            }
+
             var playing = false;
             var keyUpTimeout = -1;
             function attemptToPlayVideo (e) {
@@ -150,6 +182,15 @@
                 playing = true;
                 video.play();
                 video.classList.remove('paused');
+                if (currentFloorAudio) {
+                  audioVolume = [currentFloorAudio.volume, 0];
+                  setTimeout(function(){
+                    currentFloorAudio.pause();
+                    currentFloorAudio = null;
+                  }, FADE_TRANSITION_DURATION);
+                }
+                //videoVolume[1] = 1;
+                volumeLoop();
               }
             }
 
@@ -162,17 +203,25 @@
                   video.pause();
                   keyUpTimeout = -1;
 
+                  //videoVolume[1] = 0;
+
                   if (!currentFloorAudio) {
                     currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
                     console.log(numFloors, currentFloorAudioIndex, currentFloorAudio)
                     if (currentFloorAudio) {
+                      currentFloorAudio.volume = 0;
+                      audioVolume[0] = 0;
+                      audioVolume[1] = 1;
+
                       currentFloorAudio.play();
                       currentFloorAudio.addEventListener('ended', function (e) {
                         currentFloorAudio = null;
                       }, false);
                     }
                   }
-                }, 1000);
+
+                  volumeLoop();
+                }, FADE_TRANSITION_DURATION);
               }
             }
 
