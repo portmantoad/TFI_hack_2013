@@ -69,6 +69,7 @@
         var popcorn;
         var numFloors = 1;
         var numSteps = 0;
+        var currentFloorAudioIndex = 0;
 
         function positionVideo () {
           var width, height;
@@ -134,7 +135,6 @@
             video.classList.add('full-opacity');
 
             var currentFloorAudio = null;
-            var currentFloorAudioIndex = 0;
             var audioOnFloors = [];
             Array.prototype.forEach.call(document.querySelectorAll('audio'), function (element) {
               var floorIndex = Number(element.getAttribute('data-floor'));
@@ -164,6 +164,7 @@
 
                   if (!currentFloorAudio) {
                     currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
+                    console.log(numFloors, currentFloorAudioIndex, currentFloorAudio)
                     if (currentFloorAudio) {
                       currentFloorAudio.play();
                       currentFloorAudio.addEventListener('ended', function (e) {
