@@ -48,17 +48,27 @@ function stopFilmStrip() {
 
 function filmStripWrap(callback){
 
-            $( ".filmstrip" ).each(function(){
-            var $this = $(this),
-            frameCount = $this.data('framecount'),
-            frameWrap = $('<div class="framewrap" />');
+        $( ".filmstrip" ).each(function(){
 
-                $this.imagesLoaded(function(){
-                  frameWidth = $this.width();
-                  frameHeight = $this.height()/frameCount;
-                  $this.wrap( frameWrap.width(frameWidth).height(frameHeight));
-                  callback();
-                });
+            var $this = $(this);
+
+            if ( $this.parent().hasClass('framewrap') == false ) {
+              var frameCount = $this.data('framecount'),
+              frameWrap = $('<div class="framewrap" />');
+
+              //pass some stuff up to the wrapper element
+              if ($this.hasClass("stretch")) { frameWrap.addClass("stretch"); };
+              frameWrap.attr('style', $this.attr('style'));
+              $this.attr('style', '');
+
+                  $this.imagesLoaded(function(){
+                    frameWidth = $this.width();
+                    frameHeight = $this.height()/frameCount;
+                    $this.wrap( frameWrap.width(frameWidth).height(frameHeight));
+                    $this.parent().next('.c').insertAfter($(this));
+                    callback();
+              });
+            };
             
         });
 

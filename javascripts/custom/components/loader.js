@@ -42,7 +42,7 @@
 
   var __loader = {
     ensureLoaded: function (assets, callback) {
-      if (!Array.isArray(assets)) {
+      if (Number(assets.length) !== assets.length) {
         __loader.ensureLoaded([assets], function () {
           callback(assets);
         });
