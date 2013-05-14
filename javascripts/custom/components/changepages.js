@@ -1,5 +1,37 @@
 var pages=[];
 
+
+var pageinfo = [
+  { url: "pages/1.html", title: "Introduction", frames: ["pages/1/1.html", "pages/1/2.html", "pages/1/3.html"] },
+  { url: "pages/2.html", title: "Tile", 
+    frames: ["pages/2/1.html", "pages/2/2.html", "pages/2/3.html", "pages/2/4.html", "pages/2/5.html", "pages/2/6.html", "pages/2/7.html"] 
+  },
+
+];
+
+/*
+function getCurrentPageTitle()  { return pageinfo[pageIndex].title; }
+
+function getCurrentFrame() { return pageinfo[pageIndex].frames[frameIndex]; }
+
+function getCurrentPageUrl() { return pageinfo[pageIndex].url; }
+
+            function framesList(value){}
+*/
+
+
+function getCurrentPageTitle()  { 
+  console.log('getCurrentPageTitle(): ', pagetitles[pageIndex]); 
+  return pagetitles[pageIndex]; }
+
+function getCurrentFrame() { 
+  console.log('getCurrentFrame(): ', frames[pageIndex]); 
+  return frames[frameIndex]; }
+
+function getCurrentPageUrl() { 
+  console.log('getCurrentPageUrl(): ', pages[pageIndex]); 
+  return pages[pageIndex]; }
+
             pages[0]="pages/1.html";
             // pages[1]="pages/2.html";
             // pages[2]="pages/3.html";
@@ -20,7 +52,6 @@ var pages=[];
               frames.length = 0;
 
               if (value === 0){
-
                   frames[0]="pages/1/1.html";
                   frames[1]="pages/1/2.html";
                   frames[2]="pages/1/3.html";
@@ -39,7 +70,6 @@ var pages=[];
                   frames[0]="";
               }
             };
-
 
             // page navigation code
 
@@ -76,7 +106,7 @@ var pages=[];
             $.each(pages, function(pageNumber){
                   framesList(pageNumber);
                   var navPage = $('<li/>').appendTo(navList);
-                  var navPageLink = $('<a/>').text(pagetitles[pageNumber]).attr('onClick', 'changePage('+ pageNumber +')').appendTo(navPage);
+                  var navPageLink = $('<a/>').text(getCurrentPageTitle()).attr('onClick', 'changePage('+ pageNumber +')').appendTo(navPage);
 
                   if (frames.length > 1) {
                     navPage.addClass('has-dropdown');
@@ -109,7 +139,7 @@ var pages=[];
 
                 frameview.fadeOut('fast', function() { 
                   changeSound();
-                    frameview.removeClass('loaded').load(frames[frameIndex], function() { 
+                    frameview.removeClass('loaded').load(getCurrentFrame(), function() { 
                         frameview.show();
                     }); 
                 });
@@ -135,13 +165,13 @@ var pages=[];
                 framesList(pageIndex);
                 
                 pageview.fadeOut('fast', function() { 
-                    pageview.removeClass('loaded').load(pages[pageIndex], function() {
+                    pageview.removeClass('loaded').load(getCurrentPageUrl(), function() {
                         frame ? changeFrame(frame) : changeFrame('0');
                         pageview.fadeIn();
                     }); 
                 });
 
-                pagetitle.text(pagetitles[pageIndex]);
+                pagetitle.text(getCurrentPageTitle());
               
             }
 
