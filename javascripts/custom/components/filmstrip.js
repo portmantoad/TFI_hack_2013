@@ -1,4 +1,4 @@
-function filmstripLoop() {
+function filmStripLoop() {
   filmStrip = $(".framewrap .filmstrip");
   if (filmStrip.length !== 0) {
     filmStrip.each(function() {
@@ -32,13 +32,13 @@ function filmstripLoop() {
   };
 }
 
-function playFilmstrip() {
+function playFilmStrip() {
     if (!filmStripLooping) {
-       filmstripLoop();
+       filmStripLoop();
     }
 }
 
-function stopFilmstrip() {
+function stopFilmStrip() {
     if (filmStripLooping) {
        window.cancelAnimationFrame(filmStripLooping);
        filmStripLooping = undefined;
@@ -46,7 +46,7 @@ function stopFilmstrip() {
 }
 
 
-function filmStripWrap(){
+function filmStripWrap(callback){
 
             $( ".filmstrip" ).each(function(){
             var $this = $(this),
@@ -57,7 +57,7 @@ function filmStripWrap(){
                   frameWidth = $this.width();
                   frameHeight = $this.height()/frameCount;
                   $this.wrap( frameWrap.width(frameWidth).height(frameHeight));
-                  playFilmstrip();
+                  callback();
                 });
             
         });

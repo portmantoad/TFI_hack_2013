@@ -90,6 +90,7 @@
         .filmstrip{display: none;}
         .framewrap{ 
             overflow: hidden;
+            position: relative;
             .blend{position: absolute; display: none;}
             .filmstrip{
                 display:block;

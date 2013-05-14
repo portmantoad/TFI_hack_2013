@@ -62,6 +62,7 @@ function focalpoint() {
           }
 
           if (scale == false) { scale = 1 };
+          scale = scale.toFixed(2);
 
           blockWidth = blockWidth * scale,
           blockHeight = blockHeight * scale;
@@ -93,7 +94,7 @@ function focalpoint() {
 
               if (focusLeft < .5) { block.css('left', 0); }
               else if (focusLeft > .5) { block.css('right', 0); }
-              else { block.css({left: '50%', marginLeft: (blockWidth/-2)}); }
+              else { block.css({left: '50%', marginLeft: Math.round(blockWidth/-2)}); }
 
             }
             
@@ -104,7 +105,7 @@ function focalpoint() {
 
               if (focusTop < .5) { block.css('top', 0); }
               else if (focusTop > .5) { block.css('bottom', 0); }
-              else { block.css({top: '50%', marginTop: (blockHeight/-2)}); }
+              else { block.css({top: '50%', marginTop: Math.round(blockHeight/-2)}); }
 
             }
 
