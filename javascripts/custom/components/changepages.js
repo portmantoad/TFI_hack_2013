@@ -2,7 +2,16 @@
 
 var Pages = function () {
   var pageinfo = [
-    { url: "pages/1.html", title: "Introduction", 
+    { url: "pages/1.html", 
+      title: "Introduction", 
+      sound: {
+        urls: ['assets/1/sound/1.background_audio_track_full.mp3'],
+        loop: true,
+        buffer:true,
+        autoplay: false,
+        fadein:800
+      },
+
       frames: [
         { 
           url: "pages/1/1.html", 
@@ -130,7 +139,8 @@ var Pages = function () {
   this.getPageTitle = function (page)  { return pageinfo[page].title; }
 
   this.getPageUrl = function (page) { return pageinfo[page].url; }
-  this.getSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
+  this.getFrameSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
+  this.getPageSound = function (page, frame) { return pageinfo[page].sound; }
 
 
   this.getFrames = function (page) {
@@ -213,7 +223,7 @@ function getCurrentFrameUrl() { return _pages.getFrames(_pageIndex)[_frameIndex]
 
 
               frameview.fadeOut('fast', function() { 
-                changeSound();
+                changeFrameSound();
                   frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
                       frameview.show();
                   }); 
@@ -238,6 +248,7 @@ function getCurrentFrameUrl() { return _pages.getFrames(_pageIndex)[_frameIndex]
                 }
 
                 pageview.fadeOut('fast', function() { 
+                  changePageSound();
                     pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
                         frame ? changeFrame(frame) : changeFrame('0');
                         pageview.fadeIn();
