@@ -2,9 +2,123 @@
 
 var Pages = function () {
   var pageinfo = [
-    { url: "pages/1.html", title: "Introduction", frames: ["pages/1/1.html", "pages/1/2.html", "pages/1/3.html"] },
+    { url: "pages/1.html", title: "Introduction", 
+      frames: [
+        { 
+          url: "pages/1/1.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.1.mp3'], // 'assets/1/sound/Scene 1 Audio.ogg'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/2.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.2.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/3.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.3.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/4.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.4.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/5.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.5.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/6.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.6.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/7.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.7.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/8.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.8.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+        { 
+          url: "pages/1/9.html", 
+          sound: {
+            urls: ['assets/1/sound/1.background.9.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          }
+        },
+      ] },
     { url: "pages/2.html", title: "Tile", 
-      frames: ["pages/2/1.html", "pages/2/2.html", "pages/2/3.html", "pages/2/4.html", "pages/2/5.html", "pages/2/6.html", "pages/2/7.html"] 
+      frames: [
+        { 
+          url: "pages/2/1.html", 
+        },
+        { 
+          url: "pages/2/2.html",  
+        },
+        { 
+          url: "pages/2/3.html", 
+        },
+        { 
+          url: "pages/2/4.html", 
+        },
+        { 
+          url: "pages/2/5.html", 
+        },
+        { 
+          url: "pages/2/6.html", 
+        },
+        { 
+          url: "pages/2/7.html", 
+        }
+        ] 
     },
 
     ];
@@ -16,6 +130,7 @@ var Pages = function () {
   this.getPageTitle = function (page)  { return pageinfo[page].title; }
 
   this.getPageUrl = function (page) { return pageinfo[page].url; }
+  this.getSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
 
 
   this.getFrames = function (page) {
@@ -30,7 +145,7 @@ var Pages = function () {
 var _pages = new Pages();
 
 
-function getCurrentFrame() { return _pages.getFrames(_pageIndex)[_frameIndex]; }
+function getCurrentFrameUrl() { return _pages.getFrames(_pageIndex)[_frameIndex].url; }
 
     // page navigation code
 
@@ -99,7 +214,7 @@ function getCurrentFrame() { return _pages.getFrames(_pageIndex)[_frameIndex]; }
 
               frameview.fadeOut('fast', function() { 
                 changeSound();
-                  frameview.removeClass('loaded').load(getCurrentFrame(), function() { 
+                  frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
                       frameview.show();
                   }); 
               });
