@@ -163,13 +163,10 @@
                   keyUpTimeout = -1;
 
                   if (!currentFloorAudio) {
-                    console.log(1, audioOnFloors, currentFloorAudioIndex, audioOnFloors[currentFloorAudioIndex]);
                     currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
                     if (currentFloorAudio) {
-                      console.log(2);
                       currentFloorAudio.play();
                       currentFloorAudio.addEventListener('ended', function (e) {
-                        console.log('ended');
                         currentFloorAudio = null;
                       }, false);
                     }
