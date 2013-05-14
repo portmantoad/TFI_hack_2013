@@ -32,8 +32,6 @@ var _pages = new Pages();
 
 function getCurrentFrame() { return _pages.getFrames(_pageIndex)[_frameIndex]; }
 
-
-
     // page navigation code
 
     var _pageIndex = 0,
