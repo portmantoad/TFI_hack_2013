@@ -32,7 +32,6 @@ var Pages = function () {
               autoplay: false,
               fadein:0,
               delay: 4000
-              // played: false
             },
             {
               urls: ['assets/1/sound/1.narrative.3.mp3'],
@@ -72,17 +71,15 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:800
-            },/*
-            {
+            },
+          narration: {
               urls: ['assets/1/sound/1.narrative.4.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
               fadein:0,
               delay: 4000
-
             }
-          */
         },
         { 
           url: "pages/1/5.html", 
@@ -183,7 +180,7 @@ var Pages = function () {
   this.getPageUrl = function (page) { return pageinfo[page].url; }
   this.getFrameSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
   this.getPageSound = function (page, frame) { return pageinfo[page].sound; }
-  this.getFrameNarration = function (page, frame) { return pageinfo[page].narration; }
+  this.getFrameNarration = function (page, frame) { return pageinfo[page].frames[frame].narration; }
 
   this.getFrames = function (page) {
     return pageinfo[page].frames;

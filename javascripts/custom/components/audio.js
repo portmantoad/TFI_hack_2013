@@ -41,16 +41,19 @@
 
               if (!info) return; 
 
+              // find first non played clip
               if (Array.isArray(info)) {
                 for (var i=0; i< info.length; i++) {
                   var si = info[i]; 
                   if (si.played) continue;
+                  si.played = true;
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
                     delayAudio(currentFrameNarration, si);
                   }
                   else  
                     currentFrameNarration.fadeIn(1, si.fadein || 0); 
+                  break;
                 }
               }
               else {
