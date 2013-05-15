@@ -23,6 +23,9 @@
       width = height * aspectRatio;      
     }
 
+    video.width = width;
+    video.height = height;
+
     video.style.width = width + 'px';
     video.style.height = height + 'px';
 
@@ -35,8 +38,8 @@
     floorCounterSpan = document.querySelector('#floor-counter > span');
     video = document.querySelector('video');
 
-    var stepData = JSON.parse(document.querySelector('#step-data').innerText);
-    var floorData = JSON.parse(document.querySelector('#floor-data').innerText);
+    var stepData = JSON.parse(document.querySelector('#step-data').innerHTML);
+    var floorData = JSON.parse(document.querySelector('#floor-data').innerHTML);
 
     Popcorn.plugin('step', {
       start: function () {
