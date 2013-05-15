@@ -2,6 +2,7 @@
 
     var _pageIndex = 0,
     _frameIndex = 0,
+    slideIndex = 0,
     // lightboxIndex = 0,
 
     // frameEnd = frames.length - 1,
@@ -49,6 +50,50 @@
   };
 //});
 
+/////////////////////////////////////////////////////////////////////////////////
+// Sliders ///////////////
+/////////////////////////////////////////////////////////////////////////////////
+
+function changeSlider(value) {
+  var slider = $("ul.slider"),
+  slides = slider.children('li'),
+  slideCount = slides.length, 
+  slidecounter = slider.children('.counter');
+  
+  if (value==="next") {
+    slideIndex < slideCount-1 ? slideIndex++ : slideIndex = 0;
+  } 
+  else if (value==="prev") { 
+    slideIndex > 0 ? slideIndex-- : slideIndex = slideCount-1;
+  } 
+  else if (value==="first") { 
+    slideIndex = 0;
+  } 
+  else if (value==="last") {
+    slideIndex = slideCount - 1;
+  } 
+  else { 
+    slideIndex = Math.min(slideCount-1, Math.max(0, parseInt(value)));
+  }
+
+  slides.removeClass('active');
+  slides.eq(slideIndex).addClass('active');
+
+    // slideview.fadeOut('fast', function() { 
+    //     slideview.removeClass('loaded').load(getCurrentslideUrl(), function() { 
+    //         slideview.show();
+    //     }); 
+    // });
+
+  // changeslideBackground(_pages.getslideSound(_pageIndex, slideIndex));
+  // changeslideNarration(_pages.getslideNarration(_pageIndex, slideIndex));
+  
+  slidecounter.text((slideIndex+1) + "/" + (slideCount));
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// FRAMES ///////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 function changeFrame(value) {
   frameview = $(".frameview").first();
@@ -76,6 +121,7 @@ function changeFrame(value) {
   if (trans == 'fade') {
     frameview.fadeOut('fast', function() { 
         frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
+            changeSlider('0');
             frameview.show();
         }); 
     });
@@ -99,6 +145,9 @@ function changeFrame(value) {
   else                                            { showNav(); }
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+// PAGES ///////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 function changePage(value, frame) {
     var pagect = _pages.pageCount();
@@ -121,6 +170,10 @@ function changePage(value, frame) {
     pagetitle.text(_pages.getPageTitle(_pageIndex));
   
 }
+
+/////////////////////////////////////////////////////////////////////////////////
+//  COMBO FUNCTIONS ///////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 function next() { 
     if (_frameIndex < _pages.getFrameCount(_pageIndex)) { changeFrame('next'); } 
