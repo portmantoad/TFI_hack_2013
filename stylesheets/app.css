@@ -549,7 +549,7 @@ body, #modal {
 }
 
 /* line 30, ../sass/_shared.scss */
-.fade, .pageview, .frameview > *, .prevbutton, .nextbutton, ul.slider li {
+.fade, .pageview, .frameview > *, .prevbutton, .nextbutton {
   -webkit-transition: opacity 1200ms ease-in-out;
   -moz-transition: opacity 1200ms ease-in-out;
   -o-transition: opacity 1200ms ease-in-out;
@@ -557,7 +557,7 @@ body, #modal {
 }
 
 /* line 31, ../sass/_shared.scss */
-.fade-fast {
+.fade-fast, ul.slider li {
   -webkit-transition: opacity 600ms ease-in-out;
   -moz-transition: opacity 600ms ease-in-out;
   -o-transition: opacity 600ms ease-in-out;
@@ -865,8 +865,20 @@ ul.slider li.active {
   opacity: 1;
 }
 /* line 210, ../sass/_shared.scss */
-ul.slider .prevbutton.btn, ul.slider .nextbutton.btn {
-  background-color: rgba(255, 255, 255, 0.1);
+ul.slider .prevbutton .btn, ul.slider .nextbutton .btn {
+  background-color: rgba(250, 250, 250, 0.9);
   color: #111;
   border: 1px solid rgba(50, 50, 50, 0.2);
+}
+/* line 216, ../sass/_shared.scss */
+ul.slider .counter {
+  padding: 3px 10px;
+  background-color: rgba(250, 250, 250, 0.9);
+  color: #111;
+  border: 1px solid rgba(50, 50, 50, 0.2);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 0;
+  border-right-width: 0;
 }
