@@ -157,7 +157,7 @@ var Pages = function () {
         },
       ] 
     },
-    { url: "pages/2.html", title: "Tile", 
+    { url: "pages/5.html", title: "Tile", 
       frames: [
         { 
           url: "pages/2/1.html", 
@@ -168,18 +168,6 @@ var Pages = function () {
         { 
           url: "pages/2/3.html", 
         },
-        { 
-          url: "pages/2/4.html", 
-        },
-        { 
-          url: "pages/2/5.html", 
-        },
-        { 
-          url: "pages/2/6.html", 
-        },
-        { 
-          url: "pages/2/7.html", 
-        }
         ] 
     },
 
