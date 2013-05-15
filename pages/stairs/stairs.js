@@ -172,7 +172,6 @@
       playFloorAudio: function (endedCallback) {
         if (!currentFloorAudio && audioOnFloors[numFloors]) {
           currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
-
           if (currentFloorAudio) {
             setTimeout(function(){
               currentFloorAudio.volume = 0;
@@ -344,17 +343,6 @@
         attemptToPlayVideo(e);
         window.addEventListener('mouseup', onProgressButtonMouseUp, false);
       }
-
-      var recordingStepsData = [];
-      window.onkeydown = function (e) {
-        if (String.fromCharCode(e.which) == 'Q') {
-          recordingStepsData.push(video.currentTime);
-          console.log(video.currentTime);
-        }
-        else if (String.fromCharCode(e.which) == 'W') {
-          console.log(JSON.stringify(recordingStepsData));
-        }
-      };
 
       volumeTweenController = prepareVolumeTweening();
       floorAudioController = prepareFloorAudio();
