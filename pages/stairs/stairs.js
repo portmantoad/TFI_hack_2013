@@ -13,13 +13,14 @@
     var width, height;
     var aspectRatio = video.videoWidth / video.videoHeight;
 
-    if (window.innerWidth > window.innerHeight * aspectRatio) {
+    // TODO: fix this scaling
+    if (window.innerHeight * aspectRatio < window.innerWidth) {
       width = window.innerWidth;
-      height = width / aspectRatio;
+      height = width / aspectRatio;      
     }
     else {
       height = window.innerHeight;
-      width = height * aspectRatio;
+      width = height * aspectRatio;      
     }
 
     video.style.width = width + 'px';
@@ -146,7 +147,7 @@
 
             backgroundAudio.targetVolume = 1;
 
-            if (!currentFloorAudio) {
+            if (!currentFloorAudio && audioOnFloors[numFloors]) {
               currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
 
               if (currentFloorAudio) {
@@ -204,6 +205,17 @@
       backgroundAudio = backgroundAudioClones[0];
       backgroundAudioClones[0].play();
       backgroundAudioLoop();
+
+      var recordingStepsData = [];
+      window.onkeydown = function (e) {
+        if (String.fromCharCode(e.which) == 'Q') {
+          recordingStepsData.push(video.currentTime);
+          console.log(video.currentTime);
+        }
+        else if (String.fromCharCode(e.which) == 'W') {
+          console.log(JSON.stringify(recordingStepsData));
+        }
+      };
 
     });
   }
