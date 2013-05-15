@@ -19,14 +19,27 @@
         font-size: .5em;
       }
 
+      #floor-counter > sup {
+        position: absolute;
+        font-size: 20%;
+        left: .3em;
+        top: -.2em;
+      }
+
       #stair-counter {
         position: fixed;
         right: 20px;
-        bottom: .1em;
+        bottom: -0.05em;
+      }
+
+      #stair-counter > sup {
+        position: absolute;
+        font-size: 20%;
+        left: .3em;
+        top: -.2em;
       }
 
       video {
-        opacity: 0.4;
         position: fixed;
       }
 
@@ -44,6 +57,12 @@
 
       .full-opacity {
         opacity: 1;
+        visibility: visible;
+      }
+
+      .hidden {
+        opacity: 0;
+        visibility: hidden;
       }
 
       #progress-button {
@@ -63,6 +82,16 @@
         background-clip: padding-box;
         font-size: 14px;
         cursor: pointer;
+      }
+
+      #progress-explanation {
+        position: fixed;
+        font-size: 12pt;
+        right: 60px;
+        top: 50%;
+        margin-top: -35px;
+        height: 70px;
+        line-height: 70px;
       }
     </style>
     <script id="floor-data" type="text/json">
@@ -163,13 +192,14 @@
     <audio data-background="true" preload="auto">
       <source src="../../assets/2/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
     </audio>
-    <video class="fadeable paused" width="320" height="240" preload="auto">
+    <video class="fadeable" width="320" height="240" preload="auto">
       <source src="../../assets/2/video/2.0_stairs_video-720p.mp4" type="video/mp4"></source>
       <source src="../../assets/2/video/2.0_stairs_video-720p.ogv" type="video/ogg"></source>
       <source src="../../assets/2/video/2.0_stairs_video-720p.webm" type="video/webm"></source>
     </video>
-    <div id="floor-counter">Floor <span>1</span>/6</div>
-    <div id="stair-counter"><span>0</span>/89</div>
-    <div id="progress-button">&rarr;</div>
+    <div id="floor-counter" class="hidden fadeable"><sup>Floor</sup><span>1</span>/6</div>
+    <div id="stair-counter" class="hidden fadeable"><sup>Step</sup><span>0</span>/89</div>
+    <div id="progress-button" class="hidden fadeable">&rarr;</div>
+    <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div>
   </body>
 </html>
