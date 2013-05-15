@@ -1,23 +1,43 @@
 
-            var currentFrameBackground = null,
-                currentPageBackground;
+            var currentFrameAudio = null,
+                currentPageAudio;
 
             // page background audio
             function changePageSound() { 
-              if (currentPageBackground)
-                currentPageBackground.fadeOut(0, 400);
+              if (currentPageAudio)
+                currentPageAudio.fadeOut(0, 400);
               var soundinfo = _pages.getPageSound(_pageIndex);
-              currentPageBackground = new Howl(soundinfo);
-              currentPageBackground.fadeIn(1, soundinfo.fadein || 800); 
+              if (!soundinfo) return; 
+
+              currentPageAudio = new Howl(soundinfo);
+              currentPageAudio.fadeIn(1, soundinfo.fadein || 800); 
             }
 
             // frame background audio
             function changeFrameSound() { 
-              if (currentFrameBackground)
-                currentFrameBackground.fadeOut(0, 400);
+              if (currentFrameAudio) {
+                if (Array.isArray(currentFrameAudio)) {
+                  for (var i=0; i< currentFrameAudio.length; i++)
+                    currentFrameAudio[i].fadeOut(0,400);
+                }
+                else {
+                  currentFrameAudio.fadeOut(0, 400);
+                }
+              }
               var soundinfo = _pages.getFrameSound(_pageIndex, _frameIndex);
-              currentFrameBackground = new Howl(soundinfo);
-              currentFrameBackground.fadeIn(1, soundinfo.fadein || 800); 
+              if (!soundinfo) return; 
+
+              if (Array.isArray(soundinfo)) {
+                currentFrameAudio = [];
+                for (var i=0; i< soundinfo.length; i++) {
+                  currentFrameAudio[i] = new Howl(soundinfo[i]);
+                  currentFrameAudio[i].fadeIn(1, soundinfo[i].fadein || 800); 
+                }
+              }
+              else {
+                currentFrameAudio = new Howl(soundinfo);
+                currentFrameAudio.fadeIn(1, soundinfo.fadein || 800); 
+              }
             }
 
             function toggleSound(){
