@@ -1,42 +1,63 @@
 
-            var currentFrameAudio = null,
-                currentPageAudio;
+            var currentFrameNarration = null,
+                currentFrameBackground = null;
+                currentPageBackground = null;
 
             // page background audio
-            function changePageSound() { 
-              if (currentPageAudio)
-                currentPageAudio.fadeOut(0, 400);
-              var soundinfo = _pages.getPageSound(_pageIndex);
-              if (!soundinfo) return; 
+            function changePageBackground(info) { 
+              if (currentPageBackground)
+                currentPageBackground.fadeOut(0, 400);
+              if (!info) return; 
 
-              currentPageAudio = new Howl(soundinfo);
-              currentPageAudio.fadeIn(1, soundinfo.fadein || 800); 
+              currentPageBackground = new Howl(info);
+              currentPageBackground.fadeIn(1, info.fadein || 800); 
+            }
+
+            function changeFrameBackground(info) { 
+              if (currentFrameBackground)
+                currentFrameBackground.fadeOut(0, 400);
+              if (!info) return; 
+
+              currentFrameBackground = new Howl(info);
+              currentFrameBackground.fadeIn(1, info.fadein || 800); 
+            }
+
+            function delayAudio(cfa, si) {
+              // todo track timer to cancel
+              setTimeout( 
+                function () { 
+                  cfa.fadeIn(1, si.fadein || 0); 
+                },
+                si.delay
+              );
             }
 
             // frame background audio
-            function changeFrameSound() { 
-              if (currentFrameAudio) {
-                if (Array.isArray(currentFrameAudio)) {
-                  for (var i=0; i< currentFrameAudio.length; i++)
-                    currentFrameAudio[i].fadeOut(0,400);
-                }
-                else {
-                  currentFrameAudio.fadeOut(0, 400);
-                }
+            function changeFrameNarration(info) { 
+              // cancel current frame audio instances
+              if (currentFrameNarration) {
+                currentFrameNarration.fadeOut(0,400);
               }
-              var soundinfo = _pages.getFrameSound(_pageIndex, _frameIndex);
-              if (!soundinfo) return; 
 
-              if (Array.isArray(soundinfo)) {
-                currentFrameAudio = [];
-                for (var i=0; i< soundinfo.length; i++) {
-                  currentFrameAudio[i] = new Howl(soundinfo[i]);
-                  currentFrameAudio[i].fadeIn(1, soundinfo[i].fadein || 800); 
+              if (!info) return; 
+
+              if (Array.isArray(info)) {
+                for (var i=0; i< info.length; i++) {
+                  var si = info[i]; 
+                  if (si.played) continue;
+                  currentFrameNarration = new Howl(si);
+                  if (si.delay) {
+                    delayAudio(currentFrameNarration, si);
+                  }
+                  else  
+                    currentFrameNarration.fadeIn(1, si.fadein || 0); 
                 }
               }
               else {
-                currentFrameAudio = new Howl(soundinfo);
-                currentFrameAudio.fadeIn(1, soundinfo.fadein || 800); 
+                if (info.played) return;
+                info.played = true;
+                currentFrameNarration = new Howl(info);
+                currentFrameNarration.fadeIn(1, info.fadein || 0); 
               }
             }
 
