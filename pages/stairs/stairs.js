@@ -1,5 +1,6 @@
 (function() {
   var FADE_TRANSITION_DURATION = 1000;
+  var FLOOR_SOUND_DELAY = 500;
 
   var video;
   var popcorn;
@@ -62,7 +63,7 @@
         var _targetVolume, _realVolume;
         element.volume = _targetVolume = _realVolume = startVolume || 0;
         element.processVolumeTween = function () {
-          _realVolume -= (_realVolume - element.targetVolume) * .1;
+          _realVolume -= (_realVolume - element.targetVolume) * .15;
           var newVolume = Math.round(_realVolume * 1000) / 1000; // quick decimal truncate
           if (newVolume !== element.volume) {
             element.volume = newVolume;
@@ -163,12 +164,14 @@
           currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
 
           if (currentFloorAudio) {
-            currentFloorAudio.volume = 0;
-            currentFloorAudio.targetVolume = 1;
-            currentFloorAudio.play();
-            currentFloorAudio.addEventListener('ended', function (e) {
-              currentFloorAudio = null;
-            }, false);
+            setTimeout(function(){
+              currentFloorAudio.volume = 0;
+              currentFloorAudio.targetVolume = 1;
+              currentFloorAudio.play();
+              currentFloorAudio.addEventListener('ended', function (e) {
+                currentFloorAudio = null;
+              }, false);
+            }, FLOOR_SOUND_DELAY);
           }
         }
       }
@@ -304,6 +307,7 @@
       backgroundAudioController = prepareBackgroundAudio();
 
       volumeTweenController.start();
+      backgroundAudioController.start();
 
       video.play();
     });
