@@ -16,8 +16,8 @@
     framecounter = $(".framecounter"),
     overlay = $('.overlay'),
     body = $("body"),
-    navList = $("#mainnav"),
-    filmStripLooping = false;
+    navList = $("#mainnav");
+    
 
 
 
@@ -93,6 +93,7 @@ function changeFrame(value) {
   framecounter.text((_frameIndex+1) + "/" + (frameCount));
 
   var end = _pages.pageCount() - 1;
+  var frameEnd = _pages.getFrameCount(_pageIndex) - 1;
   if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
   else if (_pageIndex === 0 && _frameIndex === 0)   { showNavNext(); hideNavPrev(); }
   else                                            { showNav(); }

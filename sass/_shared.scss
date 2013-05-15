@@ -207,10 +207,21 @@
             &.active{opacity:1;}
         }
 
-        .prevbutton.btn, .nextbutton.btn{
-                background-color: rgba(255,255,255,0.1);
+        .prevbutton .btn, .nextbutton .btn{
+                background-color: rgba(200,200,200,0.1);
                 color: #111;
                 border:1px solid rgba(50,50,50,0.2);
+        }
+
+        .counter{
+            padding:5px; 
+            background-color: rgba(200,200,200,0.1);
+            color: #111;
+            border:1px solid rgba(50,50,50,0.2);
+            position: absolute;
+            bottom:0; right:0;
+            border-bottom-width: 0;
+            border-right-width: 0;
         }
     }
         

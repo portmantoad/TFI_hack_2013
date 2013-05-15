@@ -1,3 +1,5 @@
+var filmStripLooping = false;
+
 function filmStripLoop() {
   filmStrip = $(".framewrap .filmstrip");
   if (filmStrip.length !== 0) {
