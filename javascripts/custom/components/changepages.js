@@ -176,11 +176,11 @@ function changePage(value, frame) {
 /////////////////////////////////////////////////////////////////////////////////
 
 function next() { 
-    if (_frameIndex < _pages.getFrameCount(_pageIndex)) { changeFrame('next'); } 
+    if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { changeFrame('next'); } 
     else if(_pageIndex < _pages.pageCount()-1){ changePage('next'); }
 }; 
 
 function prev() { 
-    if (_frameIndex !== 0) { changeFrame('prev'); } 
-    else if(_pageIndex > 0){ changePage('prev', 'last');}
+    if (_frameIndex > 0) { changeFrame('prev'); } 
+    else if(_pageIndex > 0) { changePage('prev', 'last');}
 };

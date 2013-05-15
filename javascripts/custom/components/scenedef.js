@@ -89,38 +89,17 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:800
-            },/*
-            {
-              urls: ['assets/1/sound/1.narrative.5.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:0,
-              delay: 4000
-            }
-
-          ]*/
+            },
         },
         { 
           url: "pages/1/6.html", 
           sound: {
-            //urls: ['assets/1/sound/1.background.6.mp3'],
-            // temp, bad audio file
-            urls: ['assets/1/sound/1.background.3.mp3'],
+            urls: ['assets/1/sound/1.background.6.mp3'],
             loop: false,
             buffer:true,
             autoplay: false,
             fadein:800
-          },/*
-          {
-            urls: ['assets/1/sound/1.narrative.6.final.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:0,
-              delay: 4000
-          }
-          ]*/
+          },
         },
         { 
           url: "pages/1/7.html", 
