@@ -39,7 +39,7 @@ var Pages = function () {
               loop: false,
               buffer:true,
               autoplay: false,
-              fadein:100
+              fadein:0
             }
           ]
 
@@ -59,7 +59,7 @@ var Pages = function () {
               loop: false,
               buffer:true,
               autoplay: false,
-              fadein:800
+              fadein:0
             }
           ]
         },
@@ -78,19 +78,29 @@ var Pages = function () {
               loop: false,
               buffer:true,
               autoplay: false,
-              fadein:800
+              fadein:0
             }
           ]
         },
         { 
           url: "pages/1/5.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.5.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          }
+          sound: [
+            {
+              urls: ['assets/1/sound/1.background.5.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:800
+            },
+            {
+              urls: ['assets/1/sound/1.narrative.5.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0
+            }
+
+          ]
         },
         { 
           url: "pages/1/6.html", 
@@ -109,7 +119,7 @@ var Pages = function () {
             loop: false,
             buffer:true,
             autoplay: false,
-            fadein:800
+            fadein:0
           }
           ]
         },
@@ -130,7 +140,7 @@ var Pages = function () {
             loop: false,
             buffer:true,
             autoplay: false,
-            fadein:800
+            fadein:0
           }
         },
         { 
