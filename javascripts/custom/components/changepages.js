@@ -4,6 +4,7 @@ var Pages = function () {
   var pageinfo = [
     { url: "pages/1.html", 
       title: "Introduction", 
+      transition: 'fade', // 'fade', 'horizontal', 'vertical'
       sound: {
         urls: ['assets/1/sound/1.background_audio_track_full.mp3'],
         loop: true,
@@ -25,33 +26,61 @@ var Pages = function () {
         },
         { 
           url: "pages/1/2.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.2.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          }
+          sound: [
+            {
+              urls: ['assets/1/sound/1.background.2.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:800
+            },
+            {
+              urls: ['assets/1/sound/1.narrative.2.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:100
+            }
+          ]
+
         },
         { 
           url: "pages/1/3.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.3.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          }
+          sound: [
+            {
+              urls: ['assets/1/sound/1.background.3.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:800
+            },
+            {
+              urls: ['assets/1/sound/1.narrative.3.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:800
+            }
+          ]
         },
         { 
           url: "pages/1/4.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.4.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          }
+          sound: [
+            {
+              urls: ['assets/1/sound/1.background.4.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:800
+            },
+            {
+              urls: ['assets/1/sound/1.narrative.4.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:800
+            }
+          ]
         },
         { 
           url: "pages/1/5.html", 
@@ -65,13 +94,24 @@ var Pages = function () {
         },
         { 
           url: "pages/1/6.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.6.mp3'],
+          sound: [
+          {
+            //urls: ['assets/1/sound/1.background.6.mp3'],
+            // temp, bad audio file
+            urls: ['assets/1/sound/1.background.3.mp3'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          {
+            urls: ['assets/1/sound/1.narrative.6.final.mp3'],
             loop: false,
             buffer:true,
             autoplay: false,
             fadein:800
           }
+          ]
         },
         { 
           url: "pages/1/7.html", 
@@ -137,6 +177,7 @@ var Pages = function () {
 
   this.pageCount = function () { return pageinfo.length; }
   this.getPageTitle = function (page)  { return pageinfo[page].title; }
+  this.getTransition = function (page)  { return pageinfo[page].transition || 'fade'; }
 
   this.getPageUrl = function (page) { return pageinfo[page].url; }
   this.getFrameSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
@@ -188,105 +229,117 @@ function getCurrentFrameUrl() { return _pages.getFrames(_pageIndex)[_frameIndex]
     function showNav() {nextbutton.removeClass('hidden'); prevbutton.removeClass('hidden');}
 
 
-            // Fills the navigation with the appropriate links and dropdowns
-            //$.each(pages, function(pageNumber){
+// Fills the navigation with the appropriate links and dropdowns
+//$.each(pages, function(pageNumber){
 
-              for (var i=0; i < _pages.pageCount(); i++) {
-                  var navPage = $('<li/>').appendTo(navList);
-                  var navPageLink = $('<a/>').text(_pages.getPageTitle(i)).attr('onClick', 'changePage('+ i +')').appendTo(navPage);
+  for (var i=0; i < _pages.pageCount(); i++) {
+      var navPage = $('<li/>').appendTo(navList);
+      var navPageLink = $('<a/>').text(_pages.getPageTitle(i)).attr('onClick', 'changePage('+ i +')').appendTo(navPage);
 
-                  if (_pages.getFrameCount(i) > 1) {
-                    navPage.addClass('has-dropdown');
-                    var navPageList = $('<ul />').addClass('dropdown').appendTo(navPage);
+      if (_pages.getFrameCount(i) > 1) {
+        navPage.addClass('has-dropdown');
+        var navPageList = $('<ul />').addClass('dropdown').appendTo(navPage);
 
-                    var fr = _pages.getFrames(i);
-                    $.each(fr, function(frameNumber){
-                          var navFrame = $('<li/>').appendTo(navPageList);
-                          var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ i +', ' +frameNumber +')').appendTo(navFrame);
-                    });
-                  };  
-              };
-            //});
+        var fr = _pages.getFrames(i);
+        $.each(fr, function(frameNumber){
+              var navFrame = $('<li/>').appendTo(navPageList);
+              var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ i +', ' +frameNumber +')').appendTo(navFrame);
+        });
+      };  
+  };
+//});
 
 
-            function changeFrame(value) {
-              frameview = $(".frameview").first();
+function changeFrame(value) {
+  frameview = $(".frameview").first();
+
+  var frameCount = _pages.getFrameCount(_pageIndex), frameEnd = frameCount - 1;
+  
+  if (value==="next") {        _frameIndex = (_frameIndex + 1) % frameCount;
+  } else if (value==="prev") { _frameIndex = (_frameIndex + frameCount - 1) % frameCount;
+  } else if (value==="first"){ _frameIndex = 0;
+  } else if (value==="last"){  _frameIndex = frameCount - 1;
+  } else {                     _frameIndex = parseInt(value);
+  }
+
+
+  var trans = _pages.getTransition(_pageIndex);
+
+  if (trans == 'fade') {
+    frameview.fadeOut('fast', function() { 
+        frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
+            frameview.show();
+        }); 
+    });
+  }
+  else if (trans === 'horizontal') {
+    // 
+  }
+  else if (trans === 'vertical') {
+    // 
+  }
+
+  changeFrameSound();
+  
+  framecounter.text((_frameIndex+1) + "/" + (frameCount));
+
+  var end = _pages.pageCount() - 1;
+  if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
+  else if (_pageIndex === 0 && _frameIndex === 0)   { showNavNext(); hideNavPrev(); }
+  else                                            { showNav(); }
+}
+
+
+function changePage(value, frame) {
+
+    if (value==="next") {        _pageIndex===end ? _pageIndex=0 : _pageIndex++;
+    } else if (value==="prev") { _pageIndex===0 ? _pageIndex=end : _pageIndex--;
+    } else if (value==="first"){ _pageIndex = 0
+    } else if (value==="last"){  _pageIndex = end
+    } else {                     _pageIndex = parseInt(value);
+    }
+
+    pageview.fadeOut('fast', function() { 
+        pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
+            frame ? changeFrame(frame) : changeFrame('0');
+            pageview.fadeIn();
+        }); 
+    });
+
+    changePageSound();
+
+    pagetitle.text(_pages.getPageTitle(_pageIndex));
+  
+}
+
+function next() { 
+    if (_frameIndex < _pages.getFrameCount(_pageIndex)) { changeFrame('next'); } 
+    else if(_pageIndex < _pages.pageCount()-1){ changePage('next'); }
+}; 
+
+function prev() { 
+    if (_frameIndex !== 0) { changeFrame('prev'); } 
+    else if(_pageIndex > 0){ changePage('prev', 'last');}
+};
+
+
+//hacky way im showing/hiding elements located in the persistant level (page)
+function showElementsOnFrame(){
+  $('.show-frames').each(function(){
+    var $tempObject = $(this),
+    frames = $tempObject.data('show-frames');
+    $tempObject.addClass('hidden'); 
+    frames = frames + ","
+    frames = frames.split(",");
     
-              var frameCount = _pages.getFrameCount(_pageIndex), frameEnd = frameCount - 1;
-              
-              if (value==="next") {        _frameIndex = (_frameIndex + 1) % frameCount;
-              } else if (value==="prev") { _frameIndex = (_frameIndex + frameCount - 1) % frameCount;
-              } else if (value==="first"){ _frameIndex = 0;
-              } else if (value==="last"){  _frameIndex = frameCount - 1;
-              } else {                     _frameIndex = parseInt(value);
-              }
+      for (a in frames ) {
+        frames[a] = parseInt(frames[a], 10);
+      }
 
+    if ( $.inArray((_frameIndex+1), frames) > -1) { 
+      $tempObject.removeClass('hidden');  
+    };
+    
 
-              frameview.fadeOut('fast', function() { 
-                changeFrameSound();
-                  frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
-                      frameview.show();
-                  }); 
-              });
-
-              framecounter.text((_frameIndex+1) + "/" + (frameCount));
-
-              var end = _pages.pageCount() - 1;
-              if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
-              else if (_pageIndex === 0 && _frameIndex === 0)   { showNavNext(); hideNavPrev(); }
-              else                                            { showNav(); }
-            }
-
-
-            function changePage(value, frame) {
-
-                if (value==="next") {        _pageIndex===end ? _pageIndex=0 : _pageIndex++;
-                } else if (value==="prev") { _pageIndex===0 ? _pageIndex=end : _pageIndex--;
-                } else if (value==="first"){ _pageIndex = 0
-                } else if (value==="last"){  _pageIndex = end
-                } else {                     _pageIndex = parseInt(value);
-                }
-
-                pageview.fadeOut('fast', function() { 
-                  changePageSound();
-                    pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
-                        frame ? changeFrame(frame) : changeFrame('0');
-                        pageview.fadeIn();
-                    }); 
-                });
-
-                pagetitle.text(_pages.getPageTitle(_pageIndex));
-              
-            }
-
-        function next() { 
-            if (_frameIndex < _pages.getFrameCount(_pageIndex)) { changeFrame('next'); } 
-            else if(_pageIndex < _pages.pageCount()-1){ changePage('next'); }
-        }; 
-
-        function prev() { 
-            if (_frameIndex !== 0) { changeFrame('prev'); } 
-            else if(_pageIndex > 0){ changePage('prev', 'last');}
-        };
-
-
-        //hacky way im showing/hiding elements located in the persistant level (page)
-        function showElementsOnFrame(){
-          $('.show-frames').each(function(){
-            var $tempObject = $(this),
-            frames = $tempObject.data('show-frames');
-            $tempObject.addClass('hidden'); 
-            frames = frames + ","
-            frames = frames.split(",");
-            
-              for (a in frames ) {
-                frames[a] = parseInt(frames[a], 10);
-              }
-
-            if ( $.inArray((_frameIndex+1), frames) > -1) { 
-              $tempObject.removeClass('hidden');  
-            };
-            
-
-          });
-        }
+  });
+}
