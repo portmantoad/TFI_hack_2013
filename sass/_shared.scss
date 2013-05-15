@@ -54,7 +54,7 @@
 /// Container styles /////////////////////////////////////////////////////////////
 
         
-        .content{position: absolute; bottom:0px; left:0; right:0; top:$topbar-height;}
+        .content{position: absolute; bottom:0px; left:0; right:0; top:$topbar-height; overflow: hidden;}
 
         .pageview, .prevbutton, .nextbutton{
             @extend fullScreen;
@@ -145,12 +145,15 @@
         .prevbutton, .nextbutton{
             width:10%;
             height:100%;
+            position: absolute;
             -webkit-user-select: none;
             -webkit-user-drag: none;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
             .btn{
                 background-color: rgba(0,0,0,0.1);
+                color: #fff;
+                border:1px solid rgba(255,255,255,0.2);
                 display: block;
                 position: absolute;
                 top: 50%;
@@ -160,8 +163,6 @@
                 line-height: 38px;
                 text-align: center;
                 text-decoration: none;
-                color: #fff;
-                border:1px solid rgba(255,255,255,0.2);
                 background-clip: padding-box;
 
                 @include breakpoint(small){
@@ -184,4 +185,32 @@
 
         .prevbutton{right:initial; left:0; .btn{ left:0; border-left: 0;}}
         .nextbutton{left:initial; right:0;  .btn{ right:0; border-right: 0;}}
+
+        .prevbutton.btn, .nextbutton.btn{ right:0; border-right: 0;}
+
+/// Buttons /////////////////////////////////////////////////////////////
+
+    ul.slider{
+        display:block; 
+        overflow:hidden;
+        position: relative;
+        background-color: #fff;
+        border: 2px solid #e65d28;
+
+        li{
+            position: absolute; 
+            display: block;
+            top:15px; left:15px; right:15px; bottom:15px;
+            opacity:0;
+            @extend .fade;
+
+            &.active{opacity:1;}
+        }
+
+        .prevbutton.btn, .nextbutton.btn{
+                background-color: rgba(255,255,255,0.1);
+                color: #111;
+                border:1px solid rgba(50,50,50,0.2);
+        }
+    }
         

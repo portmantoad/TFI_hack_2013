@@ -157,13 +157,13 @@ var Pages = function () {
     { url: "pages/5.html", title: "Tile", 
       frames: [
         { 
-          url: "pages/2/1.html", 
+          url: "pages/5/1.html", 
         },
         { 
-          url: "pages/2/2.html",  
+          url: "pages/5/2.html",  
         },
         { 
-          url: "pages/2/3.html", 
+          url: "pages/5/3.html", 
         },
         ] 
     },
