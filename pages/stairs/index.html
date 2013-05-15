@@ -48,10 +48,21 @@
 
       #progress-button {
         position: fixed;
-        width: 3em;
-        height: 1.5em;
-        bottom: 1em;
-        left: 1em;
+        margin-top: -35px;
+        width: 50px;
+        height: 70px;
+        line-height: 68px;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        top: 50%;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-right: 0;
+        background-clip: padding-box;
+        font-size: 14px;
+        cursor: pointer;
       }
     </style>
     <script id="floor-data" type="text/json">
@@ -136,6 +147,6 @@
     </video>
     <div id="floor-counter">Floor <span>1</span>/6</div>
     <div id="stair-counter"><span>0</span>/89</div>
-    <button id="progress-button">Go</button>
+    <div id="progress-button">&rarr;</div>
   </body>
 </html>

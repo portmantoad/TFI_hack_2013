@@ -13,13 +13,14 @@
     var width, height;
     var aspectRatio = video.videoWidth / video.videoHeight;
 
-    if (window.innerWidth > window.innerHeight * aspectRatio) {
+    // TODO: fix this scaling
+    if (window.innerHeight * aspectRatio < window.innerWidth) {
       width = window.innerWidth;
-      height = width / aspectRatio;
+      height = width / aspectRatio;      
     }
     else {
       height = window.innerHeight;
-      width = height * aspectRatio;
+      width = height * aspectRatio;      
     }
 
     video.style.width = width + 'px';
@@ -132,15 +133,6 @@
           video.play();
           video.classList.remove('paused');
           backgroundAudio.targetVolume = 0;
-          if (currentFloorAudio) {
-            currentFloorAudio.targetVolume = 0;
-            setTimeout(function(){
-              if (currentFloorAudio) {
-                currentFloorAudio.pause();
-                currentFloorAudio = null;
-              }
-            }, FADE_TRANSITION_DURATION);
-          }
         }
       }
 
@@ -155,7 +147,7 @@
 
             backgroundAudio.targetVolume = 1;
 
-            if (!currentFloorAudio) {
+            if (!currentFloorAudio && audioOnFloors[numFloors]) {
               currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
 
               if (currentFloorAudio) {
@@ -170,9 +162,6 @@
           }, FADE_TRANSITION_DURATION);
         }
       }
-
-      window.addEventListener('keydown', attemptToPlayVideo, false);
-      window.addEventListener('keyup', attemptToPauseVideo, false);
 
       var progressButton = document.querySelector('#progress-button');
       
@@ -201,6 +190,7 @@
           var lastVolume = backgroundAudio.volume;
           var lastBackgroundAudio = backgroundAudio;
           setTimeout(function(){
+            lastBackgroundAudio.pause();
             lastBackgroundAudio.currentTime = 0;
           }, 100);
           currentBackgroundAudioIndex = (currentBackgroundAudioIndex + 1) % 2;
@@ -215,6 +205,17 @@
       backgroundAudio = backgroundAudioClones[0];
       backgroundAudioClones[0].play();
       backgroundAudioLoop();
+
+      var recordingStepsData = [];
+      window.onkeydown = function (e) {
+        if (String.fromCharCode(e.which) == 'Q') {
+          recordingStepsData.push(video.currentTime);
+          console.log(video.currentTime);
+        }
+        else if (String.fromCharCode(e.which) == 'W') {
+          console.log(JSON.stringify(recordingStepsData));
+        }
+      };
 
     });
   }
