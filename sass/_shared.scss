@@ -78,10 +78,37 @@
 
         .texture{
             @extend fullScreen;
-            background-image: url('../assets/shared/filmgrain-optim.png');
-            @include breakpoint(hidpi) { background-size: 125px 113px; }
-            z-index: 1;
-        }
+            background-image: url('../assets/shared/colornoise.png');
+            // @include breakpoint(hidpi) { background-size: 125px 113px; }
+                -webkit-animation: noisey infinite 1334ms step-end;
+    top:-400px;
+    left:-400px;
+    bottom:-400px;
+    right:-400px;
+    width:auto;
+    height:auto; 
+    z-index: 1;
+}
+
+@-webkit-keyframes noisey {
+  0% {      -webkit-transform: translate3D(132px, 120px, 0px); }
+  6.666% {  -webkit-transform: translate3D(308px, 100px, 0px); }
+  13.333% { -webkit-transform: translate3D(198px, 260px, 0px); }
+  20% {     -webkit-transform: translate3D(22px , 220px, 0px); }
+  26.666% { -webkit-transform: translate3D(330px, 160px, 0px); }
+  33.333% { -webkit-transform: translate3D(242px, 180px, 0px); }
+  40% {     -webkit-transform: translate3D(220px, 0px, 0px); }
+  46.666% { -webkit-transform: translate3D(286px, 280px, 0px); }
+  53.333% { -webkit-transform: translate3D(264px, 40px, 0px); }
+  60% {     -webkit-transform: translate3D(154px, 300px, 0px); }
+  66.666% { -webkit-transform: translate3D(88px , 60px, 0px); }
+  73.333% { -webkit-transform: translate3D(110px, 20px, 0px); }
+  80% {     -webkit-transform: translate3D(66px , 200px, 0px); }
+  86.666% { -webkit-transform: translate3D(176px, 140px, 0px); }
+  93.333% { -webkit-transform: translate3D(0px  ,240px, 0px); }
+  100% {    -webkit-transform: translate3D(132px, 120px, 0px); }
+  
+}
 
 
 /// Filmstrip styles /////////////////////////////////////////////////////////////
