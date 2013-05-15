@@ -549,7 +549,7 @@ body, #modal {
 }
 
 /* line 30, ../sass/_shared.scss */
-.fade, .pageview, .frameview > *, .prevbutton, .nextbutton {
+.fade, .pageview, .frameview > *, .prevbutton, .nextbutton, ul.slider li {
   -webkit-transition: opacity 1200ms ease-in-out;
   -moz-transition: opacity 1200ms ease-in-out;
   -o-transition: opacity 1200ms ease-in-out;
@@ -609,6 +609,7 @@ body, #modal {
   left: 0;
   right: 0;
   top: 35px;
+  overflow: hidden;
 }
 
 /* line 59, ../sass/_shared.scss */
@@ -772,13 +773,16 @@ button {
 .prevbutton, .nextbutton {
   width: 10%;
   height: 100%;
+  position: absolute;
   -webkit-user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-/* line 152, ../sass/_shared.scss */
+/* line 153, ../sass/_shared.scss */
 .prevbutton .btn, .nextbutton .btn {
   background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: block;
   position: absolute;
   top: 50%;
@@ -788,12 +792,10 @@ button {
   line-height: 38px;
   text-align: center;
   text-decoration: none;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   background-clip: padding-box;
 }
 @media only screen and (min-width: 768px) {
-  /* line 152, ../sass/_shared.scss */
+  /* line 153, ../sass/_shared.scss */
   .prevbutton .btn, .nextbutton .btn {
     background-color: rgba(0, 0, 0, 0.8);
     margin-top: -28px;
@@ -803,7 +805,7 @@ button {
   }
 }
 @media only screen and (min-width: 1280px) {
-  /* line 152, ../sass/_shared.scss */
+  /* line 153, ../sass/_shared.scss */
   .prevbutton .btn, .nextbutton .btn {
     margin-top: -35px;
     width: 50px;
@@ -812,24 +814,59 @@ button {
   }
 }
 
-/* line 185, ../sass/_shared.scss */
+/* line 186, ../sass/_shared.scss */
 .prevbutton {
   right: initial;
   left: 0;
 }
-/* line 185, ../sass/_shared.scss */
+/* line 186, ../sass/_shared.scss */
 .prevbutton .btn {
   left: 0;
   border-left: 0;
 }
 
-/* line 186, ../sass/_shared.scss */
+/* line 187, ../sass/_shared.scss */
 .nextbutton {
   left: initial;
   right: 0;
 }
-/* line 186, ../sass/_shared.scss */
+/* line 187, ../sass/_shared.scss */
 .nextbutton .btn {
   right: 0;
   border-right: 0;
+}
+
+/* line 189, ../sass/_shared.scss */
+.prevbutton.btn, .nextbutton.btn {
+  right: 0;
+  border-right: 0;
+}
+
+/* line 193, ../sass/_shared.scss */
+ul.slider {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  border: 2px solid #e65d28;
+}
+/* line 200, ../sass/_shared.scss */
+ul.slider li {
+  position: absolute;
+  display: block;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  opacity: 0;
+}
+/* line 207, ../sass/_shared.scss */
+ul.slider li.active {
+  opacity: 1;
+}
+/* line 210, ../sass/_shared.scss */
+ul.slider .prevbutton.btn, ul.slider .nextbutton.btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #111;
+  border: 1px solid rgba(50, 50, 50, 0.2);
 }
