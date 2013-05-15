@@ -2,6 +2,13 @@
   var FADE_TRANSITION_DURATION = 1000;
   var FLOOR_SOUND_DELAY = 500;
 
+  var VIDEO_FPS = 24;
+
+  // in seconds; latter segment converts from frames to fractions of second (base 10)
+  var INTERACTION_START_TIME = 20 + (19 / VIDEO_FPS);
+  var INTERACTION_END_TIME = 105 + (0 / VIDEO_FPS);
+  var SKIP_NOTICE_TIME = 10;
+
   var video;
   var popcorn;
   
@@ -178,12 +185,29 @@
     }
   }
 
+  function prepareStepsIncrementer (stairCounterSpan) {
+    var real = 0;
+    var rounded = 0;
+
+    function loop () {
+      var lastRounded = rounded;
+
+      real -= (real - numSteps) * .15; //easy-mcpeasy tween
+      rounded = Math.round(real);
+
+      if (rounded !== lastRounded) {
+        stairCounterSpan.innerHTML = rounded;
+      }
+      setTimeout(loop, 10);
+    }
+    loop();
+  }
+
   function init(e) {
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
     var stairCounter = document.querySelector('#stair-counter');
     var floorCounter = document.querySelector('#floor-counter');
-    var stairCounterSpan = stairCounter.querySelector('span');
     var floorCounterSpan = floorCounter.querySelector('span');
     video = document.querySelector('video');
 
@@ -193,7 +217,6 @@
     Popcorn.plugin('step', {
       start: function () {
         ++numSteps;
-        stairCounterSpan.innerHTML = numSteps;
       }
     });
 
@@ -216,7 +239,7 @@
       });
 
       // start stairway interaction
-      popcorn.cue(17, function () {
+      popcorn.cue(INTERACTION_START_TIME, function () {
         stairCounter.classList.remove('hidden');
         floorCounter.classList.remove('hidden');
         video.classList.add('paused');
@@ -231,7 +254,7 @@
       });
 
       // stop stairway interaction
-      popcorn.cue(98, function () {
+      popcorn.cue(INTERACTION_END_TIME, function () {
         progressButton.classList.add('hidden');
         setTimeout(function () {
           stairCounter.classList.add('hidden');
@@ -241,6 +264,19 @@
         window.removeEventListener('mouseup', onProgressButtonMouseUp, false);
         video.play();
         video.classList.remove('paused');
+      });
+
+      popcorn.cue(SKIP_NOTICE_TIME, function() {
+        document.querySelector('#skip-notice').classList.remove('hidden');
+        window.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
+          if (e.which === 32) {
+            document.querySelector('#skip-notice').classList.add('hidden');
+            progressExplanation.classList.add('hidden');
+            video.currentTime = INTERACTION_END_TIME;
+            video.play();
+            window.removeEventListener('keydown', onSkipNoticeKeyDown, false);
+          }
+        }, false);
       });
 
       stepData.forEach(function (step) {
@@ -305,6 +341,8 @@
       volumeTweenController = prepareVolumeTweening();
       floorAudioController = prepareFloorAudio();
       backgroundAudioController = prepareBackgroundAudio();
+
+      prepareStepsIncrementer(stairCounter.querySelector('span'));
 
       volumeTweenController.start();
       backgroundAudioController.start();
