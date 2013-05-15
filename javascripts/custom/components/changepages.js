@@ -53,15 +53,23 @@
 function changeFrame(value) {
   frameview = $(".frameview").first();
 
-  var frameCount = _pages.getFrameCount(_pageIndex), frameEnd = frameCount - 1;
+  var frameCount = _pages.getFrameCount(_pageIndex);
   
-  if (value==="next") {        _frameIndex = (_frameIndex + 1) % frameCount;
-  } else if (value==="prev") { _frameIndex = (_frameIndex + frameCount - 1) % frameCount;
-  } else if (value==="first"){ _frameIndex = 0;
-  } else if (value==="last"){  _frameIndex = frameCount - 1;
-  } else {                     _frameIndex = parseInt(value);
+  if (value==="next") {
+    if (_frameIndex < frameCount-1) _frameIndex++;
+  } 
+  else if (value==="prev") { 
+    if (_frameIndex > 0) _frameIndex--;
+  } 
+  else if (value==="first") { 
+    _frameIndex = 0;
+  } 
+  else if (value==="last") {
+    _frameIndex = frameCount - 1;
+  } 
+  else { 
+    _frameIndex = Math.min(frameCount-1, Math.max(0, parseInt(value)));
   }
-
 
   var trans = _pages.getTransition(_pageIndex);
 
@@ -92,13 +100,13 @@ function changeFrame(value) {
 
 
 function changePage(value, frame) {
+    var pagect = _pages.pageCount();
 
-    if (value==="next") {        _pageIndex===end ? _pageIndex=0 : _pageIndex++;
-    } else if (value==="prev") { _pageIndex===0 ? _pageIndex=end : _pageIndex--;
-    } else if (value==="first"){ _pageIndex = 0
-    } else if (value==="last"){  _pageIndex = end
-    } else {                     _pageIndex = parseInt(value);
-    }
+    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; }
+    else if (value==="prev") { if (_pageIndex > 0) _pageIndex--; } 
+    else if (value==="first") { _pageIndex = 0; } 
+    else if (value==="last"){ _pageIndex = pagect - 1; } 
+    else { _pageIndex = Math.max(0, Math.min(pagect - 1, parseInt(value))); }
 
     pageview.fadeOut('fast', function() { 
         pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
@@ -122,25 +130,3 @@ function prev() {
     if (_frameIndex !== 0) { changeFrame('prev'); } 
     else if(_pageIndex > 0){ changePage('prev', 'last');}
 };
-
-
-//hacky way im showing/hiding elements located in the persistant level (page)
-function showElementsOnFrame(){
-  $('.show-frames').each(function(){
-    var $tempObject = $(this),
-    frames = $tempObject.data('show-frames');
-    $tempObject.addClass('hidden'); 
-    frames = frames + ","
-    frames = frames.split(",");
-    
-      for (a in frames ) {
-        frames[a] = parseInt(frames[a], 10);
-      }
-
-    if ( $.inArray((_frameIndex+1), frames) > -1) { 
-      $tempObject.removeClass('hidden');  
-    };
-    
-
-  });
-}

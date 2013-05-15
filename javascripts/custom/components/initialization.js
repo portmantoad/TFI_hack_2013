@@ -15,7 +15,6 @@ $(function(){
 
       filter();
       fitText();
-//      showElementsOnFrame();
 
       pageview.imagesLoaded(function(){ 
         focalpoint();
