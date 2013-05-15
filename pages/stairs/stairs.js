@@ -1,6 +1,9 @@
 (function() {
   var FADE_TRANSITION_DURATION = 1000;
+
   var FLOOR_SOUND_DELAY = 500;
+  var FLOOR_SOUND_SEQUENCE_DELAY = 1500;
+  var FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE = 3000;
 
   var VIDEO_FPS = 24;
 
@@ -166,7 +169,7 @@
       resetFloorIndex: function () {
         currentFloorAudioIndex = 0;
       },
-      playFloorAudio: function () {
+      playFloorAudio: function (endedCallback) {
         if (!currentFloorAudio && audioOnFloors[numFloors]) {
           currentFloorAudio = audioOnFloors[numFloors][currentFloorAudioIndex++];
 
@@ -177,6 +180,7 @@
               currentFloorAudio.play();
               currentFloorAudio.addEventListener('ended', function (e) {
                 currentFloorAudio = null;
+                endedCallback(e);
               }, false);
             }, FLOOR_SOUND_DELAY);
           }
@@ -231,6 +235,10 @@
     var assets = [].concat(document.querySelector('audio')).concat(document.querySelector('video'));
 
     util.loader.ensureLoaded(assets, function(){
+      var playing = false;
+      var keyUpTimeout = -1;
+      var skipping = false;
+
       window.addEventListener('resize', positionVideo, false);
       positionVideo();
 
@@ -270,6 +278,7 @@
         document.querySelector('#skip-notice').classList.remove('hidden');
         window.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
           if (e.which === 32) {
+            skipping = true;
             document.querySelector('#skip-notice').classList.add('hidden');
             progressExplanation.classList.add('hidden');
             video.currentTime = INTERACTION_END_TIME;
@@ -290,8 +299,6 @@
 
       video.classList.add('full-opacity');
 
-      var playing = false;
-      var keyUpTimeout = -1;
       function attemptToPlayVideo (e) {
         e.preventDefault();
         if (!playing) {
@@ -304,14 +311,25 @@
 
       function attemptToPauseVideo (e) {
         e.preventDefault();
-        if (keyUpTimeout === -1) {
+        if (keyUpTimeout === -1 && !skipping) {
           video.classList.add('paused');
           keyUpTimeout = setTimeout(function(){
-            playing = false;
-            video.pause();
-            keyUpTimeout = -1;
-            backgroundAudioController.fadeIn();
-            floorAudioController.playFloorAudio();
+            if (!skipping) {
+              playing = false;
+              video.pause();
+              keyUpTimeout = -1;
+              backgroundAudioController.fadeIn();
+
+              function tryAnotherFloorAudio () {
+                setTimeout(function () {
+                  if (!playing) {
+                    floorAudioController.playFloorAudio(tryAnotherFloorAudio);
+                  }
+                }, FLOOR_SOUND_SEQUENCE_DELAY + Math.round(Math.random()*FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE));
+              }
+
+              floorAudioController.playFloorAudio(tryAnotherFloorAudio);
+            }
           }, FADE_TRANSITION_DURATION);
         }
       }

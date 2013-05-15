@@ -113,90 +113,34 @@
     <script src="stairs.js"></script>
   </head>
   <body>
-    <audio data-floor="1" preload="auto">
-      <source src="../../assets/2/sound/2.1A.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.1A.ogg" type="audio/ogg"></source>
-    </audio>
-<!--     <audio data-floor="1" preload="auto">
-      <source src="../../assets/2/sound/2.1B.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.1B.ogg" type="audio/ogg"></source>
-    </audio> -->
-    <audio data-floor="1" preload="auto">
-      <source src="../../assets/2/sound/2.1C.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.1C.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="1" preload="auto">
-      <source src="../../assets/2/sound/2.1D.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.1D.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="2" preload="auto">
-      <source src="../../assets/2/sound/2.2A.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.2A.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="2" preload="auto">
-      <source src="../../assets/2/sound/2.2B.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.2B.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="2" preload="auto">
-      <source src="../../assets/2/sound/2.2C.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.2C.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="2" preload="auto">
-      <source src="../../assets/2/sound/2.2D.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.2D.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="3" preload="auto">
-      <source src="../../assets/2/sound/2.3A.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.3A.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="3" preload="auto">
-      <source src="../../assets/2/sound/2.3B.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.3B.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="3" preload="auto">
-      <source src="../../assets/2/sound/2.3C.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.3C.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="3" preload="auto">
-      <source src="../../assets/2/sound/2.3D.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.3D.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="3" preload="auto">
-      <source src="../../assets/2/sound/2.3E.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.3E.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="3" preload="auto">
-      <source src="../../assets/2/sound/2.3F.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.3F.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="4" preload="auto">
-      <source src="../../assets/2/sound/2.4A.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.4A.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="4" preload="auto">
-      <source src="../../assets/2/sound/2.4B.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.4B.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="4" preload="auto">
-      <source src="../../assets/2/sound/2.4C.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.4C.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="5" preload="auto">
-      <source src="../../assets/2/sound/2.5A.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.5A.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="5" preload="auto">
-      <source src="../../assets/2/sound/2.5B.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.5B.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="5" preload="auto">
-      <source src="../../assets/2/sound/2.5C.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.5C.ogg" type="audio/ogg"></source>
-    </audio>
-    <audio data-floor="5" preload="auto">
-      <source src="../../assets/2/sound/2.5D.mp3" type="audio/mp3"></source>
-      <source src="../../assets/2/sound/2.5D.ogg" type="audio/ogg"></source>
-    </audio>
+    <script>
+      (function(){
+        var floors = [
+          ['A','B','C','D','E','F','G'],
+          ['A','B','C','D','E'],
+          ['A','B','C','D','E','F','G','H'],
+          ['A','B','C','D'],
+          ['A','B','C','D','E','F']
+        ];
+
+        floors.forEach(function (floor, floorIndex) {
+          floor.forEach(function (letter) {
+            var a = document.createElement('audio');
+            var s1 = document.createElement('source');
+            var s2 = document.createElement('source');
+            s1.src = '../../assets/2/sound/2.' + (floorIndex + 1) + letter + '.mp3';
+            s2.src = '../../assets/2/sound/2.' + (floorIndex + 1) + letter + '.oga';
+            s1.type = 'audio/mp3';
+            s2.type = 'audio/ogg';
+            a.appendChild(s1);
+            a.appendChild(s2);
+            a.setAttribute('data-floor', (floorIndex + 1));
+            a.preload = 'auto';
+            document.body.appendChild(a);
+          });
+        });
+      }());
+    </script>
     <audio data-background="true" preload="auto">
       <source src="../../assets/2/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
     </audio>
