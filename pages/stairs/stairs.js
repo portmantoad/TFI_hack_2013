@@ -132,15 +132,6 @@
           video.play();
           video.classList.remove('paused');
           backgroundAudio.targetVolume = 0;
-          if (currentFloorAudio) {
-            currentFloorAudio.targetVolume = 0;
-            setTimeout(function(){
-              if (currentFloorAudio) {
-                currentFloorAudio.pause();
-                currentFloorAudio = null;
-              }
-            }, FADE_TRANSITION_DURATION);
-          }
         }
       }
 
@@ -171,9 +162,6 @@
         }
       }
 
-      window.addEventListener('keydown', attemptToPlayVideo, false);
-      window.addEventListener('keyup', attemptToPauseVideo, false);
-
       var progressButton = document.querySelector('#progress-button');
       
       progressButton.addEventListener('mousedown', function (e) {
@@ -201,6 +189,7 @@
           var lastVolume = backgroundAudio.volume;
           var lastBackgroundAudio = backgroundAudio;
           setTimeout(function(){
+            lastBackgroundAudio.pause();
             lastBackgroundAudio.currentTime = 0;
           }, 100);
           currentBackgroundAudioIndex = (currentBackgroundAudioIndex + 1) % 2;
