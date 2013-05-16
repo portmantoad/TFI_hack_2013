@@ -97,16 +97,16 @@
             &.crossFade { -webkit-animation-name: crossFadeOut; -moz-animation-name: crossFadeOut; -o-animation-name: crossFadeOut; animation: crossFadeOut; }
             &.slideLeft { -webkit-animation-name: slideOutLeft; -moz-animation-name: slideOutLeft; -o-animation-name: slideOutLeft; animation: slideOutLeft; }
             &.slideRight { -webkit-animation-name: slideOutRight; -moz-animation-name: slideOutRight; -o-animation-name: slideOutRight; animation: slideOutRight; }
-            &.slideTop { -webkit-animation-name: slideOutTop; -moz-animation-name: slideOutTop; -o-animation-name: slideOutTop; animation: slideOutTop; }
-            &.slideBottom { -webkit-animation-name: slideOutBottom; -moz-animation-name: slideOutBottom; -o-animation-name: slideOutBottom; animation: slideOutBottom; }
+            &.slideUp { -webkit-animation-name: slideOutUp; -moz-animation-name: slideOutUp; -o-animation-name: slideOutUp; animation: slideOutUp; }
+            &.slideDown { -webkit-animation-name: slideOutDown; -moz-animation-name: slideOutDown; -o-animation-name: slideOutDown; animation: slideOutDown; }
         }
 
         .new.animate{
             &.crossFade { -webkit-animation-name: crossFadeIn; -moz-animation-name: crossFadeIn; -o-animation-name: crossFadeIn; animation: crossFadeIn; }
             &.slideLeft { -webkit-animation-name: slideInLeft; -moz-animation-name: slideInLeft; -o-animation-name: slideInLeft; animation: slideInLeft; }
             &.slideRight { -webkit-animation-name: slideInRight; -moz-animation-name: slideInRight; -o-animation-name: slideInRight; animation: slideInRight; }
-            &.slideTop { -webkit-animation-name: slideInTop; -moz-animation-name: slideInTop; -o-animation-name: slideInTop; animation: slideInTop; }
-            &.slideBottom { -webkit-animation-name: slideInBottom; -moz-animation-name: slideInBottom; -o-animation-name: slideInBottom; animation: slideInBottom; }
+            &.slideUp { -webkit-animation-name: slideInUp; -moz-animation-name: slideInUp; -o-animation-name: slideInUp; animation: slideInUp; }
+            &.slideDown { -webkit-animation-name: slideInDown; -moz-animation-name: slideInDown; -o-animation-name: slideInDown; animation: slideInDown; }
         }
 
 
@@ -181,24 +181,24 @@
           100% { visibility: hidden; @include transform(translate3D(-100%, 0, 0)); } 
         }
 
-        @include keyframes(slideInTop) {
-          0% { visibility: visible; @include transform(translate3D(-100%, 0, 0)); }
+        @include keyframes(slideInUp) {
+          0% { visibility: visible; @include transform(translate3D(0, -100%, 0)); }
           100% { @include transform(translate3D(0, 0, 0)); } 
         }
 
-        @include keyframes(slideOutTop) {
+        @include keyframes(slideOutUp) {
           0% { visibility: visible; @include transform(translate3D(0, 0, 0)); }
-          100% { visibility: hidden; @include transform(translate3D(100%, 0, 0)); } 
+          100% { visibility: hidden; @include transform(translate3D(0, 100%, 0)); } 
         }
 
-        @include keyframes(slideInBottom) {
-          0% { visibility: visible; @include transform(translate3D(100%, 0, 0)); }
+        @include keyframes(slideInDown) {
+          0% { visibility: visible; @include transform(translate3D(0, 100%, 0)); }
           100% { @include transform(translate3D(0, 0, 0)); } 
         }
 
-        @include keyframes(slideOutBottom) {
+        @include keyframes(slideOutDown) {
           0% { visibility: visible; @include transform(translate3D(0, 0, 0)); }
-          100% { visibility: hidden; @include transform(translate3D(-100%, 0, 0)); } 
+          100% { visibility: hidden; @include transform(translate3D(0, -100%, 0)); } 
         }
 
 
