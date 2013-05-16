@@ -158,17 +158,19 @@ var Pages = function () {
         },
       ] 
     },
-/*    {
-      title: "The Stairs", 
-      IFrame: true,
-      id: 'stairs',
-      frames: []
-    },*/
     { 
       url: "pages/2.html", title: "The Stairs", 
       frames: [
         { 
           url: "pages/2/1.html", 
+        },
+      ]
+    },
+    { 
+      url: "pages/4.html", title: "Apartment", 
+      frames: [
+        { 
+          url: "pages/4/1.html", 
         },
       ]
     },
