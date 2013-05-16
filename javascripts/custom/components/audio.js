@@ -48,6 +48,7 @@
                   si.played = true;
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
+                    console.log('delayed audio to be played: ', si.delay, si.urls[0]);
                     delayAudio(currentFrameNarration, si);
                   }
                   else  

@@ -53,7 +53,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 4000
+              delay: 3000
             }
           ]
         },
@@ -84,7 +84,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 4000
+              delay: 3000
             }
           ]
         },
@@ -114,7 +114,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 4000
+              delay: 3000
             },
             {
               urls: ['1.7_narrative_b.wav.mp3', '1.7_narrative_b.oga'],
@@ -122,7 +122,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 4000
+              delay: 3000
             }
           ]
         },
@@ -152,7 +152,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 4000
+              delay: 3000
             }
           ]
         },
