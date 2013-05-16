@@ -1,6 +1,6 @@
 
             var currentFrameNarration = null,
-                currentFrameBackground = null;
+                currentFrameBackground = null,
                 currentPageBackground = null;
 
             // page background audio
@@ -26,6 +26,7 @@
               // todo track timer to cancel
               setTimeout( 
                 function () { 
+                  console.log('playing delayed audio');
                   cfa.fadeIn(1, si.fadein || 0); 
                 },
                 si.delay
