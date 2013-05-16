@@ -117,11 +117,12 @@
       var newIndex, newVideo;
       switch(videoContainerIndex) {
         case -1:
-          newIndex = Math.floor(Math.random()*rightVideos.length);
+          newIndex = rightVideos.videoIndex;
           newVideo = rightVideos[newIndex];
           stopVideosAfterTransition([kitchenVideo]);
           stopOtherVideosInGroup(newVideo, rightVideos);
           playAndShowVideo(newVideo);
+          rightVideos.videoIndex = (rightVideos.videoIndex + 1) % rightVideos.length;
         break;
 
         case 0:
@@ -132,11 +133,12 @@
         break;
 
         case 1:
-          newIndex = Math.floor(Math.random()*leftVideos.length);
+          newIndex = leftVideos.videoIndex;
           newVideo = leftVideos[newIndex];
           stopVideosAfterTransition([kitchenVideo]);
           stopOtherVideosInGroup(newVideo, leftVideos);
           playAndShowVideo(newVideo);
+          leftVideos.videoIndex = (leftVideos.videoIndex + 1) % leftVideos.length;
         break;
       }
     }
@@ -205,6 +207,9 @@
         floorCounterSpan.innerHTML = numFloors;
       }
     });
+
+    leftVideos.videoIndex = 0;
+    rightVideos.videoIndex = 0;
 
     var assets = videos;
 
