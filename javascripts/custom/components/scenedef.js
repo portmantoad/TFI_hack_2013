@@ -158,12 +158,21 @@ var Pages = function () {
         },
       ] 
     },
-    {
-      url: "pages/stairs/index.html", 
+/*    {
       title: "The Stairs", 
       IFrame: true,
+      id: 'stairs',
       frames: []
+    },*/
+    { 
+      url: "pages/2.html", title: "The Stairs", 
+      frames: [
+        { 
+          url: "pages/2/1.html", 
+        },
+      ]
     },
+
     { 
       url: "pages/5.html", title: "Tile", 
       frames: [
@@ -185,6 +194,7 @@ var Pages = function () {
   // possibly add _pageIndex and _frameIndex to this
 
   this.pageCount = function () { return pageinfo.length; }
+  this.getPageInfo = function (page)  { return pageinfo[page]; }
   this.getPageTitle = function (page)  { return pageinfo[page].title; }
   this.getTransition = function (page)  { return pageinfo[page].transition || 'fade'; }
 
