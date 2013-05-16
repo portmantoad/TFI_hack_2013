@@ -582,16 +582,15 @@ body, #modal {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  pointer-events: none;
 }
 
-/* line 42, ../sass/_shared.scss */
+/* line 41, ../sass/_shared.scss */
 .scrollbox {
   overflow-y: auto;
   pointer-events: all;
 }
 
-/* line 47, ../sass/_shared.scss */
+/* line 46, ../sass/_shared.scss */
 .focalpoint {
   position: absolute;
   max-width: initial;
@@ -602,7 +601,7 @@ body, #modal {
   transform-origin: 0 0;
 }
 
-/* line 57, ../sass/_shared.scss */
+/* line 56, ../sass/_shared.scss */
 .content {
   position: absolute;
   bottom: 0px;
@@ -612,48 +611,47 @@ body, #modal {
   overflow: hidden;
 }
 
-/* line 59, ../sass/_shared.scss */
+/* line 58, ../sass/_shared.scss */
 .pageview, .prevbutton, .nextbutton {
-  pointer-events: all;
   background-color: transparent;
   border: 0px none transparent;
   z-index: 1;
 }
 
-/* line 67, ../sass/_shared.scss */
+/* line 65, ../sass/_shared.scss */
 .frameview {
   position: relative;
 }
 
-/* line 69, ../sass/_shared.scss */
+/* line 67, ../sass/_shared.scss */
 .pageview, .frameview > * {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 75, ../sass/_shared.scss */
+/* line 73, ../sass/_shared.scss */
 .pageview.loaded, .frameview.loaded > * {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 80, ../sass/_shared.scss */
+/* line 78, ../sass/_shared.scss */
 .old, .new {
   width: 100%;
   height: 100%;
 }
 
-/* line 82, ../sass/_shared.scss */
+/* line 80, ../sass/_shared.scss */
 .old {
   visibility: visible;
 }
 
-/* line 83, ../sass/_shared.scss */
+/* line 81, ../sass/_shared.scss */
 .new {
   visibility: hidden;
 }
 
-/* line 85, ../sass/_shared.scss */
+/* line 83, ../sass/_shared.scss */
 .old.animate, .new.animate {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
@@ -667,35 +665,35 @@ body, #modal {
   animation-duration: 1s;
 }
 
-/* line 99, ../sass/_shared.scss */
+/* line 97, ../sass/_shared.scss */
 .old.animate.crossfade {
   -webkit-animation-name: crossFadeOut;
   -moz-animation-name: crossFadeOut;
   -o-animation-name: crossFadeOut;
   animation: crossFadeOut;
 }
-/* line 100, ../sass/_shared.scss */
+/* line 98, ../sass/_shared.scss */
 .old.animate.slideLeft {
   -webkit-animation-name: slideOutLeft;
   -moz-animation-name: slideOutLeft;
   -o-animation-name: slideOutLeft;
   animation: slideOutLeft;
 }
-/* line 101, ../sass/_shared.scss */
+/* line 99, ../sass/_shared.scss */
 .old.animate.slideRight {
   -webkit-animation-name: slideOutRight;
   -moz-animation-name: slideOutRight;
   -o-animation-name: slideOutRight;
   animation: slideOutRight;
 }
-/* line 102, ../sass/_shared.scss */
+/* line 100, ../sass/_shared.scss */
 .old.animate.slideTop {
   -webkit-animation-name: slideOutTop;
   -moz-animation-name: slideOutTop;
   -o-animation-name: slideOutTop;
   animation: slideOutTop;
 }
-/* line 103, ../sass/_shared.scss */
+/* line 101, ../sass/_shared.scss */
 .old.animate.slideBottom {
   -webkit-animation-name: slideOutBottom;
   -moz-animation-name: slideOutBottom;
@@ -703,35 +701,35 @@ body, #modal {
   animation: slideOutBottom;
 }
 
-/* line 107, ../sass/_shared.scss */
+/* line 105, ../sass/_shared.scss */
 .new.animate.crossFade {
   -webkit-animation-name: crossFadeIn;
   -moz-animation-name: crossFadeIn;
   -o-animation-name: crossFadeIn;
   animation: crossFadeIn;
 }
-/* line 108, ../sass/_shared.scss */
+/* line 106, ../sass/_shared.scss */
 .new.animate.slideLeft {
   -webkit-animation-name: slideInLeft;
   -moz-animation-name: slideInLeft;
   -o-animation-name: slideInLeft;
   animation: slideInLeft;
 }
-/* line 109, ../sass/_shared.scss */
+/* line 107, ../sass/_shared.scss */
 .new.animate.slideRight {
   -webkit-animation-name: slideInRight;
   -moz-animation-name: slideInRight;
   -o-animation-name: slideInRight;
   animation: slideInRight;
 }
-/* line 110, ../sass/_shared.scss */
+/* line 108, ../sass/_shared.scss */
 .new.animate.slideTop {
   -webkit-animation-name: slideInTop;
   -moz-animation-name: slideInTop;
   -o-animation-name: slideInTop;
   animation: slideInTop;
 }
-/* line 111, ../sass/_shared.scss */
+/* line 109, ../sass/_shared.scss */
 .new.animate.slideBottom {
   -webkit-animation-name: slideInBottom;
   -moz-animation-name: slideInBottom;
@@ -739,8 +737,9 @@ body, #modal {
   animation: slideInBottom;
 }
 
-/* line 116, ../sass/_shared.scss */
+/* line 114, ../sass/_shared.scss */
 .texture {
+  pointer-events: none;
   background-image: url("../assets/shared/colornoise.png");
   top: -400px;
   left: -400px;
@@ -757,7 +756,7 @@ body, #modal {
 }
 
 @-webkit-keyframes noise {
-  /* line 136, ../sass/_shared.scss */
+  /* line 135, ../sass/_shared.scss */
   0% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -766,7 +765,7 @@ body, #modal {
     transform: translate3D(132px, 120px, 0px);
   }
 
-  /* line 137, ../sass/_shared.scss */
+  /* line 136, ../sass/_shared.scss */
   6.666% {
     -webkit-transform: translate3D(308px, 100px, 0px);
     -moz-transform: translate3D(308px, 100px, 0px);
@@ -775,7 +774,7 @@ body, #modal {
     transform: translate3D(308px, 100px, 0px);
   }
 
-  /* line 138, ../sass/_shared.scss */
+  /* line 137, ../sass/_shared.scss */
   13.333% {
     -webkit-transform: translate3D(198px, 260px, 0px);
     -moz-transform: translate3D(198px, 260px, 0px);
@@ -784,7 +783,7 @@ body, #modal {
     transform: translate3D(198px, 260px, 0px);
   }
 
-  /* line 139, ../sass/_shared.scss */
+  /* line 138, ../sass/_shared.scss */
   20% {
     -webkit-transform: translate3D(22px, 220px, 0px);
     -moz-transform: translate3D(22px, 220px, 0px);
@@ -793,7 +792,7 @@ body, #modal {
     transform: translate3D(22px, 220px, 0px);
   }
 
-  /* line 140, ../sass/_shared.scss */
+  /* line 139, ../sass/_shared.scss */
   26.666% {
     -webkit-transform: translate3D(330px, 160px, 0px);
     -moz-transform: translate3D(330px, 160px, 0px);
@@ -802,7 +801,7 @@ body, #modal {
     transform: translate3D(330px, 160px, 0px);
   }
 
-  /* line 141, ../sass/_shared.scss */
+  /* line 140, ../sass/_shared.scss */
   33.333% {
     -webkit-transform: translate3D(242px, 180px, 0px);
     -moz-transform: translate3D(242px, 180px, 0px);
@@ -811,7 +810,7 @@ body, #modal {
     transform: translate3D(242px, 180px, 0px);
   }
 
-  /* line 142, ../sass/_shared.scss */
+  /* line 141, ../sass/_shared.scss */
   40% {
     -webkit-transform: translate3D(220px, 0px, 0px);
     -moz-transform: translate3D(220px, 0px, 0px);
@@ -820,7 +819,7 @@ body, #modal {
     transform: translate3D(220px, 0px, 0px);
   }
 
-  /* line 143, ../sass/_shared.scss */
+  /* line 142, ../sass/_shared.scss */
   46.666% {
     -webkit-transform: translate3D(286px, 280px, 0px);
     -moz-transform: translate3D(286px, 280px, 0px);
@@ -829,7 +828,7 @@ body, #modal {
     transform: translate3D(286px, 280px, 0px);
   }
 
-  /* line 144, ../sass/_shared.scss */
+  /* line 143, ../sass/_shared.scss */
   53.333% {
     -webkit-transform: translate3D(264px, 40px, 0px);
     -moz-transform: translate3D(264px, 40px, 0px);
@@ -838,7 +837,7 @@ body, #modal {
     transform: translate3D(264px, 40px, 0px);
   }
 
-  /* line 145, ../sass/_shared.scss */
+  /* line 144, ../sass/_shared.scss */
   60% {
     -webkit-transform: translate3D(154px, 300px, 0px);
     -moz-transform: translate3D(154px, 300px, 0px);
@@ -847,7 +846,7 @@ body, #modal {
     transform: translate3D(154px, 300px, 0px);
   }
 
-  /* line 146, ../sass/_shared.scss */
+  /* line 145, ../sass/_shared.scss */
   66.666% {
     -webkit-transform: translate3D(88px, 60px, 0px);
     -moz-transform: translate3D(88px, 60px, 0px);
@@ -856,7 +855,7 @@ body, #modal {
     transform: translate3D(88px, 60px, 0px);
   }
 
-  /* line 147, ../sass/_shared.scss */
+  /* line 146, ../sass/_shared.scss */
   73.333% {
     -webkit-transform: translate3D(110px, 20px, 0px);
     -moz-transform: translate3D(110px, 20px, 0px);
@@ -865,7 +864,7 @@ body, #modal {
     transform: translate3D(110px, 20px, 0px);
   }
 
-  /* line 148, ../sass/_shared.scss */
+  /* line 147, ../sass/_shared.scss */
   80% {
     -webkit-transform: translate3D(66px, 200px, 0px);
     -moz-transform: translate3D(66px, 200px, 0px);
@@ -874,7 +873,7 @@ body, #modal {
     transform: translate3D(66px, 200px, 0px);
   }
 
-  /* line 149, ../sass/_shared.scss */
+  /* line 148, ../sass/_shared.scss */
   86.666% {
     -webkit-transform: translate3D(176px, 140px, 0px);
     -moz-transform: translate3D(176px, 140px, 0px);
@@ -883,7 +882,7 @@ body, #modal {
     transform: translate3D(176px, 140px, 0px);
   }
 
-  /* line 150, ../sass/_shared.scss */
+  /* line 149, ../sass/_shared.scss */
   93.333% {
     -webkit-transform: translate3D(0px, 240px, 0px);
     -moz-transform: translate3D(0px, 240px, 0px);
@@ -892,7 +891,7 @@ body, #modal {
     transform: translate3D(0px, 240px, 0px);
   }
 
-  /* line 151, ../sass/_shared.scss */
+  /* line 150, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -903,7 +902,7 @@ body, #modal {
 }
 
 @-moz-keyframes noise {
-  /* line 136, ../sass/_shared.scss */
+  /* line 135, ../sass/_shared.scss */
   0% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -912,7 +911,7 @@ body, #modal {
     transform: translate3D(132px, 120px, 0px);
   }
 
-  /* line 137, ../sass/_shared.scss */
+  /* line 136, ../sass/_shared.scss */
   6.666% {
     -webkit-transform: translate3D(308px, 100px, 0px);
     -moz-transform: translate3D(308px, 100px, 0px);
@@ -921,7 +920,7 @@ body, #modal {
     transform: translate3D(308px, 100px, 0px);
   }
 
-  /* line 138, ../sass/_shared.scss */
+  /* line 137, ../sass/_shared.scss */
   13.333% {
     -webkit-transform: translate3D(198px, 260px, 0px);
     -moz-transform: translate3D(198px, 260px, 0px);
@@ -930,7 +929,7 @@ body, #modal {
     transform: translate3D(198px, 260px, 0px);
   }
 
-  /* line 139, ../sass/_shared.scss */
+  /* line 138, ../sass/_shared.scss */
   20% {
     -webkit-transform: translate3D(22px, 220px, 0px);
     -moz-transform: translate3D(22px, 220px, 0px);
@@ -939,7 +938,7 @@ body, #modal {
     transform: translate3D(22px, 220px, 0px);
   }
 
-  /* line 140, ../sass/_shared.scss */
+  /* line 139, ../sass/_shared.scss */
   26.666% {
     -webkit-transform: translate3D(330px, 160px, 0px);
     -moz-transform: translate3D(330px, 160px, 0px);
@@ -948,7 +947,7 @@ body, #modal {
     transform: translate3D(330px, 160px, 0px);
   }
 
-  /* line 141, ../sass/_shared.scss */
+  /* line 140, ../sass/_shared.scss */
   33.333% {
     -webkit-transform: translate3D(242px, 180px, 0px);
     -moz-transform: translate3D(242px, 180px, 0px);
@@ -957,7 +956,7 @@ body, #modal {
     transform: translate3D(242px, 180px, 0px);
   }
 
-  /* line 142, ../sass/_shared.scss */
+  /* line 141, ../sass/_shared.scss */
   40% {
     -webkit-transform: translate3D(220px, 0px, 0px);
     -moz-transform: translate3D(220px, 0px, 0px);
@@ -966,7 +965,7 @@ body, #modal {
     transform: translate3D(220px, 0px, 0px);
   }
 
-  /* line 143, ../sass/_shared.scss */
+  /* line 142, ../sass/_shared.scss */
   46.666% {
     -webkit-transform: translate3D(286px, 280px, 0px);
     -moz-transform: translate3D(286px, 280px, 0px);
@@ -975,7 +974,7 @@ body, #modal {
     transform: translate3D(286px, 280px, 0px);
   }
 
-  /* line 144, ../sass/_shared.scss */
+  /* line 143, ../sass/_shared.scss */
   53.333% {
     -webkit-transform: translate3D(264px, 40px, 0px);
     -moz-transform: translate3D(264px, 40px, 0px);
@@ -984,7 +983,7 @@ body, #modal {
     transform: translate3D(264px, 40px, 0px);
   }
 
-  /* line 145, ../sass/_shared.scss */
+  /* line 144, ../sass/_shared.scss */
   60% {
     -webkit-transform: translate3D(154px, 300px, 0px);
     -moz-transform: translate3D(154px, 300px, 0px);
@@ -993,7 +992,7 @@ body, #modal {
     transform: translate3D(154px, 300px, 0px);
   }
 
-  /* line 146, ../sass/_shared.scss */
+  /* line 145, ../sass/_shared.scss */
   66.666% {
     -webkit-transform: translate3D(88px, 60px, 0px);
     -moz-transform: translate3D(88px, 60px, 0px);
@@ -1002,7 +1001,7 @@ body, #modal {
     transform: translate3D(88px, 60px, 0px);
   }
 
-  /* line 147, ../sass/_shared.scss */
+  /* line 146, ../sass/_shared.scss */
   73.333% {
     -webkit-transform: translate3D(110px, 20px, 0px);
     -moz-transform: translate3D(110px, 20px, 0px);
@@ -1011,7 +1010,7 @@ body, #modal {
     transform: translate3D(110px, 20px, 0px);
   }
 
-  /* line 148, ../sass/_shared.scss */
+  /* line 147, ../sass/_shared.scss */
   80% {
     -webkit-transform: translate3D(66px, 200px, 0px);
     -moz-transform: translate3D(66px, 200px, 0px);
@@ -1020,7 +1019,7 @@ body, #modal {
     transform: translate3D(66px, 200px, 0px);
   }
 
-  /* line 149, ../sass/_shared.scss */
+  /* line 148, ../sass/_shared.scss */
   86.666% {
     -webkit-transform: translate3D(176px, 140px, 0px);
     -moz-transform: translate3D(176px, 140px, 0px);
@@ -1029,7 +1028,7 @@ body, #modal {
     transform: translate3D(176px, 140px, 0px);
   }
 
-  /* line 150, ../sass/_shared.scss */
+  /* line 149, ../sass/_shared.scss */
   93.333% {
     -webkit-transform: translate3D(0px, 240px, 0px);
     -moz-transform: translate3D(0px, 240px, 0px);
@@ -1038,7 +1037,7 @@ body, #modal {
     transform: translate3D(0px, 240px, 0px);
   }
 
-  /* line 151, ../sass/_shared.scss */
+  /* line 150, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -1049,7 +1048,7 @@ body, #modal {
 }
 
 @-ms-keyframes noise {
-  /* line 136, ../sass/_shared.scss */
+  /* line 135, ../sass/_shared.scss */
   0% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -1058,7 +1057,7 @@ body, #modal {
     transform: translate3D(132px, 120px, 0px);
   }
 
-  /* line 137, ../sass/_shared.scss */
+  /* line 136, ../sass/_shared.scss */
   6.666% {
     -webkit-transform: translate3D(308px, 100px, 0px);
     -moz-transform: translate3D(308px, 100px, 0px);
@@ -1067,7 +1066,7 @@ body, #modal {
     transform: translate3D(308px, 100px, 0px);
   }
 
-  /* line 138, ../sass/_shared.scss */
+  /* line 137, ../sass/_shared.scss */
   13.333% {
     -webkit-transform: translate3D(198px, 260px, 0px);
     -moz-transform: translate3D(198px, 260px, 0px);
@@ -1076,7 +1075,7 @@ body, #modal {
     transform: translate3D(198px, 260px, 0px);
   }
 
-  /* line 139, ../sass/_shared.scss */
+  /* line 138, ../sass/_shared.scss */
   20% {
     -webkit-transform: translate3D(22px, 220px, 0px);
     -moz-transform: translate3D(22px, 220px, 0px);
@@ -1085,7 +1084,7 @@ body, #modal {
     transform: translate3D(22px, 220px, 0px);
   }
 
-  /* line 140, ../sass/_shared.scss */
+  /* line 139, ../sass/_shared.scss */
   26.666% {
     -webkit-transform: translate3D(330px, 160px, 0px);
     -moz-transform: translate3D(330px, 160px, 0px);
@@ -1094,7 +1093,7 @@ body, #modal {
     transform: translate3D(330px, 160px, 0px);
   }
 
-  /* line 141, ../sass/_shared.scss */
+  /* line 140, ../sass/_shared.scss */
   33.333% {
     -webkit-transform: translate3D(242px, 180px, 0px);
     -moz-transform: translate3D(242px, 180px, 0px);
@@ -1103,7 +1102,7 @@ body, #modal {
     transform: translate3D(242px, 180px, 0px);
   }
 
-  /* line 142, ../sass/_shared.scss */
+  /* line 141, ../sass/_shared.scss */
   40% {
     -webkit-transform: translate3D(220px, 0px, 0px);
     -moz-transform: translate3D(220px, 0px, 0px);
@@ -1112,7 +1111,7 @@ body, #modal {
     transform: translate3D(220px, 0px, 0px);
   }
 
-  /* line 143, ../sass/_shared.scss */
+  /* line 142, ../sass/_shared.scss */
   46.666% {
     -webkit-transform: translate3D(286px, 280px, 0px);
     -moz-transform: translate3D(286px, 280px, 0px);
@@ -1121,7 +1120,7 @@ body, #modal {
     transform: translate3D(286px, 280px, 0px);
   }
 
-  /* line 144, ../sass/_shared.scss */
+  /* line 143, ../sass/_shared.scss */
   53.333% {
     -webkit-transform: translate3D(264px, 40px, 0px);
     -moz-transform: translate3D(264px, 40px, 0px);
@@ -1130,7 +1129,7 @@ body, #modal {
     transform: translate3D(264px, 40px, 0px);
   }
 
-  /* line 145, ../sass/_shared.scss */
+  /* line 144, ../sass/_shared.scss */
   60% {
     -webkit-transform: translate3D(154px, 300px, 0px);
     -moz-transform: translate3D(154px, 300px, 0px);
@@ -1139,7 +1138,7 @@ body, #modal {
     transform: translate3D(154px, 300px, 0px);
   }
 
-  /* line 146, ../sass/_shared.scss */
+  /* line 145, ../sass/_shared.scss */
   66.666% {
     -webkit-transform: translate3D(88px, 60px, 0px);
     -moz-transform: translate3D(88px, 60px, 0px);
@@ -1148,7 +1147,7 @@ body, #modal {
     transform: translate3D(88px, 60px, 0px);
   }
 
-  /* line 147, ../sass/_shared.scss */
+  /* line 146, ../sass/_shared.scss */
   73.333% {
     -webkit-transform: translate3D(110px, 20px, 0px);
     -moz-transform: translate3D(110px, 20px, 0px);
@@ -1157,7 +1156,7 @@ body, #modal {
     transform: translate3D(110px, 20px, 0px);
   }
 
-  /* line 148, ../sass/_shared.scss */
+  /* line 147, ../sass/_shared.scss */
   80% {
     -webkit-transform: translate3D(66px, 200px, 0px);
     -moz-transform: translate3D(66px, 200px, 0px);
@@ -1166,7 +1165,7 @@ body, #modal {
     transform: translate3D(66px, 200px, 0px);
   }
 
-  /* line 149, ../sass/_shared.scss */
+  /* line 148, ../sass/_shared.scss */
   86.666% {
     -webkit-transform: translate3D(176px, 140px, 0px);
     -moz-transform: translate3D(176px, 140px, 0px);
@@ -1175,7 +1174,7 @@ body, #modal {
     transform: translate3D(176px, 140px, 0px);
   }
 
-  /* line 150, ../sass/_shared.scss */
+  /* line 149, ../sass/_shared.scss */
   93.333% {
     -webkit-transform: translate3D(0px, 240px, 0px);
     -moz-transform: translate3D(0px, 240px, 0px);
@@ -1184,7 +1183,7 @@ body, #modal {
     transform: translate3D(0px, 240px, 0px);
   }
 
-  /* line 151, ../sass/_shared.scss */
+  /* line 150, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -1195,7 +1194,7 @@ body, #modal {
 }
 
 @keyframes noise {
-  /* line 136, ../sass/_shared.scss */
+  /* line 135, ../sass/_shared.scss */
   0% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -1204,7 +1203,7 @@ body, #modal {
     transform: translate3D(132px, 120px, 0px);
   }
 
-  /* line 137, ../sass/_shared.scss */
+  /* line 136, ../sass/_shared.scss */
   6.666% {
     -webkit-transform: translate3D(308px, 100px, 0px);
     -moz-transform: translate3D(308px, 100px, 0px);
@@ -1213,7 +1212,7 @@ body, #modal {
     transform: translate3D(308px, 100px, 0px);
   }
 
-  /* line 138, ../sass/_shared.scss */
+  /* line 137, ../sass/_shared.scss */
   13.333% {
     -webkit-transform: translate3D(198px, 260px, 0px);
     -moz-transform: translate3D(198px, 260px, 0px);
@@ -1222,7 +1221,7 @@ body, #modal {
     transform: translate3D(198px, 260px, 0px);
   }
 
-  /* line 139, ../sass/_shared.scss */
+  /* line 138, ../sass/_shared.scss */
   20% {
     -webkit-transform: translate3D(22px, 220px, 0px);
     -moz-transform: translate3D(22px, 220px, 0px);
@@ -1231,7 +1230,7 @@ body, #modal {
     transform: translate3D(22px, 220px, 0px);
   }
 
-  /* line 140, ../sass/_shared.scss */
+  /* line 139, ../sass/_shared.scss */
   26.666% {
     -webkit-transform: translate3D(330px, 160px, 0px);
     -moz-transform: translate3D(330px, 160px, 0px);
@@ -1240,7 +1239,7 @@ body, #modal {
     transform: translate3D(330px, 160px, 0px);
   }
 
-  /* line 141, ../sass/_shared.scss */
+  /* line 140, ../sass/_shared.scss */
   33.333% {
     -webkit-transform: translate3D(242px, 180px, 0px);
     -moz-transform: translate3D(242px, 180px, 0px);
@@ -1249,7 +1248,7 @@ body, #modal {
     transform: translate3D(242px, 180px, 0px);
   }
 
-  /* line 142, ../sass/_shared.scss */
+  /* line 141, ../sass/_shared.scss */
   40% {
     -webkit-transform: translate3D(220px, 0px, 0px);
     -moz-transform: translate3D(220px, 0px, 0px);
@@ -1258,7 +1257,7 @@ body, #modal {
     transform: translate3D(220px, 0px, 0px);
   }
 
-  /* line 143, ../sass/_shared.scss */
+  /* line 142, ../sass/_shared.scss */
   46.666% {
     -webkit-transform: translate3D(286px, 280px, 0px);
     -moz-transform: translate3D(286px, 280px, 0px);
@@ -1267,7 +1266,7 @@ body, #modal {
     transform: translate3D(286px, 280px, 0px);
   }
 
-  /* line 144, ../sass/_shared.scss */
+  /* line 143, ../sass/_shared.scss */
   53.333% {
     -webkit-transform: translate3D(264px, 40px, 0px);
     -moz-transform: translate3D(264px, 40px, 0px);
@@ -1276,7 +1275,7 @@ body, #modal {
     transform: translate3D(264px, 40px, 0px);
   }
 
-  /* line 145, ../sass/_shared.scss */
+  /* line 144, ../sass/_shared.scss */
   60% {
     -webkit-transform: translate3D(154px, 300px, 0px);
     -moz-transform: translate3D(154px, 300px, 0px);
@@ -1285,7 +1284,7 @@ body, #modal {
     transform: translate3D(154px, 300px, 0px);
   }
 
-  /* line 146, ../sass/_shared.scss */
+  /* line 145, ../sass/_shared.scss */
   66.666% {
     -webkit-transform: translate3D(88px, 60px, 0px);
     -moz-transform: translate3D(88px, 60px, 0px);
@@ -1294,7 +1293,7 @@ body, #modal {
     transform: translate3D(88px, 60px, 0px);
   }
 
-  /* line 147, ../sass/_shared.scss */
+  /* line 146, ../sass/_shared.scss */
   73.333% {
     -webkit-transform: translate3D(110px, 20px, 0px);
     -moz-transform: translate3D(110px, 20px, 0px);
@@ -1303,7 +1302,7 @@ body, #modal {
     transform: translate3D(110px, 20px, 0px);
   }
 
-  /* line 148, ../sass/_shared.scss */
+  /* line 147, ../sass/_shared.scss */
   80% {
     -webkit-transform: translate3D(66px, 200px, 0px);
     -moz-transform: translate3D(66px, 200px, 0px);
@@ -1312,7 +1311,7 @@ body, #modal {
     transform: translate3D(66px, 200px, 0px);
   }
 
-  /* line 149, ../sass/_shared.scss */
+  /* line 148, ../sass/_shared.scss */
   86.666% {
     -webkit-transform: translate3D(176px, 140px, 0px);
     -moz-transform: translate3D(176px, 140px, 0px);
@@ -1321,7 +1320,7 @@ body, #modal {
     transform: translate3D(176px, 140px, 0px);
   }
 
-  /* line 150, ../sass/_shared.scss */
+  /* line 149, ../sass/_shared.scss */
   93.333% {
     -webkit-transform: translate3D(0px, 240px, 0px);
     -moz-transform: translate3D(0px, 240px, 0px);
@@ -1330,7 +1329,7 @@ body, #modal {
     transform: translate3D(0px, 240px, 0px);
   }
 
-  /* line 151, ../sass/_shared.scss */
+  /* line 150, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(132px, 120px, 0px);
     -moz-transform: translate3D(132px, 120px, 0px);
@@ -1341,64 +1340,64 @@ body, #modal {
 }
 
 @-webkit-keyframes crossFadeIn {
-  /* line 156, ../sass/_shared.scss */
+  /* line 155, ../sass/_shared.scss */
   0% {
     visibility: visible;
     opacity: 0;
   }
 
-  /* line 157, ../sass/_shared.scss */
+  /* line 156, ../sass/_shared.scss */
   100% {
     opacity: 1;
   }
 }
 
 @-moz-keyframes crossFadeIn {
-  /* line 156, ../sass/_shared.scss */
+  /* line 155, ../sass/_shared.scss */
   0% {
     visibility: visible;
     opacity: 0;
   }
 
-  /* line 157, ../sass/_shared.scss */
+  /* line 156, ../sass/_shared.scss */
   100% {
     opacity: 1;
   }
 }
 
 @-ms-keyframes crossFadeIn {
-  /* line 156, ../sass/_shared.scss */
+  /* line 155, ../sass/_shared.scss */
   0% {
     visibility: visible;
     opacity: 0;
   }
 
-  /* line 157, ../sass/_shared.scss */
+  /* line 156, ../sass/_shared.scss */
   100% {
     opacity: 1;
   }
 }
 
 @keyframes crossFadeIn {
-  /* line 156, ../sass/_shared.scss */
+  /* line 155, ../sass/_shared.scss */
   0% {
     visibility: visible;
     opacity: 0;
   }
 
-  /* line 157, ../sass/_shared.scss */
+  /* line 156, ../sass/_shared.scss */
   100% {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes crossFadeOut {
-  /* line 161, ../sass/_shared.scss */
+  /* line 160, ../sass/_shared.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 162, ../sass/_shared.scss */
+  /* line 161, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     opacity: 0;
@@ -1406,12 +1405,12 @@ body, #modal {
 }
 
 @-moz-keyframes crossFadeOut {
-  /* line 161, ../sass/_shared.scss */
+  /* line 160, ../sass/_shared.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 162, ../sass/_shared.scss */
+  /* line 161, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     opacity: 0;
@@ -1419,12 +1418,12 @@ body, #modal {
 }
 
 @-ms-keyframes crossFadeOut {
-  /* line 161, ../sass/_shared.scss */
+  /* line 160, ../sass/_shared.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 162, ../sass/_shared.scss */
+  /* line 161, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     opacity: 0;
@@ -1432,12 +1431,12 @@ body, #modal {
 }
 
 @keyframes crossFadeOut {
-  /* line 161, ../sass/_shared.scss */
+  /* line 160, ../sass/_shared.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 162, ../sass/_shared.scss */
+  /* line 161, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     opacity: 0;
@@ -1445,7 +1444,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideInLeft {
-  /* line 166, ../sass/_shared.scss */
+  /* line 165, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1455,7 +1454,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 167, ../sass/_shared.scss */
+  /* line 166, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1466,7 +1465,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideInLeft {
-  /* line 166, ../sass/_shared.scss */
+  /* line 165, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1476,7 +1475,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 167, ../sass/_shared.scss */
+  /* line 166, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1487,7 +1486,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideInLeft {
-  /* line 166, ../sass/_shared.scss */
+  /* line 165, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1497,7 +1496,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 167, ../sass/_shared.scss */
+  /* line 166, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1508,7 +1507,7 @@ body, #modal {
 }
 
 @keyframes slideInLeft {
-  /* line 166, ../sass/_shared.scss */
+  /* line 165, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1518,7 +1517,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 167, ../sass/_shared.scss */
+  /* line 166, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1529,7 +1528,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideOutLeft {
-  /* line 171, ../sass/_shared.scss */
+  /* line 170, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1539,7 +1538,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 172, ../sass/_shared.scss */
+  /* line 171, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1551,7 +1550,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideOutLeft {
-  /* line 171, ../sass/_shared.scss */
+  /* line 170, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1561,7 +1560,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 172, ../sass/_shared.scss */
+  /* line 171, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1573,7 +1572,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideOutLeft {
-  /* line 171, ../sass/_shared.scss */
+  /* line 170, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1583,7 +1582,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 172, ../sass/_shared.scss */
+  /* line 171, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1595,7 +1594,7 @@ body, #modal {
 }
 
 @keyframes slideOutLeft {
-  /* line 171, ../sass/_shared.scss */
+  /* line 170, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1605,7 +1604,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 172, ../sass/_shared.scss */
+  /* line 171, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1617,7 +1616,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideInRight {
-  /* line 176, ../sass/_shared.scss */
+  /* line 175, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1627,7 +1626,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 177, ../sass/_shared.scss */
+  /* line 176, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1638,7 +1637,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideInRight {
-  /* line 176, ../sass/_shared.scss */
+  /* line 175, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1648,7 +1647,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 177, ../sass/_shared.scss */
+  /* line 176, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1659,7 +1658,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideInRight {
-  /* line 176, ../sass/_shared.scss */
+  /* line 175, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1669,7 +1668,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 177, ../sass/_shared.scss */
+  /* line 176, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1680,7 +1679,7 @@ body, #modal {
 }
 
 @keyframes slideInRight {
-  /* line 176, ../sass/_shared.scss */
+  /* line 175, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1690,7 +1689,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 177, ../sass/_shared.scss */
+  /* line 176, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1701,7 +1700,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideOutRight {
-  /* line 181, ../sass/_shared.scss */
+  /* line 180, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1711,7 +1710,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 182, ../sass/_shared.scss */
+  /* line 181, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1723,7 +1722,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideOutRight {
-  /* line 181, ../sass/_shared.scss */
+  /* line 180, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1733,7 +1732,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 182, ../sass/_shared.scss */
+  /* line 181, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1745,7 +1744,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideOutRight {
-  /* line 181, ../sass/_shared.scss */
+  /* line 180, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1755,7 +1754,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 182, ../sass/_shared.scss */
+  /* line 181, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1767,7 +1766,7 @@ body, #modal {
 }
 
 @keyframes slideOutRight {
-  /* line 181, ../sass/_shared.scss */
+  /* line 180, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1777,7 +1776,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 182, ../sass/_shared.scss */
+  /* line 181, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1789,7 +1788,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideInTop {
-  /* line 186, ../sass/_shared.scss */
+  /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1799,7 +1798,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 187, ../sass/_shared.scss */
+  /* line 186, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1810,7 +1809,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideInTop {
-  /* line 186, ../sass/_shared.scss */
+  /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1820,7 +1819,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 187, ../sass/_shared.scss */
+  /* line 186, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1831,7 +1830,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideInTop {
-  /* line 186, ../sass/_shared.scss */
+  /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1841,7 +1840,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 187, ../sass/_shared.scss */
+  /* line 186, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1852,7 +1851,7 @@ body, #modal {
 }
 
 @keyframes slideInTop {
-  /* line 186, ../sass/_shared.scss */
+  /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -1862,7 +1861,7 @@ body, #modal {
     transform: translate3D(-100%, 0, 0);
   }
 
-  /* line 187, ../sass/_shared.scss */
+  /* line 186, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1873,7 +1872,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideOutTop {
-  /* line 191, ../sass/_shared.scss */
+  /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1883,7 +1882,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 192, ../sass/_shared.scss */
+  /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1895,7 +1894,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideOutTop {
-  /* line 191, ../sass/_shared.scss */
+  /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1905,7 +1904,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 192, ../sass/_shared.scss */
+  /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1917,7 +1916,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideOutTop {
-  /* line 191, ../sass/_shared.scss */
+  /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1927,7 +1926,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 192, ../sass/_shared.scss */
+  /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1939,7 +1938,7 @@ body, #modal {
 }
 
 @keyframes slideOutTop {
-  /* line 191, ../sass/_shared.scss */
+  /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -1949,7 +1948,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 192, ../sass/_shared.scss */
+  /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1961,7 +1960,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideInBottom {
-  /* line 196, ../sass/_shared.scss */
+  /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1971,7 +1970,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 197, ../sass/_shared.scss */
+  /* line 196, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -1982,7 +1981,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideInBottom {
-  /* line 196, ../sass/_shared.scss */
+  /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -1992,7 +1991,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 197, ../sass/_shared.scss */
+  /* line 196, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -2003,7 +2002,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideInBottom {
-  /* line 196, ../sass/_shared.scss */
+  /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -2013,7 +2012,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 197, ../sass/_shared.scss */
+  /* line 196, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -2024,7 +2023,7 @@ body, #modal {
 }
 
 @keyframes slideInBottom {
-  /* line 196, ../sass/_shared.scss */
+  /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(100%, 0, 0);
@@ -2034,7 +2033,7 @@ body, #modal {
     transform: translate3D(100%, 0, 0);
   }
 
-  /* line 197, ../sass/_shared.scss */
+  /* line 196, ../sass/_shared.scss */
   100% {
     -webkit-transform: translate3D(0, 0, 0);
     -moz-transform: translate3D(0, 0, 0);
@@ -2045,7 +2044,7 @@ body, #modal {
 }
 
 @-webkit-keyframes slideOutBottom {
-  /* line 201, ../sass/_shared.scss */
+  /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -2055,7 +2054,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 202, ../sass/_shared.scss */
+  /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -2067,7 +2066,7 @@ body, #modal {
 }
 
 @-moz-keyframes slideOutBottom {
-  /* line 201, ../sass/_shared.scss */
+  /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -2077,7 +2076,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 202, ../sass/_shared.scss */
+  /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -2089,7 +2088,7 @@ body, #modal {
 }
 
 @-ms-keyframes slideOutBottom {
-  /* line 201, ../sass/_shared.scss */
+  /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -2099,7 +2098,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 202, ../sass/_shared.scss */
+  /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -2111,7 +2110,7 @@ body, #modal {
 }
 
 @keyframes slideOutBottom {
-  /* line 201, ../sass/_shared.scss */
+  /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
     -webkit-transform: translate3D(0, 0, 0);
@@ -2121,7 +2120,7 @@ body, #modal {
     transform: translate3D(0, 0, 0);
   }
 
-  /* line 202, ../sass/_shared.scss */
+  /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
     -webkit-transform: translate3D(-100%, 0, 0);
@@ -2132,27 +2131,27 @@ body, #modal {
   }
 }
 
-/* line 208, ../sass/_shared.scss */
+/* line 207, ../sass/_shared.scss */
 .filter {
   visibility: hidden;
 }
 
-/* line 209, ../sass/_shared.scss */
+/* line 208, ../sass/_shared.scss */
 .filmstrip {
   display: none;
 }
 
-/* line 210, ../sass/_shared.scss */
+/* line 209, ../sass/_shared.scss */
 .framewrap {
   overflow: hidden;
   position: relative;
 }
-/* line 213, ../sass/_shared.scss */
+/* line 212, ../sass/_shared.scss */
 .framewrap .filter {
   position: absolute;
   display: none;
 }
-/* line 214, ../sass/_shared.scss */
+/* line 213, ../sass/_shared.scss */
 .framewrap .filmstrip {
   display: block;
   position: absolute;
@@ -2160,7 +2159,7 @@ body, #modal {
   height: auto !important;
 }
 
-/* line 224, ../sass/_shared.scss */
+/* line 223, ../sass/_shared.scss */
 button {
   color: #000;
   background-color: rgba(255, 255, 255, 0.9);
@@ -2174,7 +2173,7 @@ button {
   pointer-events: all;
 }
 
-/* line 237, ../sass/_shared.scss */
+/* line 236, ../sass/_shared.scss */
 .prevbutton, .nextbutton {
   width: 10%;
   height: 100%;
@@ -2183,7 +2182,7 @@ button {
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-/* line 245, ../sass/_shared.scss */
+/* line 244, ../sass/_shared.scss */
 .prevbutton .btn, .nextbutton .btn {
   background-color: rgba(0, 0, 0, 0.1);
   color: #fff;
@@ -2200,7 +2199,7 @@ button {
   background-clip: padding-box;
 }
 @media only screen and (min-width: 768px) {
-  /* line 245, ../sass/_shared.scss */
+  /* line 244, ../sass/_shared.scss */
   .prevbutton .btn, .nextbutton .btn {
     background-color: rgba(0, 0, 0, 0.8);
     margin-top: -28px;
@@ -2210,7 +2209,7 @@ button {
   }
 }
 @media only screen and (min-width: 1280px) {
-  /* line 245, ../sass/_shared.scss */
+  /* line 244, ../sass/_shared.scss */
   .prevbutton .btn, .nextbutton .btn {
     margin-top: -35px;
     width: 50px;
@@ -2219,35 +2218,35 @@ button {
   }
 }
 
-/* line 278, ../sass/_shared.scss */
+/* line 277, ../sass/_shared.scss */
 .prevbutton {
   right: initial;
   left: 0;
 }
-/* line 278, ../sass/_shared.scss */
+/* line 277, ../sass/_shared.scss */
 .prevbutton .btn {
   left: 0;
   border-left: 0;
 }
 
-/* line 279, ../sass/_shared.scss */
+/* line 278, ../sass/_shared.scss */
 .nextbutton {
   left: initial;
   right: 0;
 }
-/* line 279, ../sass/_shared.scss */
+/* line 278, ../sass/_shared.scss */
 .nextbutton .btn {
   right: 0;
   border-right: 0;
 }
 
-/* line 281, ../sass/_shared.scss */
+/* line 280, ../sass/_shared.scss */
 .prevbutton.btn, .nextbutton.btn {
   right: 0;
   border-right: 0;
 }
 
-/* line 285, ../sass/_shared.scss */
+/* line 284, ../sass/_shared.scss */
 ul.slider {
   display: block;
   overflow: hidden;
@@ -2255,7 +2254,7 @@ ul.slider {
   background-color: #fff;
   border: 2px solid #e65d28;
 }
-/* line 292, ../sass/_shared.scss */
+/* line 291, ../sass/_shared.scss */
 ul.slider li {
   position: absolute;
   display: block;
@@ -2265,17 +2264,17 @@ ul.slider li {
   bottom: 15px;
   opacity: 0;
 }
-/* line 299, ../sass/_shared.scss */
+/* line 298, ../sass/_shared.scss */
 ul.slider li.active {
   opacity: 1;
 }
-/* line 302, ../sass/_shared.scss */
+/* line 301, ../sass/_shared.scss */
 ul.slider .prevbutton .btn, ul.slider .nextbutton .btn {
   background-color: rgba(250, 250, 250, 0.9);
   color: #111;
   border: 1px solid rgba(50, 50, 50, 0.2);
 }
-/* line 308, ../sass/_shared.scss */
+/* line 307, ../sass/_shared.scss */
 ul.slider .counter {
   padding: 3px 10px;
   background-color: rgba(250, 250, 250, 0.9);
