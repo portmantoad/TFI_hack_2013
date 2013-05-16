@@ -76,17 +76,19 @@
     var videoContainerIndex = 0;
 
     function stopOtherVideos (videos) {
-      setTimeout(function(){
-
-      }, VIDEO_FADE_DURATION);
+      videos.forEach(function (video) {
+        video.pause();
+      });
     }
 
     function playPositionedVideo () {
+      var newIndex;
       switch(videoContainerIndex) {
         case -1:
+          newIndex = Math.floor(Math.random()*rightVideos.length);
           stopOtherVideos([kitchenVideo]);
-          rightVideos[0].hidden = false;
-          rightVideos[0].play();
+          rightVideos[newIndex].hidden = false;
+          rightVideos[newIndex].play();
         break;
 
         case 0:
@@ -98,24 +100,46 @@
         break;
 
         case 1:
+          newIndex = Math.floor(Math.random()*leftVideos.length);
           stopOtherVideos([kitchenVideo]);
-          leftVideos[0].hidden = false;
-          leftVideos[0].play();
+          leftVideos[newIndex].hidden = false;
+          leftVideos[newIndex].play();
         break;
       }
     }
 
-    leftButton.addEventListener('click', function (e) {
+    function onLeftButtonClick (e) {
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
-    }, false);
 
-    rightButton.addEventListener('click', function (e) {
+      if (videoContainerIndex === 1) {
+        leftButton.classList.add('hidden');
+        leftButton.removeEventListener('click', onLeftButtonClick, false);
+      }
+      else if (videoContainerIndex === 0) {
+        rightButton.classList.remove('hidden');
+        rightButton.addEventListener('click', onRightButtonClick, false);        
+      }
+    }
+
+    function onRightButtonClick (e) {
       videoContainerIndex = Math.max(videoContainerIndex - 1, -1);
       playPositionedVideo();
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
-    }, false);
+
+      if (videoContainerIndex === -1) {
+        rightButton.classList.add('hidden');
+        rightButton.removeEventListener('click', onRightButtonClick, false);
+      }
+      else if (videoContainerIndex === 0) {
+        leftButton.classList.remove('hidden');
+        leftButton.addEventListener('click', onLeftButtonClick, false);        
+      }
+    }
+
+    leftButton.addEventListener('click', onLeftButtonClick, false);
+    rightButton.addEventListener('click', onRightButtonClick, false);
 
     function positionVideo () {
       var aspectRatio = backgroundVideo.videoWidth / backgroundVideo.videoHeight;
