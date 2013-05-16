@@ -118,20 +118,60 @@ function changeFrame(value) {
 
   var trans = _pages.getTransition(_pageIndex);
 
-  if (trans == 'fade') {
-    frameview.fadeOut('fast', function() { 
-        frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
+  // if (trans == 'fade') {
+  //   frameview.fadeOut('fast', function() { 
+  //       frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
+  //           changeSlider('0');
+  //           frameview.show();
+  //       }); 
+  //   });
+  // }
+
+
+frameview.children().wrapAll('<div class="old slideLeft" />');
+frameview.prepend('<div class="new slideLeft" />');
+
+$('.new').eq(0).load(getCurrentFrameUrl(), function() {
+
+            $('.new').addClass('animate');
+            $('.old').addClass('animate');
             changeSlider('0');
-            frameview.show();
-        }); 
-    });
-  }
-  else if (trans === 'horizontal') {
-    // 
-  }
-  else if (trans === 'vertical') {
-    // 
-  }
+
+            
+}); 
+
+
+frameview.children().wrapAll('<div class="old slideLeft" />');
+frameview.prepend('<div class="new slideLeft" />');
+
+var frameNew = $('.new'),
+frameOld = $('.old');
+
+frameNew.load(getCurrentFrameUrl(), function() {
+            $(this).imagesLoaded(function(){
+              focalpoint(function() {
+                frameNew.addClass('animate');
+                frameOld.addClass('animate');
+                changeSlider('0');
+
+                setTimeout(function(){
+                frameOld.remove();
+                frameNew.children().unwrap();
+                },1000)
+              });
+            });
+}); 
+
+
+
+
+
+  // else if (trans === 'horizontal') {
+  //   // 
+  // }
+  // else if (trans === 'vertical') {
+  //   // 
+  // }
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
