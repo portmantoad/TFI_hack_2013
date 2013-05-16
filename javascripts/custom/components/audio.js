@@ -32,7 +32,6 @@
               );
             }
 
-            // frame background audio
             function changeFrameNarration(info) { 
               // cancel current frame audio instances
               if (currentFrameNarration) {

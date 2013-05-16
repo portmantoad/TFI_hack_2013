@@ -18,7 +18,29 @@ var Pages = function () {
         { 
           url: "pages/1/1.html", 
           sound: {
-            urls: ['assets/1/sound/1.background.1.mp3'], // 'assets/1/sound/1.background.1.ogg'],
+            urls: ['assets/1/sound/1.1_background.wav.mp3', 'assets/1/sound/1.1_background.oga'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          narration: []
+        },
+        { 
+          url: "pages/1/2.html", 
+          sound: {
+            urls: ['assets/1/sound/1.2_background.wav.mp3', 'assets/1/sound/1.2_background.oga'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          narration: []
+        },
+        { 
+          url: "pages/1/3.html", 
+          sound: {
+            urls: ['assets/1/sound/1.3_background.wav.mp3', 'assets/1/sound/1.3_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -26,75 +48,50 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.narrative.2.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:0,
-              delay: 4000
-            },
-            {
-              urls: ['assets/1/sound/1.narrative.3.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:0,
-              delay: 4000
-            }            
-          ]
-        },
-        { 
-          url: "pages/1/2.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.2.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          },
-        },
-        { 
-          url: "pages/1/3.html", 
-          sound: {
-              urls: ['assets/1/sound/1.background.3.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:800
-            },
-        },
-        { 
-          url: "pages/1/4.html", 
-          sound: {
-              urls: ['assets/1/sound/1.background.4.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:800
-            },
-          narration: {
-              urls: ['assets/1/sound/1.narrative.4.mp3'],
+              urls: ['1.3_narrative.wav.mp3', '1.3_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
               fadein:0,
               delay: 4000
             }
+          ]
+        },
+        { 
+          url: "pages/1/4.html", 
+          sound: {
+            urls: ['assets/1/sound/1.4_background.wav.mp3', 'assets/1/sound/1.4_background.oga'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          narration: []
         },
         { 
           url: "pages/1/5.html", 
           sound: {
-              urls: ['assets/1/sound/1.background.5.mp3'],
+            urls: ['assets/1/sound/1.5_background.wav.mp3', 'assets/1/sound/1.5_background.oga'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          narration: [
+            {
+              urls: ['1.5_narrative.wav.mp3', '1.5_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
-              fadein:800
-            },
+              fadein:0,
+              delay: 4000
+            }
+          ]
         },
         { 
           url: "pages/1/6.html", 
           sound: {
-            urls: ['assets/1/sound/1.background.6.mp3'],
+            urls: ['assets/1/sound/1.6_background.wav.mp3', 'assets/1/sound/1.6_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -104,36 +101,71 @@ var Pages = function () {
         { 
           url: "pages/1/7.html", 
           sound: {
-              urls: ['assets/1/sound/1.background.7.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:800
-            },
-        },
-        { 
-          url: "pages/1/8.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.8.mp3'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:0
-          }
-        },
-        { 
-          url: "pages/1/9.html", 
-          sound: {
-            urls: ['assets/1/sound/1.background.9.mp3'],
+            urls: ['assets/1/sound/1.7_background.wav.mp3', 'assets/1/sound/1.7_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
             fadein:800
-          }
+          },
+          narration: [
+            {
+              urls: ['1.7_narrative_a.wav.mp3', '1.7_narrative_a.oga'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 4000
+            },
+            {
+              urls: ['1.7_narrative_b.wav.mp3', '1.7_narrative_b.oga'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 4000
+            }
+          ]
+        },
+        { 
+          url: "pages/1/8.html", 
+          sound: {
+            urls: ['assets/1/sound/1.8_background.wav.mp3', 'assets/1/sound/1.8_background.oga'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+        },
+        { 
+          url: "pages/1/9.html", 
+          sound: {
+            urls: ['assets/1/sound/1.9_background.wav.mp3', 'assets/1/sound/1.9_background.oga'],
+            loop: false,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          narration: [
+            {
+              urls: ['1.9_narrative.wav.mp3', '1.9_narrative.oga'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 4000
+            }
+          ]
         },
       ] 
     },
-    { url: "pages/5.html", title: "Tile", 
+    {
+      url: "pages/stairs/index.html", 
+      title: "The Stairs", 
+      IFrame: true,
+      frames: []
+    },
+    { 
+      url: "pages/5.html", title: "Tile", 
       frames: [
         { 
           url: "pages/5/1.html", 
