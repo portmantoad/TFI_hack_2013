@@ -129,13 +129,13 @@ function changeFrame(value) {
 
 
 
-frameview.children().wrapAll('<div class="old slideLeft" />');
-frameview.prepend('<div class="new slideLeft" />');
+frameview.children().wrapAll('<div class="old crossFade" />');
+frameview.prepend('<div class="new crossFade" />');
 
 var frameNew = $('.new'),
 frameOld = $('.old');
 
-frameNew.load(getCurrentFrameUrl(), function() {
+frameNew.eq(0).load(getCurrentFrameUrl(), function() {
             $(this).imagesLoaded(function(){
               focalpoint(function() {
                 frameNew.addClass('animate');
@@ -145,7 +145,7 @@ frameNew.load(getCurrentFrameUrl(), function() {
                 setTimeout(function(){
                 frameOld.remove();
                 frameNew.children().unwrap();
-                },1000)
+                },1500)
               });
             });
 }); 
