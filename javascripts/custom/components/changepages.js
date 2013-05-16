@@ -128,18 +128,6 @@ function changeFrame(value) {
   // }
 
 
-frameview.children().wrapAll('<div class="old slideLeft" />');
-frameview.prepend('<div class="new slideLeft" />');
-
-$('.new').eq(0).load(getCurrentFrameUrl(), function() {
-
-            $('.new').addClass('animate');
-            $('.old').addClass('animate');
-            changeSlider('0');
-
-            
-}); 
-
 
 frameview.children().wrapAll('<div class="old slideLeft" />');
 frameview.prepend('<div class="new slideLeft" />');
