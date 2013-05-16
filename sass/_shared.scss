@@ -36,7 +36,6 @@
                 top:0; left:0; bottom:0; right:0; 
                 width:100%; height:100%; 
                 overflow: hidden;
-                pointer-events: none;
             }
 
             .scrollbox{
@@ -58,7 +57,6 @@
 
         .pageview, .prevbutton, .nextbutton{
             @extend fullScreen;
-            pointer-events: all;
             background-color: transparent;
             border: 0px none transparent;
             z-index: 1;
@@ -115,13 +113,14 @@
 
         .texture{
             @extend fullScreen;
+            pointer-events: none;
             background-image: url('../assets/shared/colornoise.png');
             // @include breakpoint(hidpi) { background-size: 125px 113px; }
             top:-400px;
             left:-400px;
             bottom:-400px;
             right:-400px;
-            width:auto;
+            width:auto; 
             height:auto; 
             z-index: 1;
 
