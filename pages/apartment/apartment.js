@@ -1,6 +1,7 @@
 (function() {
 
-  var VIDEO_FADE_DURATION = 1000;
+  var VIDEO_TRANSITION_DURATION = 1000;
+  var BUTTON_SHOW_DELAY = 1500;
 
   function prepareVolumeTweening () {
     var volumeTweenElements = [];
@@ -64,6 +65,7 @@
   function init(e) {
     var leftButton = document.querySelector('#left-button');
     var rightButton = document.querySelector('#right-button');
+    var continueMessage = document.querySelector('#continue-message');
 
     var backgroundVideo = document.querySelector('video[data-video="background"]');
     var kitchenVideo = document.querySelector('video[data-video="kitchen"]');
@@ -75,41 +77,60 @@
 
     var videoContainerIndex = 0;
 
-    function stopOtherVideos (videos) {
+    function stopVideosAfterTransition (videos) {
       videos.forEach(function (video) {
-        video.classList.add('hidden');
-        video.pause();
+        video.transitionTimeout = setTimeout(function (e) {
+          video.pause();
+          video.transitionTimeout = null;
+          video.hidden = true;
+        }, VIDEO_TRANSITION_DURATION);
       });
     }
 
+    function stopOtherVideosInGroup (exemptVideo, videoGroup) {
+      videoGroup.forEach(function (video) {
+        if (video !== exemptVideo) {
+          video.pause();
+          video.hidden;
+          if (video.transitionTimeout) {
+            clearTimeout(video.transitionTimeout);
+          }
+        }
+      });
+    }
+
+    function playAndShowVideo (video) {
+      if (video.transitionTimeout) {
+        clearTimeout(video.transitionTimeout);
+      }
+      video.hidden = false;
+      video.play();
+    }
+
     function playPositionedVideo () {
-      var newIndex;
+      var newIndex, newVideo;
       switch(videoContainerIndex) {
         case -1:
-          backgroundVideo.classList.add('hidden');
           newIndex = Math.floor(Math.random()*rightVideos.length);
-          stopOtherVideos([kitchenVideo]);
-          rightVideos[newIndex].hidden = false;
-          rightVideos[newIndex].classList.remove('hidden');
-          rightVideos[newIndex].play();
+          newVideo = rightVideos[newIndex];
+          stopVideosAfterTransition([kitchenVideo]);
+          stopOtherVideosInGroup(newVideo, rightVideos);
+          playAndShowVideo(newVideo);
         break;
 
         case 0:
-          backgroundVideo.classList.remove('hidden');
-          stopOtherVideos(rightVideos.concat(leftVideos));
+          stopVideosAfterTransition(rightVideos.concat(leftVideos));
           if (Math.random() > .5) {
-            kitchenVideo.hidden = false;
-            kitchenVideo.play();
+            playAndShowVideo(kitchenVideo);
           }
         break;
 
         case 1:
-          backgroundVideo.classList.add('hidden');
           newIndex = Math.floor(Math.random()*leftVideos.length);
-          stopOtherVideos([kitchenVideo]);
-          leftVideos[newIndex].hidden = false;
-          leftVideos[newIndex].classList.remove('hidden');
-          leftVideos[newIndex].play();
+          newVideo = leftVideos[newIndex];
+          stopVideosAfterTransition([kitchenVideo]);
+          stopOtherVideosInGroup(newVideo, leftVideos);
+          playAndShowVideo(newVideo);
         break;
       }
     }
@@ -143,9 +164,6 @@
         leftButton.addEventListener('click', onLeftButtonClick, false);        
       }
     }
-
-    leftButton.addEventListener('click', onLeftButtonClick, false);
-    rightButton.addEventListener('click', onRightButtonClick, false);
 
     function positionVideo () {
       var aspectRatio = backgroundVideo.videoWidth / backgroundVideo.videoHeight;
@@ -199,6 +217,24 @@
       volumeTweenController.prepareVolumeTweenForElement(backgroundVideo, 1);
 
       backgroundVideo.play();
+
+      setTimeout(function () {
+        rightButton.classList.remove('hidden');
+        leftButton.classList.remove('hidden');
+        leftButton.addEventListener('click', onLeftButtonClick, false);
+        rightButton.addEventListener('click', onRightButtonClick, false);
+      }, BUTTON_SHOW_DELAY);
+
+      backgroundVideo.addEventListener('ended', function (e) {
+        videoContainer.style.left = '50%';
+        leftButton.removeEventListener('click', onLeftButtonClick, false);
+        rightButton.removeEventListener('click', onRightButtonClick, false);
+        rightButton.classList.remove('hidden');
+        leftButton.classList.add('hidden');
+        continueMessage.classList.remove('hidden');
+        rightButton.addEventListener('click', function (e) {
+        }, false);
+      }, false);
     });
   }
 

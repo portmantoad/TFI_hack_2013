@@ -45,7 +45,6 @@
         text-decoration: none;
         color: #fff;
         border: 1px solid rgba(255, 255, 255, 0.2);
-        border-right: 0;
         background-clip: padding-box;
         font-size: 14px;
         cursor: pointer;
@@ -54,10 +53,12 @@
 
       #left-button {
         left: 0;
+        border-left: 0;
       }
 
       #right-button {
         right: 0;
+        border-right: 0;
       }
 
       #video-container {
@@ -102,6 +103,20 @@
       video[data-video="kitchen"] {
         left: 0;
       }
+
+      #continue-message {
+        position: fixed;
+        margin-top: -35px;
+        height: 70px;
+        line-height: 68px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        font-size: 70px;
+        cursor: pointer;
+        top: 50%;
+        right: 60px;
+      }
     </style>
     <script src="../../javascripts/vendor/popcorn.min.js"></script>
     <script src="../../javascripts/custom/components/loader.js"></script>
@@ -140,7 +155,8 @@
         </video>
       </div>
     </div>
-    <div id="right-button" class=" fadeable">&rarr;</div>
-    <div id="left-button" class=" fadeable">&larr;</div>
+    <div id="right-button" class="hidden fadeable">&rarr;</div>
+    <div id="left-button" class="hidden fadeable">&larr;</div>
+    <div id="continue-message" class="hidden fadeable">Continue</div>
   </body>
 </html>
