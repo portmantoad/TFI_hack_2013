@@ -48,7 +48,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['1.3_narrative.wav.mp3', '1.3_narrative.oga'],
+              urls: ['assets/1/sound/1.3_narrative.wav.mp3', 'assets/1/sound/1.3_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -79,7 +79,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['1.5_narrative.wav.mp3', '1.5_narrative.oga'],
+              urls: ['assets/1/sound/1.5_narrative.wav.mp3', 'assets/1/sound/1.5_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -109,7 +109,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['1.7_narrative_a.wav.mp3', '1.7_narrative_a.oga'],
+              urls: ['assets/1/sound/1.7_narrative_a.wav.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -117,12 +117,19 @@ var Pages = function () {
               delay: 3000
             },
             {
-              urls: ['1.7_narrative_b.wav.mp3', '1.7_narrative_b.oga'],
+              urls: ['assets/1/sound/1.7_narrative_b.wav.mp3', 'assets/1/sound/1.7_narrative_b.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000
+              delay: 3000,
+              // well now this is not json encodable
+              onend: function () {
+                setTimeout( function () { console.log('go to next scene'); next(); }, 2000); // wait 2 sec, go next page
+              }
+              /*onstart: function () { // we do this one
+                setTimeout( function () { console.log('narration start, go to next scene'); changePage('next'); }, 5000); 
+              }*/
             }
           ]
         },
@@ -147,7 +154,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['1.9_narrative.wav.mp3', '1.9_narrative.oga'],
+              urls: ['assets/1/sound/1.9_narrative.wav.mp3', 'assets/1/sound/1.9_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
