@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <style>
+      html, body {
+        background: #000;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        font-family: helvetica;
+        font-size: 3em;
+      }
+
+      .fadeable {
+        -webkit-transition: 1s opacity, 1s visibility;
+           -moz-transition: 1s opacity, 1s visibility;
+            -ms-transition: 1s opacity, 1s visibility;
+             -o-transition: 1s opacity, 1s visibility;
+                transition: 1s opacity, 1s visibility;
+      }
+
+      .full-opacity {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      #left-button, #right-button {
+        position: fixed;
+        margin-top: -35px;
+        width: 50px;
+        height: 70px;
+        line-height: 68px;
+        background-color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-right: 0;
+        background-clip: padding-box;
+        font-size: 14px;
+        cursor: pointer;
+        top: 50%;
+      }
+
+      #left-button {
+        left: 0;
+      }
+
+      #right-button {
+        right: 0;
+      }
+
+      #video-container {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        -webkit-transition: 1s left;
+           -moz-transition: 1s left;
+            -ms-transition: 1s left;
+             -o-transition: 1s left;
+                transition: 1s left;
+      }
+
+      video {
+        height: 100%;
+        position: absolute;
+      }
+
+      .video-sub-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .video-sub-container.center {
+        
+      }
+
+      .video-sub-container.left {
+        left: -100%;
+      }
+
+      .video-sub-container.right {
+        right: -100%; 
+      }
+
+      video[data-video="kitchen"] {
+        left: 0;
+      }
+    </style>
+    <script src="../../javascripts/vendor/popcorn.min.js"></script>
+    <script src="../../javascripts/custom/components/loader.js"></script>
+    <script src="apartment.js"></script>
+  </head>
+  <body>
+    <div id="video-container">
+      <div class="video-sub-container center">
+        <video preload="auto" data-video="background">
+          <source src="../../assets/4/video/4.1_Video.mp4" type="video/mp4"></source>
+          <source src="../../assets/4/video/4.1_video.webmhd.webm" type="video/webm"></source>
+        </video>
+        <video preload="auto" data-video="kitchen" hidden loop="true">
+          <source src="../../assets/4/video/4.1.a_Video_Cropped1.mp4" type="video/mp4"></source>
+          <source src="../../assets/4/video/4.1.a_Video_Cropped1.webmhd.webm" type="video/webm"></source>
+        </video>
+      </div>
+      <div class="video-sub-container right">
+        <video preload="auto" data-video="right" hidden loop="true">
+          <source src="../../assets/4/video/4.2a.mp4" type="video/mp4"></source>
+          <source src="../../assets/4/video/4.2a.webmhd.webm" type="video/webm"></source>
+        </video>
+        <video preload="auto" data-video="right" hidden loop="true">
+          <source src="../../assets/4/video/4.2b.mp4" type="video/mp4"></source>
+          <source src="../../assets/4/video/4.2b.webmhd.webm" type="video/webm"></source>
+        </video>
+        <video preload="auto" data-video="right" hidden loop="true">
+          <source src="../../assets/4/video/4.2c.mp4" type="video/mp4"></source>
+          <source src="../../assets/4/video/4.2c.webmhd.webm" type="video/webm"></source>
+        </video>
+      </div>
+      <div class="video-sub-container left">
+        <video preload="auto" data-video="left" hidden loop="true">
+          <source src="../../assets/4/video/4.3a.mp4" type="video/mp4"></source>
+          <source src="../../assets/4/video/4.3a.webmhd.webm" type="video/webm"></source>
+        </video>
+      </div>
+    </div>
+    <div id="right-button" class=" fadeable">&rarr;</div>
+    <div id="left-button" class=" fadeable">&larr;</div>
+  </body>
+</html>
