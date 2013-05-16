@@ -292,8 +292,9 @@
         popcorn.step({ start: Popcorn.util.toSeconds(step, 24) });
       });
 
-      floorData.forEach(function (step) {
-        popcorn.floor({ start: step });
+      floorData.forEach(function (floor) {
+        // Attempt to force a float for time, wrt 24 fps.
+        popcorn.floor({ start: Popcorn.util.toSeconds(floor, 24) });
       });
 
       video.classList.add('full-opacity');
