@@ -77,6 +77,7 @@
 
     function stopOtherVideos (videos) {
       videos.forEach(function (video) {
+        video.classList.add('hidden');
         video.pause();
       });
     }
@@ -85,13 +86,16 @@
       var newIndex;
       switch(videoContainerIndex) {
         case -1:
+          backgroundVideo.classList.add('hidden');
           newIndex = Math.floor(Math.random()*rightVideos.length);
           stopOtherVideos([kitchenVideo]);
           rightVideos[newIndex].hidden = false;
+          rightVideos[newIndex].classList.remove('hidden');
           rightVideos[newIndex].play();
         break;
 
         case 0:
+          backgroundVideo.classList.remove('hidden');
           stopOtherVideos(rightVideos.concat(leftVideos));
           if (Math.random() > .5) {
             kitchenVideo.hidden = false;
@@ -100,9 +104,11 @@
         break;
 
         case 1:
+          backgroundVideo.classList.add('hidden');
           newIndex = Math.floor(Math.random()*leftVideos.length);
           stopOtherVideos([kitchenVideo]);
           leftVideos[newIndex].hidden = false;
+          leftVideos[newIndex].classList.remove('hidden');
           leftVideos[newIndex].play();
         break;
       }
