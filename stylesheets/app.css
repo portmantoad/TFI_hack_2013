@@ -692,18 +692,18 @@ body, #modal {
   animation: slideOutRight;
 }
 /* line 100, ../sass/_shared.scss */
-.old.animate.slideTop {
-  -webkit-animation-name: slideOutTop;
-  -moz-animation-name: slideOutTop;
-  -o-animation-name: slideOutTop;
-  animation: slideOutTop;
+.old.animate.slideUp {
+  -webkit-animation-name: slideOutUp;
+  -moz-animation-name: slideOutUp;
+  -o-animation-name: slideOutUp;
+  animation: slideOutUp;
 }
 /* line 101, ../sass/_shared.scss */
-.old.animate.slideBottom {
-  -webkit-animation-name: slideOutBottom;
-  -moz-animation-name: slideOutBottom;
-  -o-animation-name: slideOutBottom;
-  animation: slideOutBottom;
+.old.animate.slideDown {
+  -webkit-animation-name: slideOutDown;
+  -moz-animation-name: slideOutDown;
+  -o-animation-name: slideOutDown;
+  animation: slideOutDown;
 }
 
 /* line 105, ../sass/_shared.scss */
@@ -728,18 +728,18 @@ body, #modal {
   animation: slideInRight;
 }
 /* line 108, ../sass/_shared.scss */
-.new.animate.slideTop {
-  -webkit-animation-name: slideInTop;
-  -moz-animation-name: slideInTop;
-  -o-animation-name: slideInTop;
-  animation: slideInTop;
+.new.animate.slideUp {
+  -webkit-animation-name: slideInUp;
+  -moz-animation-name: slideInUp;
+  -o-animation-name: slideInUp;
+  animation: slideInUp;
 }
 /* line 109, ../sass/_shared.scss */
-.new.animate.slideBottom {
-  -webkit-animation-name: slideInBottom;
-  -moz-animation-name: slideInBottom;
-  -o-animation-name: slideInBottom;
-  animation: slideInBottom;
+.new.animate.slideDown {
+  -webkit-animation-name: slideInDown;
+  -moz-animation-name: slideInDown;
+  -o-animation-name: slideInDown;
+  animation: slideInDown;
 }
 
 /* line 114, ../sass/_shared.scss */
@@ -1792,15 +1792,15 @@ body, #modal {
   }
 }
 
-@-webkit-keyframes slideInTop {
+@-webkit-keyframes slideInUp {
   /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 
   /* line 186, ../sass/_shared.scss */
@@ -1813,15 +1813,15 @@ body, #modal {
   }
 }
 
-@-moz-keyframes slideInTop {
+@-moz-keyframes slideInUp {
   /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 
   /* line 186, ../sass/_shared.scss */
@@ -1834,15 +1834,15 @@ body, #modal {
   }
 }
 
-@-ms-keyframes slideInTop {
+@-ms-keyframes slideInUp {
   /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 
   /* line 186, ../sass/_shared.scss */
@@ -1855,15 +1855,15 @@ body, #modal {
   }
 }
 
-@keyframes slideInTop {
+@keyframes slideInUp {
   /* line 185, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 
   /* line 186, ../sass/_shared.scss */
@@ -1876,7 +1876,7 @@ body, #modal {
   }
 }
 
-@-webkit-keyframes slideOutTop {
+@-webkit-keyframes slideOutUp {
   /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -1890,15 +1890,15 @@ body, #modal {
   /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 }
 
-@-moz-keyframes slideOutTop {
+@-moz-keyframes slideOutUp {
   /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -1912,15 +1912,15 @@ body, #modal {
   /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 }
 
-@-ms-keyframes slideOutTop {
+@-ms-keyframes slideOutUp {
   /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -1934,15 +1934,15 @@ body, #modal {
   /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 }
 
-@keyframes slideOutTop {
+@keyframes slideOutUp {
   /* line 190, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -1956,23 +1956,23 @@ body, #modal {
   /* line 191, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 }
 
-@-webkit-keyframes slideInBottom {
+@-webkit-keyframes slideInDown {
   /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 
   /* line 196, ../sass/_shared.scss */
@@ -1985,15 +1985,15 @@ body, #modal {
   }
 }
 
-@-moz-keyframes slideInBottom {
+@-moz-keyframes slideInDown {
   /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 
   /* line 196, ../sass/_shared.scss */
@@ -2006,15 +2006,15 @@ body, #modal {
   }
 }
 
-@-ms-keyframes slideInBottom {
+@-ms-keyframes slideInDown {
   /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 
   /* line 196, ../sass/_shared.scss */
@@ -2027,15 +2027,15 @@ body, #modal {
   }
 }
 
-@keyframes slideInBottom {
+@keyframes slideInDown {
   /* line 195, ../sass/_shared.scss */
   0% {
     visibility: visible;
-    -webkit-transform: translate3D(100%, 0, 0);
-    -moz-transform: translate3D(100%, 0, 0);
-    -ms-transform: translate3D(100%, 0, 0);
-    -o-transform: translate3D(100%, 0, 0);
-    transform: translate3D(100%, 0, 0);
+    -webkit-transform: translate3D(0, 100%, 0);
+    -moz-transform: translate3D(0, 100%, 0);
+    -ms-transform: translate3D(0, 100%, 0);
+    -o-transform: translate3D(0, 100%, 0);
+    transform: translate3D(0, 100%, 0);
   }
 
   /* line 196, ../sass/_shared.scss */
@@ -2048,7 +2048,7 @@ body, #modal {
   }
 }
 
-@-webkit-keyframes slideOutBottom {
+@-webkit-keyframes slideOutDown {
   /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -2062,15 +2062,15 @@ body, #modal {
   /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 }
 
-@-moz-keyframes slideOutBottom {
+@-moz-keyframes slideOutDown {
   /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -2084,15 +2084,15 @@ body, #modal {
   /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 }
 
-@-ms-keyframes slideOutBottom {
+@-ms-keyframes slideOutDown {
   /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -2106,15 +2106,15 @@ body, #modal {
   /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 }
 
-@keyframes slideOutBottom {
+@keyframes slideOutDown {
   /* line 200, ../sass/_shared.scss */
   0% {
     visibility: visible;
@@ -2128,11 +2128,11 @@ body, #modal {
   /* line 201, ../sass/_shared.scss */
   100% {
     visibility: hidden;
-    -webkit-transform: translate3D(-100%, 0, 0);
-    -moz-transform: translate3D(-100%, 0, 0);
-    -ms-transform: translate3D(-100%, 0, 0);
-    -o-transform: translate3D(-100%, 0, 0);
-    transform: translate3D(-100%, 0, 0);
+    -webkit-transform: translate3D(0, -100%, 0);
+    -moz-transform: translate3D(0, -100%, 0);
+    -ms-transform: translate3D(0, -100%, 0);
+    -o-transform: translate3D(0, -100%, 0);
+    transform: translate3D(0, -100%, 0);
   }
 }
 

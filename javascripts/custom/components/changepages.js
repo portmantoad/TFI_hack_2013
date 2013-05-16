@@ -58,7 +58,8 @@ function changeSlider(value) {
   var slider = $("ul.slider"),
   slides = slider.children('li'),
   slideCount = slides.length, 
-  slidecounter = slider.children('.counter');
+  slidecounter = slider.children('.counter'), 
+  currentIndex = slideIndex;
   
   if (value==="next") {
     slideIndex < slideCount-1 ? slideIndex++ : slideIndex = 0;
@@ -77,7 +78,15 @@ function changeSlider(value) {
   }
 
   slides.removeClass('active');
-  slides.eq(slideIndex).addClass('active');
+  slides.eq(slideIndex).addClass('active').find('video').each( function () { 
+    var el = $(this)[0];
+    if (el) el.play(); 
+  } );
+
+  slides.eq(currentIndex).find('video').each( function () { 
+    var el = $(this)[0];
+    if (el) el.pause(); 
+  } );
 
     // slideview.fadeOut('fast', function() { 
     //     slideview.removeClass('loaded').load(getCurrentslideUrl(), function() { 
