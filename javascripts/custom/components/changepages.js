@@ -149,15 +149,16 @@ frameOld = $('.old');
 
 frameNew.load(getCurrentFrameUrl(), function() {
             $(this).imagesLoaded(function(){
-              focalpoint();
-              frameNew.addClass('animate');
-              frameOld.addClass('animate');
-              changeSlider('0');
+              focalpoint(function() {
+                frameNew.addClass('animate');
+                frameOld.addClass('animate');
+                changeSlider('0');
 
-              setTimeout(function(){
-              frameOld.remove();
-              frameNew.children().unwrap();
-              },1000)
+                setTimeout(function(){
+                frameOld.remove();
+                frameNew.children().unwrap();
+                },1000)
+              });
             });
 }); 
 
