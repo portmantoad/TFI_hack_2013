@@ -18,7 +18,7 @@ var Pages = function () {
         { 
           url: "pages/1/1.html", 
           sound: {
-            urls: ['assets/1/sound/1.1_background.wav.mp3', 'assets/1/sound/1.1_background.oga'],
+            urls: ['assets/1/sound/1.1_background.mp3', 'assets/1/sound/1.1_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -29,7 +29,7 @@ var Pages = function () {
         { 
           url: "pages/1/2.html", 
           sound: {
-            urls: ['assets/1/sound/1.2_background.wav.mp3', 'assets/1/sound/1.2_background.oga'],
+            urls: ['assets/1/sound/1.2_background.mp3', 'assets/1/sound/1.2_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -40,7 +40,7 @@ var Pages = function () {
         { 
           url: "pages/1/3.html", 
           sound: {
-            urls: ['assets/1/sound/1.3_background.wav.mp3', 'assets/1/sound/1.3_background.oga'],
+            urls: ['assets/1/sound/1.3_background.mp3', 'assets/1/sound/1.3_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -48,7 +48,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.3_narrative.wav.mp3', 'assets/1/sound/1.3_narrative.oga'],
+              urls: ['assets/1/sound/1.3_narrative.mp3', 'assets/1/sound/1.3_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -60,7 +60,7 @@ var Pages = function () {
         { 
           url: "pages/1/4.html", 
           sound: {
-            urls: ['assets/1/sound/1.4_background.wav.mp3', 'assets/1/sound/1.4_background.oga'],
+            urls: ['assets/1/sound/1.4_background.mp3', 'assets/1/sound/1.4_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -71,7 +71,7 @@ var Pages = function () {
         { 
           url: "pages/1/5.html", 
           sound: {
-            urls: ['assets/1/sound/1.5_background.wav.mp3', 'assets/1/sound/1.5_background.oga'],
+            urls: ['assets/1/sound/1.5_background.mp3', 'assets/1/sound/1.5_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -79,7 +79,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.5_narrative.wav.mp3', 'assets/1/sound/1.5_narrative.oga'],
+              urls: ['assets/1/sound/1.5_narrative.mp3', 'assets/1/sound/1.5_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -91,7 +91,7 @@ var Pages = function () {
         { 
           url: "pages/1/6.html", 
           sound: {
-            urls: ['assets/1/sound/1.6_background.wav.mp3', 'assets/1/sound/1.6_background.oga'],
+            urls: ['assets/1/sound/1.6_background.mp3', 'assets/1/sound/1.6_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -101,7 +101,7 @@ var Pages = function () {
         { 
           url: "pages/1/7.html", 
           sound: {
-            urls: ['assets/1/sound/1.7_background.wav.mp3', 'assets/1/sound/1.7_background.oga'],
+            urls: ['assets/1/sound/1.7_background.mp3', 'assets/1/sound/1.7_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -109,7 +109,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.7_narrative_a.wav.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
+              urls: ['assets/1/sound/1.7_narrative_a.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -117,7 +117,7 @@ var Pages = function () {
               delay: 3000
             },
             {
-              urls: ['assets/1/sound/1.7_narrative_b.wav.mp3', 'assets/1/sound/1.7_narrative_b.oga'],
+              urls: ['assets/1/sound/1.7_narrative_b.mp3', 'assets/1/sound/1.7_narrative_b.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -136,7 +136,7 @@ var Pages = function () {
         { 
           url: "pages/1/8.html", 
           sound: {
-            urls: ['assets/1/sound/1.8_background.wav.mp3', 'assets/1/sound/1.8_background.oga'],
+            urls: ['assets/1/sound/1.8_background.mp3', 'assets/1/sound/1.8_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -146,7 +146,7 @@ var Pages = function () {
         { 
           url: "pages/1/9.html", 
           sound: {
-            urls: ['assets/1/sound/1.9_background.wav.mp3', 'assets/1/sound/1.9_background.oga'],
+            urls: ['assets/1/sound/1.9_background.mp3', 'assets/1/sound/1.9_background.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
@@ -154,7 +154,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.9_narrative.wav.mp3', 'assets/1/sound/1.9_narrative.oga'],
+              urls: ['assets/1/sound/1.9_narrative.mp3', 'assets/1/sound/1.9_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
