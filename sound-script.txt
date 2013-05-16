@@ -1,0 +1,3 @@
+find ~/Dropbox/13.05.13.\ LIVING\ LOS\ SURES/LLS\ TRIBECA\ HACKS/SCENE1_Street | grep wav | xargs -I xxx cp xxx ~/src/TFI_hack_2013/assets/1/sound/
+for file in *.wav;do ffmpeg -i $file -acodec libmp3lame `basename $file .wav`.mp3;done
+for file in *.wav;do ffmpeg2theora $file;done

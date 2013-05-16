@@ -72,12 +72,13 @@
     var rightButton = document.querySelector('#right-button');
     var continueMessage = document.querySelector('#continue-message');
 
+    var startVideo = document.querySelector('video[data-video="start"]');
     var backgroundVideo = document.querySelector('video[data-video="background"]');
     var kitchenVideo = document.querySelector('video[data-video="kitchen"]');
     var rightVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="right"]'));
     var leftVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="left"]'));
     var videoContainer = document.querySelector('#video-container');
-    var centerVideos = [backgroundVideo, kitchenVideo];
+    var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
     var videos = centerVideos.concat(rightVideos).concat(leftVideos);
 
     var videoContainerIndex = 0;
@@ -221,29 +222,39 @@
 
       volumeTweenController.prepareVolumeTweenForElement(backgroundVideo, 1);
 
-      backgroundVideo.play();
+      kitchenVideo.hidden = true;
+      backgroundVideo.hidden = true;
 
-      setTimeout(function () {
-        rightButton.classList.remove('hidden');
-        leftButton.classList.remove('hidden');
-        leftButton.addEventListener('click', onLeftButtonClick, false);
-        rightButton.addEventListener('click', onRightButtonClick, false);
-      }, BUTTON_SHOW_DELAY);
+      startVideo.play();
+      startVideo.addEventListener('ended', function onStartVideoEnded (e) {
+        startVideo.removeEventListener('ended', onStartVideoEnded, false);
+  
+        backgroundVideo.hidden = false;
+        startVideo.hidden = true;
+        backgroundVideo.play();
 
-      backgroundVideo.addEventListener('ended', function (e) {
-        if (window.parent && window.parent.next) {
-          window.parent.next();
-        }
-        else {
-          videoContainer.style.left = '50%';
-          leftButton.removeEventListener('click', onLeftButtonClick, false);
-          rightButton.removeEventListener('click', onRightButtonClick, false);
+        setTimeout(function () {
           rightButton.classList.remove('hidden');
-          leftButton.classList.add('hidden');
-          continueMessage.classList.remove('hidden');
-          rightButton.addEventListener('click', function (e) {
-          }, false);
-        }
+          leftButton.classList.remove('hidden');
+          leftButton.addEventListener('click', onLeftButtonClick, false);
+          rightButton.addEventListener('click', onRightButtonClick, false);
+        }, BUTTON_SHOW_DELAY);
+
+        backgroundVideo.addEventListener('ended', function (e) {
+          if (window.parent && window.parent.next) {
+            window.parent.next();
+          }
+          else {
+            videoContainer.style.left = '50%';
+            leftButton.removeEventListener('click', onLeftButtonClick, false);
+            rightButton.removeEventListener('click', onRightButtonClick, false);
+            rightButton.classList.remove('hidden');
+            leftButton.classList.add('hidden');
+            continueMessage.classList.remove('hidden');
+            rightButton.addEventListener('click', function (e) {
+            }, false);
+          }
+        }, false);
       }, false);
     });
   }
