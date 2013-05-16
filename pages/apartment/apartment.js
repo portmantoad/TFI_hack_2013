@@ -2,6 +2,35 @@
 
   var VIDEO_TRANSITION_DURATION = 1000;
   var BUTTON_SHOW_DELAY = 1500;
+  var BACKGROUND_SOUND_DELAY = 2000;
+  var BACKGROUND_SOUND_VARIANCE = 4000;
+
+  function prepareBackgroundSoundsLoop (sounds) {
+    var currentSound;
+    var nextSound;
+
+    function playNextSound () {
+      nextSound = sounds[Math.floor(Math.random() * sounds.length)];
+      while (nextSound === currentSound) {
+        nextSound = sounds[Math.floor(Math.random() * sounds.length)];
+      }
+
+      nextSound.addEventListener('ended', function onSoundEnded (e) {
+        nextSound.removeEventListener('ended', onSoundEnded, false);
+        setTimeout(function () {
+          playNextSound();
+        }, BACKGROUND_SOUND_DELAY + Math.round(Math.random() * BACKGROUND_SOUND_VARIANCE));
+      }, false);
+
+      nextSound.play();
+    }
+
+    return {
+      start: function () {
+        playNextSound();
+      }
+    };
+  }
 
   function prepareVolumeTweening () {
     var volumeTweenElements = [];
@@ -80,6 +109,7 @@
     var videoContainer = document.querySelector('#video-container');
     var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
     var videos = centerVideos.concat(rightVideos).concat(leftVideos);
+    var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
 
     var videoContainerIndex = 0;
 
@@ -211,7 +241,7 @@
     leftVideos.videoIndex = 0;
     rightVideos.videoIndex = 0;
 
-    var assets = videos;
+    var assets = videos.concat(audio);
 
     util.loader.ensureLoaded(assets, function(){
       window.addEventListener('resize', positionVideo, false);
@@ -261,6 +291,8 @@
           }
         }, false);
       }, false);
+
+      prepareBackgroundSoundsLoop(audio).start();
     });
   }
 
