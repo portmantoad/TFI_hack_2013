@@ -1,4 +1,7 @@
 (function() {
+
+  window.top.hideNav();
+
   var FADE_TRANSITION_DURATION = 1000;
 
   var FLOOR_SOUND_DELAY = 500;

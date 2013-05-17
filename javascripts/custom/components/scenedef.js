@@ -4,9 +4,9 @@ var Pages = function () {
   var pageinfo = [
     { 
       url: "pages/1.html", 
-      title: "Introduction", 
+      title: "The Street", 
 //      transition: 'fade', // 'horizontal', 'vertical'
-      transition: 'horizontal',
+      transition: 'fade',
       sound: { // 'background'
         urls: ['assets/1/sound/1.background_audio_track_full.mp3'],
         loop: true,
@@ -175,7 +175,7 @@ var Pages = function () {
       ]
     },
     { 
-      url: "pages/4.html", title: "Apartment", 
+      url: "pages/4.html", title: "The Apartment", 
       frames: [
         { 
           url: "pages/4/1.html", 
@@ -184,7 +184,8 @@ var Pages = function () {
     },
 
     { 
-      url: "pages/5.html", title: "Tile", 
+      url: "pages/5.html", title: "The Website", 
+      transition: 'vertical',
       frames: [
         { 
           url: "pages/5/1.html", 

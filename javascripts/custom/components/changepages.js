@@ -37,16 +37,16 @@
       var navPage = $('<li/>').appendTo(navList);
       var navPageLink = $('<a/>').text(_pages.getPageTitle(i)).attr('onClick', 'changePage('+ i +')').appendTo(navPage);
 
-      if (_pages.getFrameCount(i) > 1) {
-        navPage.addClass('has-dropdown');
-        var navPageList = $('<ul />').addClass('dropdown').appendTo(navPage);
+      // if (_pages.getFrameCount(i) > 1) {
+      //   navPage.addClass('has-dropdown');
+      //   var navPageList = $('<ul />').addClass('dropdown').appendTo(navPage);
 
-        var fr = _pages.getFrames(i);
-        $.each(fr, function(frameNumber){
-              var navFrame = $('<li/>').appendTo(navPageList);
-              var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ i +', ' +frameNumber +')').appendTo(navFrame);
-        });
-      };  
+      //   var fr = _pages.getFrames(i);
+      //   $.each(fr, function(frameNumber){
+      //         var navFrame = $('<li/>').appendTo(navPageList);
+      //         var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ i +', ' +frameNumber +')').appendTo(navFrame);
+      //   });
+      // };  
   };
 //});
 
