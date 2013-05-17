@@ -107,7 +107,8 @@ function changeSlider(value) {
 function changeFrame(value) {
   frameview = $(".frameview").first();
 
-  var frameCount = _pages.getFrameCount(_pageIndex);
+  var frameCount = _pages.getFrameCount(_pageIndex),
+    currentIndex = _frameIndex;
   
   if (value==="next") {
     if (_frameIndex < frameCount-1) _frameIndex++;
@@ -126,49 +127,32 @@ function changeFrame(value) {
   }
 
   var trans = _pages.getTransition(_pageIndex);
-
-  // if (trans == 'fade') {
-  //   frameview.fadeOut('fast', function() { 
-  //       frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() { 
-  //           changeSlider('0');
-  //           frameview.show();
-  //       }); 
-  //   });
-  // }
+  if (trans === 'fade') trans = 'crossFade';
+  else if (trans === 'vertical') trans = (currentIndex > _frameIndex)  ? 'slideUp' : 'slideDown';
+  else if (trans === 'horizontal') trans = (currentIndex > _frameIndex)  ?'slideLeft' : 'slideRight';
 
 
+  frameview.children().wrapAll('<div class="old ' + trans + '" />');
+  frameview.prepend('<div class="new ' + trans + '" />');
 
-frameview.children().wrapAll('<div class="old crossFade" />');
-frameview.prepend('<div class="new crossFade" />');
+  var frameNew = $('.new'),
+  frameOld = $('.old');
 
-var frameNew = $('.new'),
-frameOld = $('.old');
+  frameNew.eq(0).load(getCurrentFrameUrl(), function() {
+              $(this).imagesLoaded(function(){
+                focalpoint(function() {
+                  frameNew.addClass('animate');
+                  frameOld.addClass('animate');
+                  changeSlider('0');
 
-frameNew.eq(0).load(getCurrentFrameUrl(), function() {
-            $(this).imagesLoaded(function(){
-              focalpoint(function() {
-                frameNew.addClass('animate');
-                frameOld.addClass('animate');
-                changeSlider('0');
-
-                setTimeout(function(){
-                frameOld.remove();
-                frameNew.children().unwrap();
-                },1500)
+                  setTimeout(function(){
+                  frameOld.remove();
+                  frameNew.children().unwrap();
+                  },1500)
+                });
               });
-            });
-}); 
+  }); 
 
-
-
-
-
-  // else if (trans === 'horizontal') {
-  //   // 
-  // }
-  // else if (trans === 'vertical') {
-  //   // 
-  // }
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));

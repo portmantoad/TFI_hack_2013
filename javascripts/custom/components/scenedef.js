@@ -5,7 +5,8 @@ var Pages = function () {
     { 
       url: "pages/1.html", 
       title: "Introduction", 
-      transition: 'fade', // 'fade', 'horizontal', 'vertical'
+//      transition: 'fade', // 'horizontal', 'vertical'
+      transition: 'horizontal',
       sound: { // 'background'
         urls: ['assets/1/sound/1.background_audio_track_full.mp3'],
         loop: true,
@@ -205,7 +206,7 @@ var Pages = function () {
   this.pageCount = function () { return pageinfo.length; }
   this.getPageInfo = function (page)  { return pageinfo[page]; }
   this.getPageTitle = function (page)  { return pageinfo[page].title; }
-  this.getTransition = function (page)  { return pageinfo[page].transition || 'fade'; }
+  this.getTransition = function (page)  { return pageinfo[page].transition || 'crossFade'; }
 
   this.getPageUrl = function (page) { return pageinfo[page].url; }
   this.getFrameSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
