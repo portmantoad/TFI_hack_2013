@@ -17,7 +17,8 @@
     framecounter = $(".framecounter"),
     overlay = $('.overlay'),
     body = $("body"),
-    navList = $("#mainnav");
+    navList = $("#mainnav"),
+    animating = false;
     
 
 
@@ -109,7 +110,8 @@ function changeFrame(value) {
   frameview = $(".frameview").first();
 
   var frameCount = _pages.getFrameCount(_pageIndex),
-    currentIndex = _frameIndex;
+    currentIndex = _frameIndex,
+    trans = _pages.getTransition(_pageIndex);
   
   if (value==="next") {
     if (_frameIndex < frameCount-1) _frameIndex++;
@@ -119,15 +121,23 @@ function changeFrame(value) {
   } 
   else if (value==="first") { 
     _frameIndex = 0;
+    trans = false;
   } 
   else if (value==="last") {
     _frameIndex = frameCount - 1;
+    trans = false;
   } 
   else { 
     _frameIndex = Math.min(frameCount-1, Math.max(0, parseInt(value)));
+    trans = false;
   }
 
-  var trans = _pages.getTransition(_pageIndex);
+if (animating) {
+  trans = false;
+  animating = false;
+};
+
+if (trans) {
   if (trans === 'fade') trans = 'crossFade';
   else if (trans === 'vertical') trans = (currentIndex > _frameIndex)  ? 'slideUp' : 'slideDown';
   else if (trans === 'horizontal') trans = (currentIndex > _frameIndex)  ?'slideLeft' : 'slideRight';
@@ -142,11 +152,13 @@ function changeFrame(value) {
       focalpoint(function() {
         frameNew.addClass('animate');
         frameOld.addClass('animate');
-        changeSlider('0');
+        changeSlider('first');
+        animating = true;
 
         setTimeout(function(){
           frameOld.remove();
           frameNew.children().unwrap();
+          animating = false;
 
           // force video to play!
           Array.prototype.forEach.call(frameview[0].querySelectorAll('video.frame-video'), function (v) {
@@ -156,6 +168,16 @@ function changeFrame(value) {
       });
     });
   }); 
+} else {
+
+    frameview.fadeOut('fast', function() { 
+        frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
+            changeSlider('first');
+            frameview.fadeIn();
+        }); 
+    });
+
+};
 
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
@@ -185,7 +207,7 @@ function changePage(value, frame) {
 
     pageview.fadeOut('fast', function() { 
         pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
-            frame ? changeFrame(frame) : changeFrame('0');
+            frame ? changeFrame(frame) : changeFrame('first');
             pageview.fadeIn();
         }); 
     });
