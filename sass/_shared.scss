@@ -112,7 +112,7 @@
 
 
         .texture{
-            @extend fullScreen;
+            position: absolute;
             pointer-events: none;
             background-image: url('../assets/shared/colornoise.png');
             // @include breakpoint(hidpi) { background-size: 125px 113px; }

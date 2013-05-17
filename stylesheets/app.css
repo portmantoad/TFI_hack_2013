@@ -744,6 +744,7 @@ body, #modal {
 
 /* line 114, ../sass/_shared.scss */
 .texture {
+  position: absolute;
   pointer-events: none;
   background-image: url("../assets/shared/colornoise.png");
   top: -400px;
