@@ -17,6 +17,9 @@ var Pages = function () {
 
       frames: [
         { 
+          url: "pages/1/intro.html", 
+        },
+        { 
           url: "pages/1/1.html", 
           sound: {
             urls: ['assets/1/sound/1.1_background.mp3', 'assets/1/sound/1.1_background.oga'],
